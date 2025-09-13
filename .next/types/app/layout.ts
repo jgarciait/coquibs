@@ -1,4 +1,4 @@
-// File: C:\Users\Loney\OneDrive\DCS\Cursor Apps\coquibs\src\app\layout.tsx
+// File: C:\cursor_apps\coquibs\src\app\layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
