@@ -54,11 +54,10 @@ export const HeroSection = () => {
   // @return
   return <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Video */}
-      <div className="absolute inset-0 z-0">
-        <video autoPlay muted loop playsInline onLoadedData={() => setIsVideoLoaded(true)} className="w-full h-full object-cover opacity-20">
-          {/* Placeholder video source removed to prevent 404 errors */}
+      <div className="fixed inset-0 z-0">
+        <video autoPlay muted loop playsInline onLoadedData={() => setIsVideoLoaded(true)} className="w-full h-full object-cover opacity-60">
+          <source src="/Globulos Rojos.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-white/50"></div>
       </div>
 
       {/* Floating Icons */}
@@ -131,7 +130,7 @@ export const HeroSection = () => {
             }} transition={{
               duration: 0.8,
               delay: 0.6
-            }} className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+            }} className="text-5xl lg:text-6xl font-bold text-white leading-tight">
                 <span>Haciendo las </span>
                 <div className="relative inline-block">
                   <span className="text-[#d2232a]">Cirugías</span>
@@ -145,7 +144,7 @@ export const HeroSection = () => {
                 }} className="absolute -bottom-2 left-0 h-1 bg-[#d2232a] rounded-full"></motion.div>
                 </div>
                 <br />
-                <span>Más Seguras</span>
+                <span className="text-white">Más Seguras</span>
               </motion.h1>
 
               <motion.p initial={{
@@ -157,7 +156,7 @@ export const HeroSection = () => {
             }} transition={{
               duration: 0.6,
               delay: 0.8
-            }} className="text-xl text-gray-600 max-w-lg">
+            }} className="text-xl text-white max-w-lg">
                 <span>Revoluciona la medicina con autotransfusión: usa tu propia sangre para cirugías más seguras y recuperación más rápida.</span>
               </motion.p>
             </div>
