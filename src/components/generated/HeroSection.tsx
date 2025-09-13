@@ -283,5 +283,8 @@ export const HeroSection = () => {
           </motion.div>
         </div>
       </div>
+      
+      {/* Bottom White Bar with Opacity */}
+      <div className="absolute bottom-0 left-0 w-full h-16 bg-white/30 backdrop-blur-sm"></div>
     </section>;
 };
