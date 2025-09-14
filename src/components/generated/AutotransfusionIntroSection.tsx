@@ -8,31 +8,6 @@ import { Heart, Shield, Droplets, Activity } from 'lucide-react';
 export const AutotransfusionIntroSection = () => {
   // @return
   return <section id="que-es" className="py-20 px-4 bg-white relative overflow-hidden">
-      {/* Animated Heart Monitor Divider - Top */}
-      <div className="absolute top-0 left-0 right-0 h-px">
-        <motion.div initial={{
-        scaleX: 0
-      }} whileInView={{
-        scaleX: 1
-      }} viewport={{
-        once: true
-      }} transition={{
-        duration: 2,
-        ease: "easeInOut"
-      }} className="h-full bg-gradient-to-r from-transparent via-[#d2232a] to-transparent" />
-        <motion.div initial={{
-        x: '-100%'
-      }} animate={{
-        x: '100%'
-      }} transition={{
-        duration: 3,
-        repeat: Infinity,
-        ease: "linear"
-      }} className="absolute top-0 w-2 h-2 bg-[#d2232a] rounded-full shadow-lg" style={{
-        filter: 'drop-shadow(0 0 6px #d2232a)'
-      }} />
-      </div>
-
       <div className="max-w-7xl mx-auto">
         <motion.div initial={{
         opacity: 0,
@@ -160,7 +135,7 @@ export const AutotransfusionIntroSection = () => {
                 <div className="w-12 h-12 bg-[#d2232a]/10 rounded-full flex items-center justify-center">
                   <Activity className="w-6 h-6 text-[#d2232a]" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">
+                <h3 className="text-2xl font-bold text-black-900">
                   <span>Tecnología Médica Avanzada</span>
                 </h3>
               </motion.div>
@@ -176,7 +151,7 @@ export const AutotransfusionIntroSection = () => {
             }} transition={{
               delay: 0.6
             }} className="text-lg text-gray-700 leading-relaxed mb-6">
-                <span>La autotransfusión es un procedimiento médico innovador que permite recolectar, procesar y reinfundir la propia sangre del paciente durante una cirugía. Esta técnica revolucionaria elimina los riesgos asociados con las transfusiones de sangre de donantes externos.</span>
+                <span>Autotransfusión es un procedimiento donde se utiliza una máquina llamada “cell saver” (salvadora de células) donde se recoge la sangre que el paciente pierde durante la cirugía, se procesa o se “limpia” y se vuelve a introducir al paciente si es necesario.</span>
               </motion.p>
 
               <motion.p initial={{
@@ -190,7 +165,7 @@ export const AutotransfusionIntroSection = () => {
             }} transition={{
               delay: 0.8
             }} className="text-lg text-gray-700 leading-relaxed mb-8">
-                <span>Mediante equipos especializados, la sangre perdida durante la operación se recupera, se filtra y se purifica para ser devuelta al paciente de manera segura e inmediata, garantizando una compatibilidad perfecta y reduciendo significativamente las complicaciones postoperatorias.</span>
+                <span>Este procedimiento ayud a disminuir el riezgo de contraer enfermedades que suelen ser resultado de transfusiones de sangre en operaciones.</span>
               </motion.p>
 
               <motion.div initial={{

@@ -2,48 +2,41 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Play, ArrowRight, Heart, Shield, Zap, Users, Award, Activity } from 'lucide-react';
+import { Play, ArrowRight, Heart, Shield, Users, Award, Activity, Droplet } from 'lucide-react';
+const DoubleDroplet = ({ className }: { className?: string }) => (
+  <div className="relative">
+    <Droplet className={className} />
+    <Droplet className={`${className?.replace('w-6 h-6', 'w-4 h-4')} absolute -top-1 -right-1`} />
+  </div>
+);
+
 const autotransfusionIcons = [{
   id: 'icon-1',
   Icon: Heart,
   position: {
-    top: '20%',
-    left: '15%'
-  }
-}, {
-  id: 'icon-2',
-  Icon: Shield,
-  position: {
-    top: '30%',
-    right: '20%'
-  }
-}, {
-  id: 'icon-3',
-  Icon: Zap,
-  position: {
-    bottom: '25%',
-    left: '10%'
-  }
-}, {
-  id: 'icon-4',
-  Icon: Users,
-  position: {
-    top: '15%',
-    right: '10%'
+    top: '85%',
+    left: '25%'
   }
 }, {
   id: 'icon-5',
   Icon: Award,
   position: {
-    bottom: '20%',
-    right: '15%'
+    bottom: '60%',
+    right: '16%'
   }
 }, {
   id: 'icon-6',
   Icon: Activity,
   position: {
-    top: '40%',
-    left: '8%'
+    top: '27%',
+    left: '45%'
+  }
+}, {
+  id: 'icon-7',
+  Icon: DoubleDroplet,
+  position: {
+    top: '80%',
+    left: '55%'
   }
 }] as any[];
 
@@ -54,10 +47,11 @@ export const HeroSection = () => {
   // @return
   return <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Video */}
-      <div className="fixed inset-0 z-0">
-        <video autoPlay muted loop playsInline onLoadedData={() => setIsVideoLoaded(true)} className="w-full h-full object-cover opacity-60">
+      <div className="absolute inset-0 z-0">
+        <video autoPlay muted loop playsInline onLoadedData={() => setIsVideoLoaded(true)} className="w-full h-full object-cover">
           <source src="/Globulos Rojos.mp4" type="video/mp4" />
         </video>
+        <div className="absolute inset-0 bg-white/40"></div>
       </div>
 
       {/* Floating Icons */}
@@ -70,7 +64,7 @@ export const HeroSection = () => {
     }} transition={{
       delay: 1 + index * 0.2,
       duration: 0.5
-    }} className="absolute z-10 hidden lg:block" style={item.position}>
+    }} className={`absolute ${item.id === 'icon-7' || item.id === 'icon-6' ? 'z-50' : 'z-40'} hidden lg:block`} style={item.position}>
           <motion.div animate={{
         y: [0, -10, 0],
         rotate: [0, 5, -5, 0]
@@ -78,12 +72,22 @@ export const HeroSection = () => {
         duration: 3 + index * 0.5,
         repeat: Infinity,
         ease: "easeInOut"
-      }} className="p-3 bg-white/20 backdrop-blur-sm border border-[#d2232a]/30 rounded-full">
+      }} className="p-3 bg-white/60 backdrop-blur-sm border border-[#d2232a] rounded-full shadow-lg">
             <item.Icon className="w-6 h-6 text-[#d2232a]" />
           </motion.div>
         </motion.div>)}
 
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+
+      {/* Doctor Image - Right Side */}
+      <div className="absolute bottom-0 right-0 z-20 hidden lg:block">
+        <img 
+          src="\WomanSurgeon.png" 
+          alt="Doctora profesional" 
+          className="h-screen w-auto object-cover object-bottom"
+        />
+      </div>
+
+      <div className="relative z-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content Column */}
           <motion.div initial={{
@@ -106,21 +110,23 @@ export const HeroSection = () => {
           }} transition={{
             duration: 0.6,
             delay: 0.4
-          }} className="inline-flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-[#d2232a]/10 to-[#2381d2]/10 backdrop-blur-sm border border-[#d2232a]/20 rounded-full">
+          }} className="inline-flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-white/100 to-white/50 backdrop-blur-sm border border-[#ffffff] rounded-full">
               <motion.div animate={{
               scale: [1, 1.2, 1]
             }} transition={{
               duration: 2,
               repeat: Infinity
-            }} className="w-2 h-2 bg-[#d2232a] rounded-full"></motion.div>
-              <span className="text-sm font-medium text-gray-700">
+            }}>
+              <Droplet className="w-4 h-4 text-[#d2232a] fill-current" />
+            </motion.div>
+              <span className="text-sm font-medium text-black-700">
                 <span>Tecnología Médica Avanzada</span>
               </span>
-              <Heart className="w-4 h-4 text-[#d2232a]" />
+              <Heart className="w-4 h-4 text-[#d2232a] fill-current" />
             </motion.div>
 
             {/* Animated Headline */}
-            <div className="space-y-4">
+            <div className="relative z-10 bg-gradient-to-br from-white/90 via-white/70 to-white/50 backdrop-blur-xl rounded-3xl p-6 space-y-4 border border-white max-w-lg after:absolute after:inset-0 after:bg-gradient-to-br after:from-white/60 after:via-transparent after:to-white/30 after:rounded-3xl after:pointer-events-none after:-z-10" style={{boxShadow: '0 2px 6px rgba(0, 0, 0, 0.4)'}}>
               <motion.h1 initial={{
               opacity: 0,
               y: 30
@@ -130,7 +136,7 @@ export const HeroSection = () => {
             }} transition={{
               duration: 0.8,
               delay: 0.6
-            }} className="text-5xl lg:text-6xl font-bold text-white leading-tight">
+            }} className="text-5xl lg:text-6xl font-bold text-black leading-tight">
                 <span>Haciendo las </span>
                 <div className="relative inline-block">
                   <span className="text-[#d2232a]">Cirugías</span>
@@ -144,7 +150,7 @@ export const HeroSection = () => {
                 }} className="absolute -bottom-2 left-0 h-1 bg-[#d2232a] rounded-full"></motion.div>
                 </div>
                 <br />
-                <span className="text-white">Más Seguras</span>
+                <span className="text-black">Más Seguras</span>
               </motion.h1>
 
               <motion.p initial={{
@@ -156,7 +162,7 @@ export const HeroSection = () => {
             }} transition={{
               duration: 0.6,
               delay: 0.8
-            }} className="text-xl text-white max-w-lg">
+            }} className="text-xl text-black max-w-lg">
                 <span>Revoluciona la medicina con autotransfusión: usa tu propia sangre para cirugías más seguras y recuperación más rápida.</span>
               </motion.p>
             </div>
@@ -178,20 +184,18 @@ export const HeroSection = () => {
               color: '#ffffff'
             }} whileTap={{
               scale: 0.95
-            }} className="group px-8 py-4 bg-[#d2232a] text-white rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2">
+            }} className="group px-8 py-4 bg-gradient-to-b from-[#ff6b7a] to-[#b01e24] text-white rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2" style={{boxShadow: '0 1px 3px rgba(0, 0, 0, 0.2)'}}>
                 <span>Conocer Más</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
 
               <motion.button whileHover={{
               scale: 1.05,
-              backgroundColor: '#2381d2',
-              color: '#ffffff',
-              borderColor: '#2381d2'
+              backgroundColor: '#1e5f99'
             }} whileTap={{
               scale: 0.95
-            }} className="group px-8 py-4 bg-transparent text-[#2381d2] border-2 border-[#2381d2] rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2">
-                <Play className="w-5 h-5" />
+            }} className="group px-8 py-4 bg-gradient-to-b from-[#5a9cff] to-[#1e5f99] text-white rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2" style={{boxShadow: '0 1px 3px rgba(0, 0, 0, 0.2)'}}>
+                <Play className="w-5 h-5 text-white" />
                 <span>Ver Demo</span>
               </motion.button>
             </motion.div>
@@ -207,7 +211,7 @@ export const HeroSection = () => {
         }} transition={{
           duration: 0.8,
           delay: 0.4
-        }} className="relative">
+        }} className="relative hidden">
             <div className="relative">
               {/* Glass Card Overlay */}
               <div className="absolute inset-0 bg-white/10 backdrop-blur-sm border border-[#d2232a]/20 rounded-3xl shadow-2xl"></div>
@@ -283,8 +287,5 @@ export const HeroSection = () => {
           </motion.div>
         </div>
       </div>
-      
-      {/* Bottom White Bar with Opacity */}
-      <div className="absolute bottom-0 left-0 w-full h-16 bg-white/30 backdrop-blur-sm"></div>
     </section>;
 };

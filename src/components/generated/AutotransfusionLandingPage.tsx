@@ -95,7 +95,7 @@ export const AutotransfusionLandingPage = () => {
   }, []);
 
   // @return
-  return <div className="min-h-screen bg-white">
+  return <><div className="min-h-screen bg-white">
       <Navbar />
       <HeroSection />
       <AutotransfusionIntroSection />
@@ -184,7 +184,7 @@ export const AutotransfusionLandingPage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonios" className="py-20 px-4">
+      <section id="testimonios" className="hidden py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <motion.div initial={{
           opacity: 0,
@@ -308,7 +308,7 @@ export const AutotransfusionLandingPage = () => {
                 <Phone className="w-6 h-6 text-[#d2232a]" />
                 <div>
                   <h3 className="font-semibold text-gray-900">Teléfono</h3>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
+                  <p className="text-gray-600">+1 (787) 448-2931</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
@@ -367,14 +367,16 @@ export const AutotransfusionLandingPage = () => {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-white/60 backdrop-blur-sm border-t border-gray-200 py-8 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-gray-600">
-            <span>© 2024 Autotransfusión Médica. Todos los derechos reservados.</span>
-          </p>
-        </div>
-      </footer>
-    </div>;
+    </div>
+    
+    {/* Footer */}
+    <footer className="relative py-12 px-4" style={{ backgroundColor: '#032144' }}>
+      <img src="/red.png" alt="Red logo" className="absolute bottom-0 left-0 h-full object-contain" />
+      <div className="max-w-7xl mx-auto text-center">
+        <p className="text-white text-lg font-medium">
+          © 2010. Derechos Reservados. Coquí Blod Salvage, Inc.
+        </p>
+      </div>
+    </footer>
+    </>;
 };
