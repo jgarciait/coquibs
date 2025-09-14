@@ -18,7 +18,7 @@ const autotransfusionIcons = [{
     left: '25%'
   }
 }, {
-  id: 'icon-5',
+  id: 'icon-5p',
   Icon: Award,
   position: {
     bottom: '60%',
@@ -81,7 +81,7 @@ export const HeroSection = () => {
       {/* Doctor Image - Right Side */}
       <div className="absolute bottom-0 right-0 z-20 hidden lg:block">
         <img 
-          src="\WomanSurgeon.png" 
+          src="/WomanSurgeon.png" 
           alt="Doctora profesional" 
           className="h-screen w-auto object-cover object-bottom"
         />
