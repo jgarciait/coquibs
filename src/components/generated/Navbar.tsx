@@ -2,18 +2,51 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Home, Heart, Settings } from 'lucide-react';
+import { Menu, X, Home, Heart, Settings, Sun, Moon } from 'lucide-react';
 
 const navLinks = [
   { href: '#home', label: 'Home', hoverColor: 'bg-[#2381d2]/40', icon: Home },
-  { href: '#beneficios', label: 'Beneficios', hoverColor: 'bg-[#d2232a]/40', icon: Heart },
-  { href: '#servicios', label: 'Servicios', hoverColor: 'bg-[#2381d2]/40', icon: Settings }
+  { href: '#beneficios-adicionales', label: 'Beneficios', hoverColor: 'bg-[#d2232a]/40', icon: Heart },
+  { href: '#servicios', label: 'Servicios', hoverColor: 'bg-[#2381d2]/40', icon: Settings },
+  { href: '#testimonios', label: 'Testimonios', hoverColor: 'bg-[#d2232a]/40', icon: Heart },
+  { href: '#faq', label: 'FAQ', hoverColor: 'bg-[#2381d2]/40', icon: Settings },
+  { href: '#equipo-medico', label: 'Equipo', hoverColor: 'bg-[#d2232a]/40', icon: Heart },
+  { href: '#certificaciones', label: 'Certificaciones', hoverColor: 'bg-[#2381d2]/40', icon: Settings },
+  { href: '#estadisticas', label: 'Estadísticas', hoverColor: 'bg-[#d2232a]/40', icon: Heart },
+  { href: '#recursos', label: 'Recursos', hoverColor: 'bg-[#2381d2]/40', icon: Settings }
 ];
 
 // @component: Navbar
 export const Navbar = () => {
   const [activeLink, setActiveLink] = React.useState('#home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'beneficios-adicionales', 'servicios', 'testimonios', 'faq', 'equipo-medico', 'certificaciones', 'estadisticas', 'recursos'];
+      const scrollPosition = window.scrollY + 100;
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveLink('#' + section);
+            break;
+          }
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    document.documentElement.classList.toggle('dark');
+  };
 
   const handleLinkClick = (href: string) => {
     setActiveLink(href);
@@ -67,10 +100,16 @@ export const Navbar = () => {
                   className="text-[#00217a] hover:text-[#00217a]/80 transition-all duration-200 px-3 py-2 font-medium tracking-wide relative group"
                 >
                   <span className="relative z-10">{link.label}</span>
+                  {activeLink === link.href && <motion.div className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#d2232a]" layoutId="activeNavbar" transition={{ type: "spring", stiffness: 380, damping: 30 }} />}
                   <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#d2232a] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
                 </motion.a>
               ))}
             </div>
+
+            {/* Dark Mode Toggle */}
+            <button onClick={toggleDarkMode} className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors mr-4" aria-label={isDarkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>
+              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
 
             {/* Contact Button */}
             <motion.a

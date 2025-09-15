@@ -8,6 +8,15 @@ import { AutotransfusionIntroSection } from './AutotransfusionIntroSection';
 import { HowItWorksSection } from './HowItWorksSection';
 import { ServiciosSection } from './ServiciosSection';
 import { PlanesSection } from './PlanesSection';
+import { BenefitsSection } from './BenefitsSection';
+import { PlanesAdicionalesSection } from './PlanesAdicionalesSection';
+import { ContactoNuevoSection } from './ContactoNuevoSection';
+import { TestimonialsSection } from './TestimonialsSection';
+import { FAQSection } from './FAQSection';
+import { MedicalTeamSection } from './MedicalTeamSection';
+import { CertificationsSection } from './CertificationsSection';
+import { StatisticsSection } from './StatisticsSection';
+import { ResourcesSection } from './ResourcesSection';
 import { Heart, Shield, Users, Award, Phone, Mail, MapPin, ChevronDown, ChevronRight } from 'lucide-react';
 const benefitsData = [{
   id: 'benefit-1',
@@ -104,6 +113,15 @@ export const AutotransfusionLandingPage = () => {
       <HowItWorksSection />
       <ServiciosSection />
       <PlanesSection />
+      <BenefitsSection />
+      <PlanesAdicionalesSection />
+      <ContactoNuevoSection />
+      <TestimonialsSection />
+      <FAQSection />
+      <MedicalTeamSection />
+      <CertificationsSection />
+      <StatisticsSection />
+      <ResourcesSection />
       
       {/* Benefits Section */}
       <section id="beneficios" className="py-20 px-4">

@@ -197,7 +197,7 @@ export const HeroSection = () => {
                 }} className="absolute -bottom-2 left-0 h-1 bg-[#d2232a] rounded-full"></motion.div>
                 </div>
                 <br />
-                <span className="text-black"> </span>
+                <span className="text-black"> y Eficaz</span>
               </motion.h1>
 
               <motion.p initial={{
@@ -210,7 +210,7 @@ export const HeroSection = () => {
               duration: 0.6,
               delay: 0.8
             }} className="text-xl text-gray-600 max-w-sm">
-                <span>Revolucionamos la cirugía con tecnología de autotransfusión que garantiza la máxima seguridad para tus pacientes.</span>
+                <span>Revolucionamos los procedimientos quirúrgicos con tecnología de autotransfusión que garantiza la reducción de riesgos y mejora la recuperación del paciente.</span>
               </motion.p>
             </div>
 

@@ -3,6 +3,7 @@
 import { useMemo, useEffect } from 'react';
 import { Container, Theme } from './settings/types';
 import { AutotransfusionLandingPage } from './components/generated/AutotransfusionLandingPage';
+import { CoquibsWebsiteNew } from './components/generated/CoquibsWebsiteNew';
 
 let theme: Theme = 'light';
 // only use 'centered' container for standalone components, never for full page apps or websites.
