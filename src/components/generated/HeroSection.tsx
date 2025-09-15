@@ -4,6 +4,22 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Play, ArrowRight, Heart, Shield, Users, Award, Activity, Droplet } from 'lucide-react';
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
+
+const CounterAnimation = ({ value, suffix = '' }: { value: number; suffix?: string }) => {
+  const [count, setCount] = React.useState(0);
+  
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      if (count < value) {
+        setCount(count + (value / 30));
+      }
+    }, 50);
+    
+    return () => clearTimeout(timer);
+  }, [count, value]);
+  
+  return <span>{Math.floor(count)}{suffix}</span>;
+};
 const DoubleDroplet = ({ className }: { className?: string }) => (
   <div className="relative">
     <Droplet className={className} />
@@ -48,17 +64,26 @@ export const HeroSection = () => {
   // @return
   return <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Video */}
-      <div className="absolute inset-0 z-0">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="absolute inset-0 z-0"
+      >
         <video autoPlay muted loop playsInline onLoadedData={() => setIsVideoLoaded(true)} className="w-full h-full object-cover">
           <source src="/Blood cells slow motion.mp4" type="video/mp4" />
         </video>
-        <div
-  className="absolute inset-0"
-  style={{
-    background:
-      'linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 20%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0.25) 80%, rgba(255,255,255,0) 100%)'
-  }}
-></div></div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 20%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0.25) 80%, rgba(255,255,255,0) 100%)'
+          }}
+        />
+      </motion.div>
 
       {/* Floating Icons */}
       {autotransfusionIcons.map((item, index) => <motion.div key={item.id} initial={{
@@ -70,28 +95,46 @@ export const HeroSection = () => {
     }} transition={{
       delay: 1 + index * 0.2,
       duration: 0.5
-    }} className={`absolute ${item.id === 'icon-7' || item.id === 'icon-6' ? 'z-50' : 'z-40'} hidden lg:block`} style={item.position}>
-          <motion.div animate={{
-        y: [0, -10, 0],
-        rotate: [0, 5, -5, 0]
-      }} transition={{
-        duration: 3 + index * 0.5,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }} className="p-3 bg-white/60 backdrop-blur-sm border border-[#d2232a] rounded-full shadow-lg">
+    }} className={`absolute z-[9999] hidden lg:block`} style={item.position}>
+          <motion.div 
+            animate={{
+              y: [0, -10, 0],
+              rotate: [0, 5, -5, 0],
+              scale: [1, 1.05, 1]
+            }} 
+            transition={{
+              duration: 3 + index * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }} 
+            whileHover={{
+              scale: 1.1,
+              rotate: 15,
+              y: -5
+            }}
+            className="p-3 bg-white/60 backdrop-blur-sm border border-[#d2232a] rounded-full shadow-lg cursor-pointer"
+            style={{
+              cursor: 'url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\'%3E%3Ccircle cx=\'12\' cy=\'12\' r=\'10\' fill=\'%23ff9999\' stroke=\'%23660000\' stroke-width=\'3\'/%3E%3C/svg%3E") 12 12, pointer'
+            }}
+          >
             <item.Icon className="w-6 h-6 text-[#d2232a]" />
           </motion.div>
         </motion.div>)}
 
 
       {/* Doctor Image - Right Side */}
-      <div className="absolute bottom-0 right-0 z-20 hidden lg:block">
+      <motion.div 
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
+        className="absolute bottom-0 right-0 z-20 hidden lg:block"
+      >
         <img 
           src="/WomanSurgeon.png" 
           alt="Doctora profesional" 
           className="h-screen w-auto object-cover object-bottom"
         />
-      </div>
+      </motion.div>
 
       <div className="relative z-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -141,9 +184,9 @@ export const HeroSection = () => {
               duration: 0.8,
               delay: 0.6
             }} className="text-5xl lg:text-6xl font-bold text-black leading-tight">
-                <span>Haciendo las </span>
+                <span>Autotransfusión</span>
                 <div className="relative inline-block">
-                  <span className="text-[#d2232a]">Cirugías</span>
+                  <span className="text-[#d2232a]">Segura</span>
                   <motion.div initial={{
                   width: 0
                 }} animate={{
@@ -154,7 +197,7 @@ export const HeroSection = () => {
                 }} className="absolute -bottom-2 left-0 h-1 bg-[#d2232a] rounded-full"></motion.div>
                 </div>
                 <br />
-                <span className="text-black">Más Seguras </span>
+                <span className="text-black"> </span>
               </motion.h1>
 
               <motion.p initial={{
@@ -167,7 +210,7 @@ export const HeroSection = () => {
               duration: 0.6,
               delay: 0.8
             }} className="text-xl text-gray-600 max-w-sm">
-                <span>Revoluciona la medicina con autotransfusión: usa tu propia sangre para cirugías más seguras y recuperación más rápida.</span>
+                <span>Revolucionamos la cirugía con tecnología de autotransfusión que garantiza la máxima seguridad para tus pacientes.</span>
               </motion.p>
             </div>
 
@@ -182,17 +225,29 @@ export const HeroSection = () => {
             duration: 0.6,
             delay: 1
           }} className="flex flex-col sm:flex-row gap-4">
-              <motion.button whileHover={{
-              scale: 1.05
-            }} whileTap={{
-              scale: 0.95
-            }} className="group px-4 py-2.5 text-white rounded-full font-semibold text-lg transition-all duration-500 flex items-center justify-center space-x-2 relative overflow-hidden" style={{
-              background: 'linear-gradient(45deg, #d2232a, #b91c1c)',
-              boxShadow: '0 10px 25px rgba(0, 0, 0, 0)',
-              filter: 'drop-shadow(0 10px 15px rgba(210, 35, 42, 0.5))'
-            }}>
+              <motion.button 
+                whileHover={{
+                  scale: 1.05,
+                  y: -2,
+                  boxShadow: "0 20px 40px rgba(210, 35, 42, 0.4)"
+                }} 
+                whileTap={{
+                  scale: 0.95
+                }} 
+                className="group px-4 py-2.5 text-white rounded-full font-semibold text-lg transition-all duration-500 flex items-center justify-center space-x-2 relative overflow-hidden" 
+                style={{
+                  background: 'linear-gradient(45deg, #d2232a, #b91c1c)',
+                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0)',
+                  filter: 'drop-shadow(0 10px 15px rgba(210, 35, 42, 0.5))'
+                }}
+              >
                 <span className="relative z-10">Conocer Más</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
+                <motion.div 
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <ArrowRight className="w-5 h-5 relative z-10" />
+                </motion.div>
                 <div 
                   className="absolute inset-0 rounded-full blur-[15px] -z-10"
                   style={{
@@ -203,16 +258,28 @@ export const HeroSection = () => {
                 />
               </motion.button>
 
-              <motion.button whileHover={{
-              scale: 1.05
-            }} whileTap={{
-              scale: 0.95
-            }} className="group px-4 py-2.5 text-white rounded-full font-semibold text-lg transition-all duration-500 flex items-center justify-center space-x-2 relative overflow-hidden" style={{
-              background: 'linear-gradient(45deg, #2381d2, #1e40af)',
-              boxShadow: '0 10px 25px rgba(0, 0, 0, 0)',
-              filter: 'drop-shadow(0 10px 15px rgba(35, 129, 210, 0.5))'
-            }}>
-                <Play className="w-5 h-5 text-white relative z-10" />
+              <motion.button 
+                whileHover={{
+                  scale: 1.05,
+                  y: -2,
+                  boxShadow: "0 20px 40px rgba(35, 129, 210, 0.4)"
+                }} 
+                whileTap={{
+                  scale: 0.95
+                }} 
+                className="group px-4 py-2.5 text-white rounded-full font-semibold text-lg transition-all duration-500 flex items-center justify-center space-x-2 relative overflow-hidden" 
+                style={{
+                  background: 'linear-gradient(45deg, #2381d2, #1e40af)',
+                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0)',
+                  filter: 'drop-shadow(0 10px 15px rgba(35, 129, 210, 0.5))'
+                }}
+              >
+                <motion.div 
+                  whileHover={{ scale: 1.2, rotate: 360 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <Play className="w-5 h-5 text-white relative z-10" />
+                </motion.div>
                 <span className="relative z-10">Ver Demo</span>
                 <div 
                   className="absolute inset-0 rounded-full blur-[15px] -z-10"
@@ -256,7 +323,7 @@ export const HeroSection = () => {
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-gray-900">
-                      <span>99.9%</span>
+                      <span>100%</span>
                     </p>
                     <p className="text-sm text-gray-600">
                       <span>Seguridad</span>
@@ -288,7 +355,7 @@ export const HeroSection = () => {
           </div>
           <div>
             <p className="text-2xl font-bold text-gray-900">
-              <span>50%</span>
+              <span>100%</span>
             </p>
             <p className="text-sm text-gray-600">
               <span>Recuperación</span>

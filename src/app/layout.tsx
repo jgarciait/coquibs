@@ -3,6 +3,7 @@
 import { StrictMode, useEffect } from 'react';
 import '../index.css';
 import ScrollToTopButton from '../components/generated/ScrollToTopButton';
+import Loader from '../components/ui/Loader';
 
 export default function RootLayout({
   children,
@@ -46,8 +47,10 @@ export default function RootLayout({
       </head>
       <body>
         <StrictMode>
-          {children}
-          <ScrollToTopButton />
+          <Loader>
+            {children}
+            <ScrollToTopButton />
+          </Loader>
         </StrictMode>
       </body>
     </html>
