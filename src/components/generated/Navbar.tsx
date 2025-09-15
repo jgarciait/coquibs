@@ -64,9 +64,10 @@ export const Navbar = () => {
                     scale: 1.05
                   }}
                   transition={{ duration: 0.2 }}
-                  className="text-[#00217a] hover:text-[#00217a]/80 transition-all duration-200 px-3 py-2 font-medium tracking-wide"
+                  className="text-[#00217a] hover:text-[#00217a]/80 transition-all duration-200 px-3 py-2 font-medium tracking-wide relative group"
                 >
-                  {link.label}
+                  <span className="relative z-10">{link.label}</span>
+                  <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#d2232a] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
                 </motion.a>
               ))}
             </div>
@@ -132,9 +133,10 @@ export const Navbar = () => {
                         x: 4,
                         scale: 1.05
                       }}
-                      className="block px-4 py-3 text-[#00217a] hover:text-[#00217a]/80 rounded-lg transition-all duration-300 focus:outline-none tracking-wide font-medium"
+                      className="block px-4 py-3 text-[#00217a] hover:text-[#00217a]/80 rounded-lg transition-all duration-300 focus:outline-none tracking-wide font-medium relative group"
                     >
-                      {link.label}
+                      <span className="relative z-10">{link.label}</span>
+                      <div className="absolute bottom-1 left-4 right-4 h-0.5 bg-[#d2232a] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
                     </motion.a>
                   ))}
                 </div>

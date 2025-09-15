@@ -21,10 +21,11 @@ const hospitals = [
 
 // @component: ServiciosSection
 export const ServiciosSection = () => {
-  // Split hospitals into two columns
-  const midpoint = Math.ceil(hospitals.length / 2);
-  const leftColumn = hospitals.slice(0, midpoint);
-  const rightColumn = hospitals.slice(midpoint);
+  // Split hospitals into three columns
+  const thirdPoint = Math.ceil(hospitals.length / 3);
+  const firstColumn = hospitals.slice(0, thirdPoint);
+  const secondColumn = hospitals.slice(thirdPoint, thirdPoint * 2);
+  const thirdColumn = hospitals.slice(thirdPoint * 2);
 
   // @return
   return (
@@ -66,11 +67,11 @@ export const ServiciosSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid md:grid-cols-2 gap-8 lg:gap-12"
+            className="grid md:grid-cols-3 gap-8 lg:gap-12"
           >
-            {/* Left Column */}
+            {/* First Column */}
             <div className="space-y-4">
-              {leftColumn.map((hospital, index) => (
+              {firstColumn.map((hospital, index) => (
                 <motion.div
                   key={hospital}
                   initial={{ opacity: 0, x: -20 }}
@@ -93,12 +94,34 @@ export const ServiciosSection = () => {
               ))}
             </div>
 
-            {/* Divider */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gray-200 to-transparent transform -translate-x-1/2"></div>
-
-            {/* Right Column */}
+            {/* Second Column */}
             <div className="space-y-4">
-              {rightColumn.map((hospital, index) => (
+              {secondColumn.map((hospital, index) => (
+                <motion.div
+                  key={hospital}
+                  initial={{ opacity: 0, y: -20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                  className="group flex items-start space-x-4 p-6 rounded-2xl hover:bg-gray-50/80 transition-all duration-300"
+                >
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 bg-[#2381d2] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Check className="w-4 h-4 text-white" />
+                    </div>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-gray-800 font-medium leading-relaxed group-hover:text-[#233e90] transition-colors duration-300">
+                      {hospital}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Third Column */}
+            <div className="space-y-4">
+              {thirdColumn.map((hospital, index) => (
                 <motion.div
                   key={hospital}
                   initial={{ opacity: 0, x: 20 }}

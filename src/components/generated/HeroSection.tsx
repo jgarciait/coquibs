@@ -167,7 +167,7 @@ export const HeroSection = () => {
             }} transition={{
               duration: 0.6,
               delay: 0.8
-            }} className="text-xl text-gray-600 max-w-lg">
+            }} className="text-xl text-gray-600 max-w-sm">
                 <span>Revoluciona la medicina con autotransfusión: usa tu propia sangre para cirugías más seguras y recuperación más rápida.</span>
               </motion.p>
             </div>
@@ -237,27 +237,8 @@ export const HeroSection = () => {
         }} transition={{
           duration: 0.8,
           delay: 0.4
-        }} className="relative hidden">
+        }} className="relative">
             <div className="relative">
-              {/* Glass Card Overlay */}
-              <div className="absolute inset-0 bg-white/10 backdrop-blur-sm border border-[#d2232a]/20 rounded-3xl shadow-2xl"></div>
-              
-              {/* Image Placeholder */}
-              <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl p-8 min-h-[500px] flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <div className="w-32 h-32 mx-auto bg-white/50 backdrop-blur-sm border border-[#d2232a]/30 rounded-full flex items-center justify-center">
-                    <Heart className="w-16 h-16 text-[#d2232a]" />
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="text-2xl font-bold text-gray-800">
-                      <span>Equipo Médico</span>
-                    </h3>
-                    <p className="text-gray-600">
-                      <span>Tecnología de Autotransfusión</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
 
               {/* Floating Stats */}
               <motion.div initial={{
@@ -269,10 +250,10 @@ export const HeroSection = () => {
             }} transition={{
               delay: 1.5,
               duration: 0.5
-            }} className="absolute -top-6 -left-6 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-4 shadow-lg">
+            }} className="absolute top-5 left-1 z-10 bg-white/80 backdrop-blur-sm border border-[#ffffff] rounded-2xl p-4 shadow-lg">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-[#d2232a]/10 rounded-full flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-[#d2232a]" />
+                  <div className="w-12 h-12 bg-[#2381d2]/10 border border-[#2381d2] rounded-full flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-[#2381d2]" />
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-gray-900">
@@ -294,10 +275,10 @@ export const HeroSection = () => {
             }} transition={{
               delay: 1.7,
               duration: 0.5
-            }} className="absolute -bottom-6 -right-6 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-4 shadow-lg">
+            }} className="absolute bottom-10 right-6 z-50 bg-white/80 backdrop-blur-sm border border-[#ffffff] rounded-2xl p-4 shadow-lg">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-[#2381d2]/10 rounded-full flex items-center justify-center">
-                    <Activity className="w-6 h-6 text-[#2381d2]" />
+                  <div className="w-12 h-12 bg-[#d2232a]/10 border border-[#d2232a] rounded-full flex items-center justify-center">
+                    <Activity className="w-6 h-6 text-[#d2232a]" />
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-gray-900">
