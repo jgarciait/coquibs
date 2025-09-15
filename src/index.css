@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Arial&family=Helvetica&family=Times+New+Roman&family=Georgia&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Arial&family=Helvetica&family=Times+New+Roman&family=Georgia&family=Roboto&family=Space+Grotesk:ital,wght@0,400;0,700;1,400;1,700&family=Oswald:wght@400;600;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/eurostile');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -84,4 +85,262 @@ body,
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Ion Icon Navigation Styles */
+.ion-nav {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.ion-nav ul {
+  display: flex;
+  position: relative;
+  gap: 25px;
+}
+
+.ion-nav ul li {
+  position: relative;
+  list-style: none;
+  width: 60px;
+  height: 60px;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 60px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.ion-nav ul li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 60px;
+  background: linear-gradient(45deg, var(--i), var(--j));
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.ion-nav ul li::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 60px;
+  background: linear-gradient(45deg, var(--i), var(--j));
+  transition: 0.5s;
+  filter: blur(15px);
+  z-index: -1;
+  opacity: 0;
+}
+
+.ion-nav ul li:hover {
+  width: 180px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
+}
+
+.ion-nav ul li:hover::before {
+  opacity: 1;
+}
+
+.ion-nav ul li:hover::after {
+  opacity: 0.5;
+}
+
+.ion-nav ul li ion-icon {
+  color: #777;
+  font-size: 1.75em;
+  transition: 0.5s;
+  transition-delay: 0.25s;
+}
+
+.ion-nav ul li:hover ion-icon {
+  transform: scale(0);
+  color: #fff;
+  transition-delay: 0s;
+}
+
+.ion-nav ul li span {
+  position: absolute;
+}
+
+.ion-nav ul li .title {
+  color: #fff;
+  font-size: 1.1em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transform: scale(0);
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+
+.ion-nav ul li:hover .title {
+  transform: scale(1);
+  transition-delay: 0.25s;
+}
+
+/* Scroll to Top Button Styles */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.8);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.scroll-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.scroll-button {
+  width: 65px;
+  height: 85px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background: linear-gradient(145deg, #e53e3e, #dc2626, #b91c1c);
+  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+  clip-path: ellipse(50% 65% at 50% 35%);
+  box-shadow: 
+    0 18px 40px rgba(229, 62, 62, 0.5),
+    0 10px 18px rgba(229, 62, 62, 0.3),
+    inset 0 3px 6px rgba(255, 255, 255, 0.4),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+  animation: float 3s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.scroll-button::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 60%;
+  height: 30%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), transparent);
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
+.scroll-button::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: linear-gradient(145deg, #ef4444, #dc2626);
+  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+  clip-path: ellipse(50% 65% at 50% 35%);
+  z-index: -1;
+}
+
+.scroll-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 22px 45px rgba(229, 62, 62, 0.6),
+    0 12px 22px rgba(229, 62, 62, 0.4),
+    inset 0 4px 8px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+  animation: pulse 0.8s ease infinite alternate;
+}
+
+.scroll-button:active {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 12px 24px rgba(229, 62, 62, 0.4),
+    0 6px 12px rgba(229, 62, 62, 0.3),
+    inset 0 3px 6px rgba(255, 255, 255, 0.4),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.arrow-up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 
+      0 22px 45px rgba(229, 62, 62, 0.6),
+      0 12px 22px rgba(229, 62, 62, 0.4),
+      inset 0 4px 8px rgba(255, 255, 255, 0.5),
+      inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 
+      0 28px 55px rgba(229, 62, 62, 0.7),
+      0 16px 28px rgba(229, 62, 62, 0.5),
+      inset 0 5px 10px rgba(255, 255, 255, 0.6),
+      inset 0 -5px 10px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #2c2c2c, #1a1a1a);
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(145deg, #ff4757, #c44569, #ff6b7a);
+  border-radius: 8px;
+  box-shadow: 
+    0 4px 8px rgba(255, 71, 87, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(145deg, #ff6b7a, #e84857, #ff8a94);
+  box-shadow: 
+    0 6px 12px rgba(255, 71, 87, 0.4),
+    inset 0 3px 6px rgba(255, 255, 255, 0.3),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(145deg, #e84857, #c44569, #ff4757);
+}
+
+::-webkit-scrollbar-corner {
+  background: linear-gradient(180deg, #2c2c2c, #1a1a1a);
+}
+
+/* Firefox Scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #ff4757 #2c2c2c;
 }

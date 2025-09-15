@@ -49,10 +49,15 @@ export const HeroSection = () => {
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video autoPlay muted loop playsInline onLoadedData={() => setIsVideoLoaded(true)} className="w-full h-full object-cover">
-          <source src="/Globulos Rojos.mp4" type="video/mp4" />
+          <source src="/Blood cells slow motion.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-white/40"></div>
-      </div>
+        <div
+  className="absolute inset-0"
+  style={{
+    background:
+      'linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 20%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0.25) 80%, rgba(255,255,255,0) 100%)'
+  }}
+></div></div>
 
       {/* Floating Icons */}
       {autotransfusionIcons.map((item, index) => <motion.div key={item.id} initial={{
@@ -126,7 +131,7 @@ export const HeroSection = () => {
             </motion.div>
 
             {/* Animated Headline */}
-            <div className="relative z-10 bg-gradient-to-br from-white/90 via-white/70 to-white/50 backdrop-blur-xl rounded-3xl p-6 space-y-4 border border-white max-w-lg after:absolute after:inset-0 after:bg-gradient-to-br after:from-white/60 after:via-transparent after:to-white/30 after:rounded-3xl after:pointer-events-none after:-z-10" style={{boxShadow: '0 2px 6px rgba(0, 0, 0, 0.4)'}}>
+            <div className="space-y-4 max-w-lg">
               <motion.h1 initial={{
               opacity: 0,
               y: 30
@@ -162,7 +167,7 @@ export const HeroSection = () => {
             }} transition={{
               duration: 0.6,
               delay: 0.8
-            }} className="text-xl text-black max-w-lg">
+            }} className="text-xl text-gray-600 max-w-lg">
                 <span>Revoluciona la medicina con autotransfusión: usa tu propia sangre para cirugías más seguras y recuperación más rápida.</span>
               </motion.p>
             </div>
@@ -179,24 +184,45 @@ export const HeroSection = () => {
             delay: 1
           }} className="flex flex-col sm:flex-row gap-4">
               <motion.button whileHover={{
-              scale: 1.05,
-              backgroundColor: '#b01e24',
-              color: '#ffffff'
+              scale: 1.05
             }} whileTap={{
               scale: 0.95
-            }} className="group px-8 py-4 bg-gradient-to-b from-[#ff6b7a] to-[#b01e24] text-white rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2" style={{boxShadow: '0 1px 3px rgba(0, 0, 0, 0.2)'}}>
-                <span>Conocer Más</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            }} className="group px-8 py-4 text-white rounded-full font-semibold text-lg transition-all duration-500 flex items-center justify-center space-x-2 relative overflow-hidden" style={{
+              background: 'linear-gradient(45deg, #d2232a, #b91c1c)',
+              boxShadow: '0 10px 25px rgba(0, 0, 0, 0)',
+              filter: 'drop-shadow(0 10px 15px rgba(210, 35, 42, 0.5))'
+            }}>
+                <span className="relative z-10">Conocer Más</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" />
+                <div 
+                  className="absolute inset-0 rounded-full blur-[15px] -z-10"
+                  style={{
+                    background: 'linear-gradient(45deg, #d2232a, #b91c1c)',
+                    opacity: 0.5,
+                    top: '10px'
+                  }}
+                />
               </motion.button>
 
               <motion.button whileHover={{
-              scale: 1.05,
-              backgroundColor: '#1e5f99'
+              scale: 1.05
             }} whileTap={{
               scale: 0.95
-            }} className="group px-8 py-4 bg-gradient-to-b from-[#5a9cff] to-[#1e5f99] text-white rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2" style={{boxShadow: '0 1px 3px rgba(0, 0, 0, 0.2)'}}>
-                <Play className="w-5 h-5 text-white" />
-                <span>Ver Demo</span>
+            }} className="group px-8 py-4 text-white rounded-full font-semibold text-lg transition-all duration-500 flex items-center justify-center space-x-2 relative overflow-hidden" style={{
+              background: 'linear-gradient(45deg, #2381d2, #1e40af)',
+              boxShadow: '0 10px 25px rgba(0, 0, 0, 0)',
+              filter: 'drop-shadow(0 10px 15px rgba(35, 129, 210, 0.5))'
+            }}>
+                <Play className="w-5 h-5 text-white relative z-10" />
+                <span className="relative z-10">Ver Demo</span>
+                <div 
+                  className="absolute inset-0 rounded-full blur-[15px] -z-10"
+                  style={{
+                    background: 'linear-gradient(45deg, #2381d2, #1e40af)',
+                    opacity: 0.5,
+                    top: '10px'
+                  }}
+                />
               </motion.button>
             </motion.div>
           </motion.div>

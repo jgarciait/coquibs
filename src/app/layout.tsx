@@ -2,6 +2,7 @@
 
 import { StrictMode, useEffect } from 'react';
 import '../index.css';
+import ScrollToTopButton from '../components/generated/ScrollToTopButton';
 
 export default function RootLayout({
   children,
@@ -36,9 +37,17 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script noModule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      </head>
       <body>
         <StrictMode>
           {children}
+          <ScrollToTopButton />
         </StrictMode>
       </body>
     </html>

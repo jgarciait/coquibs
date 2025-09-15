@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home, Heart, Settings } from 'lucide-react';
 
 const navLinks = [
-  { href: '#home', label: 'Home', hoverColor: 'bg-[#2381d2]/40' },
-  { href: '#beneficios', label: 'Beneficios', hoverColor: 'bg-[#d2232a]/40' },
-  { href: '#servicios', label: 'Servicios', hoverColor: 'bg-[#2381d2]/40' }
+  { href: '#home', label: 'Home', hoverColor: 'bg-[#2381d2]/40', icon: Home },
+  { href: '#beneficios', label: 'Beneficios', hoverColor: 'bg-[#d2232a]/40', icon: Heart },
+  { href: '#servicios', label: 'Servicios', hoverColor: 'bg-[#2381d2]/40', icon: Settings }
 ];
 
 // @component: Navbar
@@ -37,22 +37,21 @@ export const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 w-full"
     >
        <div className="flex justify-center">
-         <nav className="bg-gradient-to-b from-white/95 to-white/60 backdrop-blur-md border border-[#ffffff]/100 rounded-full mt-6 px-8 py-3 ring-1 ring-inset ring-white/20 glow-effect" style={{boxShadow: '0 2px 6px rgba(0, 0, 0, 0.4'}}>
-          <div className="flex items-center space-x-8">
+         <nav className="bg-gradient-to-b from-white/95 to-white/60 backdrop-blur-md border border-[#ffffff]/100 rounded-full mt-6 px-8 py-2 ring-1 ring-inset ring-white/20 glow-effect" style={{boxShadow: '0 2px 6px rgba(0, 0, 0, 0.4'}}>
+          <div className="flex items-center space-x-16">
             {/* Logo and Brand */}
             <div className="flex items-center space-x-3">
-              <img src="/logo.png" alt="Logo" className="w-11 h-11 object-contain" />
-              <div className="text-left">
-                <div className="text-xl font-black text-[#d2232a]">Coquí Blood Salvage Inc.</div>
-                <div className="text-sm font-bold text-[#00217a] text-right">CELL-SAVER</div>
+              <img src="/logo.png" alt="Logo" className="w-[65px] h-[65px] object-contain" />
+              <div className="flex flex-col justify-center">
+                <div className="text-3xl font-black text-[#d2232a] mt-4" style={{fontFamily: "'Eurostile', sans-serif", fontStyle: 'oblique', fontWeight: '700', letterSpacing: '0.08em'}}>Coquí Blood Salvage Inc.</div>
+                <div className=" font-bold text-xs text-[#00217a] text-right" style={{fontFamily: "'Eurostile', sans-serif", fontStyle: 'oblique', letterSpacing: '0.2em'}}>CELL-SAVER</div>
               </div>
             </div>
 
-            {/* Divider Line */}
-            <div className="hidden md:block w-px h-12 bg-[#00217a]"></div>
+
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center space-x-6">
+            <div className="hidden md:flex items-center space-x-8 ml-20">
               {navLinks.map(link => (
                 <motion.a
                   key={link.href}
@@ -62,13 +61,12 @@ export const Navbar = () => {
                     handleLinkClick(link.href);
                   }}
                   whileHover={{
-                    scale: 1.05,
-                    backgroundColor: link.hoverColor.includes('2381d2') ? 'rgba(35, 129, 210, 0.4)' : 'rgba(210, 35, 42, 0.4)'
+                    scale: 1.05
                   }}
-                  transition={{ duration: 0.05 }}
-                  className="relative text-black hover:text-white transition-all duration-75 px-4 py-2 focus:outline-none rounded-full"
+                  transition={{ duration: 0.2 }}
+                  className="text-[#00217a] hover:text-[#00217a]/80 transition-all duration-200 px-3 py-2 font-medium tracking-wide"
                 >
-                  <span className="relative z-10">{link.label}</span>
+                  {link.label}
                 </motion.a>
               ))}
             </div>
@@ -81,14 +79,25 @@ export const Navbar = () => {
                 handleLinkClick('#contacto');
               }}
               whileHover={{
-                scale: 1.05,
-                backgroundColor: '#b01e24',
-                color: '#ffffff'
+                scale: 1.05
               }}
               whileTap={{ scale: 0.95 }}
-              className="hidden md:inline-flex items-center px-6 py-2.5 bg-gradient-to-b from-[#ff6b7a] to-[#b01e24] text-white font-semibold rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#d2232a] focus:ring-offset-2 focus:ring-offset-transparent" style={{boxShadow: '0 2px 6px rgba(0, 0, 0, 0.4)'}}
+              className="hidden md:inline-flex items-center px-6 py-2.5 text-white font-semibold rounded-full transition-all duration-500 focus:outline-none relative overflow-hidden" 
+              style={{
+                background: 'linear-gradient(45deg, #d2232a, #b91c1c)',
+                boxShadow: '0 10px 25px rgba(0, 0, 0, 0)',
+                filter: 'drop-shadow(0 10px 15px rgba(210, 35, 42, 0.5))'
+              }}
             >
-              Contacto
+              <span className="relative z-10">Contacto</span>
+              <div 
+                className="absolute inset-0 rounded-full blur-[15px] -z-10"
+                style={{
+                  background: 'linear-gradient(45deg, #d2232a, #b91c1c)',
+                  opacity: 0.5,
+                  top: '10px'
+                }}
+              />
             </motion.a>
 
             {/* Mobile Menu Button */}
@@ -120,10 +129,10 @@ export const Navbar = () => {
                         handleLinkClick(link.href);
                       }}
                       whileHover={{
-                        backgroundColor: 'rgba(210, 35, 42, 0.1)',
-                        x: 4
+                        x: 4,
+                        scale: 1.05
                       }}
-                      className="block px-4 py-3 text-black hover:text-black rounded-lg transition-all duration-300 focus:outline-none"
+                      className="block px-4 py-3 text-[#00217a] hover:text-[#00217a]/80 rounded-lg transition-all duration-300 focus:outline-none tracking-wide font-medium"
                     >
                       {link.label}
                     </motion.a>
