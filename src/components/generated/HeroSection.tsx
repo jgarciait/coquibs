@@ -275,7 +275,7 @@ export const HeroSection = () => {
             }} transition={{
               delay: 1.7,
               duration: 0.5
-            }} className="absolute bottom-10 right-6 z-50 bg-white/80 backdrop-blur-sm border border-[#ffffff] rounded-2xl p-4 shadow-lg">
+            }} className="absolute -bottom-6 right-20 z-50 bg-white/80 backdrop-blur-sm border border-[#ffffff] rounded-2xl p-4 shadow-lg">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-[#d2232a]/10 border border-[#d2232a] rounded-full flex items-center justify-center">
                     <Activity className="w-6 h-6 text-[#d2232a]" />

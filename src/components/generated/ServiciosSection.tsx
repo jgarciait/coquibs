@@ -67,7 +67,7 @@ export const ServiciosSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid md:grid-cols-3 gap-8 lg:gap-12"
+            className="grid md:grid-cols-3 gap-6"
           >
             {/* First Column */}
             <div className="space-y-4">
@@ -81,8 +81,8 @@ export const ServiciosSection = () => {
                   className="group flex items-start space-x-4 p-6 rounded-2xl hover:bg-gray-50/80 transition-all duration-300"
                 >
                   <div className="flex-shrink-0 mt-1">
-                    <div className="w-6 h-6 bg-[#2381d2] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Check className="w-4 h-4 text-white" />
+                    <div className="w-6 h-6 bg-[#2381d2]/10 border border-[#2381d2] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Check className="w-4 h-4 text-[#2381d2]" />
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
@@ -106,8 +106,8 @@ export const ServiciosSection = () => {
                   className="group flex items-start space-x-4 p-6 rounded-2xl hover:bg-gray-50/80 transition-all duration-300"
                 >
                   <div className="flex-shrink-0 mt-1">
-                    <div className="w-6 h-6 bg-[#2381d2] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Check className="w-4 h-4 text-white" />
+                    <div className="w-6 h-6 bg-[#2381d2]/10 border border-[#2381d2] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Check className="w-4 h-4 text-[#2381d2]" />
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
@@ -131,8 +131,8 @@ export const ServiciosSection = () => {
                   className="group flex items-start space-x-4 p-6 rounded-2xl hover:bg-gray-50/80 transition-all duration-300"
                 >
                   <div className="flex-shrink-0 mt-1">
-                    <div className="w-6 h-6 bg-[#2381d2] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Check className="w-4 h-4 text-white" />
+                    <div className="w-6 h-6 bg-[#2381d2]/10 border border-[#2381d2] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Check className="w-4 h-4 text-[#2381d2]" />
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
