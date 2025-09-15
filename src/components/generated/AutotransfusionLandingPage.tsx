@@ -6,6 +6,8 @@ import { Navbar } from './Navbar';
 import { HeroSection } from './HeroSection';
 import { AutotransfusionIntroSection } from './AutotransfusionIntroSection';
 import { HowItWorksSection } from './HowItWorksSection';
+import { ServiciosSection } from './ServiciosSection';
+import { PlanesSection } from './PlanesSection';
 import { Heart, Shield, Users, Award, Phone, Mail, MapPin, ChevronDown, ChevronRight } from 'lucide-react';
 const benefitsData = [{
   id: 'benefit-1',
@@ -100,6 +102,8 @@ export const AutotransfusionLandingPage = () => {
       <HeroSection />
       <AutotransfusionIntroSection />
       <HowItWorksSection />
+      <ServiciosSection />
+      <PlanesSection />
       
       {/* Benefits Section */}
       <section id="beneficios" className="py-20 px-4">
