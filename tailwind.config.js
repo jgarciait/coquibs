@@ -46,6 +46,19 @@ module.exports = {
         md: `calc(var(--radius) - 2px)`,
         sm: "calc(var(--radius) - 4px)",
       },
+      animation: {
+        "shiny-text": "shiny-text 8s infinite",
+      },
+      keyframes: {
+        "shiny-text": {
+          "0%": {
+            "background-position": "calc(-100% - var(--shiny-width)) 0",
+          },
+          "100%": {
+            "background-position": "calc(100% + var(--shiny-width)) 0",
+          },
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
