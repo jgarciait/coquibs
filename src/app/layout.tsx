@@ -1,6 +1,7 @@
 'use client';
 
 import { StrictMode, useEffect } from 'react';
+import Script from 'next/script';
 import '../index.css';
 import ScrollToTopButton from '../components/generated/ScrollToTopButton';
 import Loader from '../components/ui/Loader';
@@ -42,8 +43,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script noModule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <Script
+          src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+          strategy="beforeInteractive"
+        />
       </head>
       <body>
         <StrictMode>
