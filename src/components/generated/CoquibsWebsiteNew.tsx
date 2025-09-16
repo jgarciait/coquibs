@@ -5,7 +5,6 @@ import { Header } from './Header';
 import { HeroSection } from './HeroSection';
 import { BenefitsSection } from './BenefitsSection';
 import { ServiciosSection } from './ServiciosSection';
-import { PlanesAdicionalesSection } from './PlanesAdicionalesSection';
 import { ContactoNuevoSection } from './ContactoNuevoSection';
 
 // @component: CoquibsWebsiteNew
@@ -64,7 +63,6 @@ export const CoquibsWebsiteNew = () => {
         <HeroSection />
         <BenefitsSection />
         <ServiciosSection />
-        <PlanesAdicionalesSection />
         <ContactoNuevoSection />
       </main>
 
