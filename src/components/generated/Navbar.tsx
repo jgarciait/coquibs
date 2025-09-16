@@ -5,15 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, Heart, Settings, Sun, Moon } from 'lucide-react';
 
 const navLinks = [
-  { href: '#home', label: 'Home', hoverColor: 'bg-[#2381d2]/40', icon: Home },
+  { href: '#home', label: 'Inicio', hoverColor: 'bg-[#2381d2]/40', icon: Home },
   { href: '#beneficios-adicionales', label: 'Beneficios', hoverColor: 'bg-[#d2232a]/40', icon: Heart },
-  { href: '#servicios', label: 'Servicios', hoverColor: 'bg-[#2381d2]/40', icon: Settings },
-  { href: '#testimonios', label: 'Testimonios', hoverColor: 'bg-[#d2232a]/40', icon: Heart },
-  { href: '#faq', label: 'FAQ', hoverColor: 'bg-[#2381d2]/40', icon: Settings },
-  { href: '#equipo-medico', label: 'Equipo', hoverColor: 'bg-[#d2232a]/40', icon: Heart },
-  { href: '#certificaciones', label: 'Certificaciones', hoverColor: 'bg-[#2381d2]/40', icon: Settings },
-  { href: '#estadisticas', label: 'Estadísticas', hoverColor: 'bg-[#d2232a]/40', icon: Heart },
-  { href: '#recursos', label: 'Recursos', hoverColor: 'bg-[#2381d2]/40', icon: Settings }
+  { href: '#servicios', label: 'Servicios', hoverColor: 'bg-[#2381d2]/40', icon: Settings }
 ];
 
 // @component: Navbar
@@ -24,7 +18,7 @@ export const Navbar = () => {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'beneficios-adicionales', 'servicios', 'testimonios', 'faq', 'equipo-medico', 'certificaciones', 'estadisticas', 'recursos'];
+      const sections = ['home', 'beneficios-adicionales', 'servicios'];
       const scrollPosition = window.scrollY + 100;
       
       for (const section of sections) {
@@ -106,10 +100,6 @@ export const Navbar = () => {
               ))}
             </div>
 
-            {/* Dark Mode Toggle */}
-            <button onClick={toggleDarkMode} className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors mr-4" aria-label={isDarkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>
-              {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
 
             {/* Contact Button */}
             <motion.a
