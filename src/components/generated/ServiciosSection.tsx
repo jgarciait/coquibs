@@ -66,21 +66,16 @@ export const ServiciosSection = () => {
             {insuranceProviders.map((provider, index) => (
               <div
                 key={`first-${provider.name}-${index}`}
-                className="flex-shrink-0 px-12 py-8 flex flex-col items-start justify-end h-48"
-                style={{ filter: 'blur(0.5px)' }}
+                className="flex-shrink-0 px-12 py-8 flex flex-col items-center justify-end h-48"
               >
                 <img
                   src={provider.logo}
                   alt={provider.alt}
-                  className={
-                    provider.name === 'MAPFRE' ? "w-96 h-32 object-contain mb-4" : 
-                    provider.name === 'MCS' ? "w-64 h-32 object-contain mb-4" : 
-                    "w-72 h-32 object-contain mb-4"
-                  }
+                  className="h-16 object-contain mb-4"
                 />
                 <div className="text-left text-base text-[#233e90] font-bold self-start" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
-                    <div className="space-y-1">
+                    <div className="flex space-x-6">
                       <div className="flex items-center justify-start">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                         <span>Comercial</span>
@@ -102,6 +97,9 @@ export const ServiciosSection = () => {
                       <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                       <span>Panamerican Life Insurance (PALIC)</span>
                     </div>
+                  )}
+                  {provider.name === 'MCS' && (
+                    <div className="h-6"></div>
                   )}
                 </div>
               </div>
@@ -110,12 +108,11 @@ export const ServiciosSection = () => {
             {insuranceProviders.map((provider, index) => (
               <div
                 key={`second-${provider.name}-${index}`}
-                className="flex-shrink-0 px-12 py-8 flex items-center justify-center space-x-4"
-                style={{ filter: 'blur(0.5px)' }}
+                className="flex-shrink-0 px-12 py-8 flex flex-col items-center justify-end h-48"
               >
                 <div className="text-left text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
-                    <div className="space-y-1">
+                    <div className="flex space-x-6">
                       <div className="flex items-center justify-start">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                         <span>Comercial</span>
@@ -138,15 +135,14 @@ export const ServiciosSection = () => {
                       <span>Panamerican Life Insurance (PALIC)</span>
                     </div>
                   )}
+                  {provider.name === 'MCS' && (
+                    <div className="h-6"></div>
+                  )}
                 </div>
                 <img
                   src={provider.logo}
                   alt={provider.alt}
-                  className={
-                    provider.name === 'MAPFRE' ? "w-96 h-32 object-contain" : 
-                    provider.name === 'MCS' ? "w-64 h-32 object-contain" : 
-                    "w-72 h-32 object-contain"
-                  }
+                  className="h-16 object-contain mb-4"
                 />
               </div>
             ))}
@@ -154,12 +150,11 @@ export const ServiciosSection = () => {
             {insuranceProviders.map((provider, index) => (
               <div
                 key={`third-${provider.name}-${index}`}
-                className="flex-shrink-0 px-12 py-8 flex items-center justify-center space-x-4"
-                style={{ filter: 'blur(0.5px)' }}
+                className="flex-shrink-0 px-12 py-8 flex flex-col items-center justify-end h-48"
               >
                 <div className="text-left text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
-                    <div className="space-y-1">
+                    <div className="flex space-x-6">
                       <div className="flex items-center justify-start">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                         <span>Comercial</span>
@@ -182,15 +177,14 @@ export const ServiciosSection = () => {
                       <span>Panamerican Life Insurance (PALIC)</span>
                     </div>
                   )}
+                  {provider.name === 'MCS' && (
+                    <div className="h-6"></div>
+                  )}
                 </div>
                 <img
                   src={provider.logo}
                   alt={provider.alt}
-                  className={
-                    provider.name === 'MAPFRE' ? "w-96 h-32 object-contain" : 
-                    provider.name === 'MCS' ? "w-64 h-32 object-contain" : 
-                    "w-72 h-32 object-contain"
-                  }
+                  className="h-16 object-contain mb-4"
                 />
               </div>
             ))}
