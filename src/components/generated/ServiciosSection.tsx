@@ -126,7 +126,7 @@ export const ServiciosSection = () => {
               </div>
             </div>
             <p className="text-red-800 text-sm leading-relaxed">
-              <strong>Importante:</strong> Planes médicos los cuales por el momento no estamos aceptando <span className="font-semibold text-red-700">First Medical</span>.
+              <strong>Importante:</strong> Planes médicos los cuales por el momento no estamos aceptando. <span className="font-semibold text-red-700">First Medical</span>.
             </p>
           </div>
         </motion.div>
