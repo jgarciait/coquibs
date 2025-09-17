@@ -66,27 +66,87 @@ export const ServiciosSection = () => {
             {insuranceProviders.map((provider, index) => (
               <div
                 key={`first-${provider.name}-${index}`}
-                className="flex-shrink-0 px-12 py-8 flex items-center justify-center"
+                className="flex-shrink-0 px-12 py-8 flex flex-col items-start justify-end h-48"
                 style={{ filter: 'blur(0.5px)' }}
               >
                 <img
                   src={provider.logo}
                   alt={provider.alt}
-                  className="w-64 h-32 object-contain"
+                  className={
+                    provider.name === 'MAPFRE' ? "w-96 h-32 object-contain mb-4" : 
+                    provider.name === 'MCS' ? "w-64 h-32 object-contain mb-4" : 
+                    "w-72 h-32 object-contain mb-4"
+                  }
                 />
+                <div className="text-left text-base text-[#233e90] font-bold self-start">
+                  {provider.name === 'MAPFRE' && (
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-start">
+                        <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
+                        <span>Comercial</span>
+                      </div>
+                      <div className="flex items-center justify-start">
+                        <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
+                        <span>Medicare Excel</span>
+                      </div>
+                    </div>
+                  )}
+                  {provider.name === 'Humana' && (
+                    <div className="flex items-center justify-start">
+                      <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
+                      <span>Comercial</span>
+                    </div>
+                  )}
+                  {provider.name === 'Pan American Life Insurance Group' && (
+                    <div className="flex items-center justify-start">
+                      <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
+                      <span>Panamerican Life Insurance (PALIC)</span>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
             {/* Duplicate set for seamless loop */}
             {insuranceProviders.map((provider, index) => (
               <div
                 key={`second-${provider.name}-${index}`}
-                className="flex-shrink-0 px-12 py-8 flex items-center justify-center"
+                className="flex-shrink-0 px-12 py-8 flex items-center justify-center space-x-4"
                 style={{ filter: 'blur(0.5px)' }}
               >
+                <div className="text-left text-base text-[#233e90] font-bold">
+                  {provider.name === 'MAPFRE' && (
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-start">
+                        <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
+                        <span>Comercial</span>
+                      </div>
+                      <div className="flex items-center justify-start">
+                        <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
+                        <span>Medicare Excel</span>
+                      </div>
+                    </div>
+                  )}
+                  {provider.name === 'Humana' && (
+                    <div className="flex items-center justify-start">
+                      <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
+                      <span>Comercial</span>
+                    </div>
+                  )}
+                  {provider.name === 'Pan American Life Insurance Group' && (
+                    <div className="flex items-center justify-start">
+                      <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
+                      <span>Panamerican Life Insurance (PALIC)</span>
+                    </div>
+                  )}
+                </div>
                 <img
                   src={provider.logo}
                   alt={provider.alt}
-                  className="w-64 h-32 object-contain"
+                  className={
+                    provider.name === 'MAPFRE' ? "w-96 h-32 object-contain" : 
+                    provider.name === 'MCS' ? "w-64 h-32 object-contain" : 
+                    "w-72 h-32 object-contain"
+                  }
                 />
               </div>
             ))}
@@ -94,13 +154,43 @@ export const ServiciosSection = () => {
             {insuranceProviders.map((provider, index) => (
               <div
                 key={`third-${provider.name}-${index}`}
-                className="flex-shrink-0 px-12 py-8 flex items-center justify-center"
+                className="flex-shrink-0 px-12 py-8 flex items-center justify-center space-x-4"
                 style={{ filter: 'blur(0.5px)' }}
               >
+                <div className="text-left text-base text-[#233e90] font-bold">
+                  {provider.name === 'MAPFRE' && (
+                    <div className="space-y-1">
+                      <div className="flex items-center justify-start">
+                        <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
+                        <span>Comercial</span>
+                      </div>
+                      <div className="flex items-center justify-start">
+                        <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
+                        <span>Medicare Excel</span>
+                      </div>
+                    </div>
+                  )}
+                  {provider.name === 'Humana' && (
+                    <div className="flex items-center justify-start">
+                      <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
+                      <span>Comercial</span>
+                    </div>
+                  )}
+                  {provider.name === 'Pan American Life Insurance Group' && (
+                    <div className="flex items-center justify-start">
+                      <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
+                      <span>Panamerican Life Insurance (PALIC)</span>
+                    </div>
+                  )}
+                </div>
                 <img
                   src={provider.logo}
                   alt={provider.alt}
-                  className="w-64 h-32 object-contain"
+                  className={
+                    provider.name === 'MAPFRE' ? "w-96 h-32 object-contain" : 
+                    provider.name === 'MCS' ? "w-64 h-32 object-contain" : 
+                    "w-72 h-32 object-contain"
+                  }
                 />
               </div>
             ))}
@@ -126,7 +216,7 @@ export const ServiciosSection = () => {
               </div>
             </div>
             <p className="text-red-800 text-sm leading-relaxed">
-              <strong>Importante:</strong>Planes médicos los cuales por el momento no estamos aceptando.<span className="font-semibold text-red-700">First Medical</span>.
+              <strong>Importante:</strong> Planes médicos los cuales por el momento no estamos aceptando. <span className="font-semibold text-red-700">First Medical</span>.
             </p>
           </div>
         </motion.div>
