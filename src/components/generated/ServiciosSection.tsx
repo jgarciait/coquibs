@@ -40,8 +40,8 @@ export const ServiciosSection = () => {
           className="text-center mb-16"
         >
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl lg:text-5xl font-bold mb-6"
@@ -78,7 +78,7 @@ export const ServiciosSection = () => {
                     "w-72 h-32 object-contain mb-4"
                   }
                 />
-                <div className="text-left text-base text-[#233e90] font-bold self-start">
+                <div className="text-left text-base text-[#233e90] font-bold self-start" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
                     <div className="space-y-1">
                       <div className="flex items-center justify-start">
@@ -113,7 +113,7 @@ export const ServiciosSection = () => {
                 className="flex-shrink-0 px-12 py-8 flex items-center justify-center space-x-4"
                 style={{ filter: 'blur(0.5px)' }}
               >
-                <div className="text-left text-base text-[#233e90] font-bold">
+                <div className="text-left text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
                     <div className="space-y-1">
                       <div className="flex items-center justify-start">
@@ -157,7 +157,7 @@ export const ServiciosSection = () => {
                 className="flex-shrink-0 px-12 py-8 flex items-center justify-center space-x-4"
                 style={{ filter: 'blur(0.5px)' }}
               >
-                <div className="text-left text-base text-[#233e90] font-bold">
+                <div className="text-left text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
                     <div className="space-y-1">
                       <div className="flex items-center justify-start">
