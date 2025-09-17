@@ -319,6 +319,20 @@ html {
 }
 
 
+/* Insurance Logo Scroll Animation */
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.animate-scroll-logos {
+  animation: scroll-logos 20s linear infinite;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

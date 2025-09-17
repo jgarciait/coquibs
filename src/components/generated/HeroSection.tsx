@@ -214,7 +214,7 @@ export const HeroSection = () => {
                   delay: 1.2
                 }} className="absolute -bottom-2 left-0 h-1 bg-[#d2232a] rounded-full"></motion.div>
                 </div>
-                <br />
+                
                 <span className="text-black"> y Eficaz</span>
               </motion.h1>
 

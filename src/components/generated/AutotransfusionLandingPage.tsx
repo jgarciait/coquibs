@@ -7,7 +7,6 @@ import { HeroSection } from './HeroSection';
 import { AutotransfusionIntroSection } from './AutotransfusionIntroSection';
 import { HowItWorksSection } from './HowItWorksSection';
 import { ServiciosSection } from './ServiciosSection';
-import { PlanesSection } from './PlanesSection';
 import { BenefitsSection } from './BenefitsSection';
 import { ContactoNuevoSection } from './ContactoNuevoSection';
 import { TestimonialsSection } from './TestimonialsSection';
@@ -94,7 +93,6 @@ export const AutotransfusionLandingPage = () => {
       <BenefitsSection />
       <HowItWorksSection />
       <ServiciosSection />
-      <PlanesSection />
       {/* <ContactoNuevoSection /> */}
       {/* <TestimonialsSection /> */}
       <FAQSection />
