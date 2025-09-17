@@ -81,12 +81,27 @@ export const HeroSection = () => {
       >
         {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
       </motion.button>
+      
+      {/* Background Video */}
+      <motion.video
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        className="absolute inset-0 w-full h-full object-cover z-[1]"
+        autoPlay
+        muted
+        loop
+        playsInline
+      >
+        <source src="/Blood cells slow motion.mp4" type="video/mp4" />
+      </motion.video>
+      
       {/* Background Gradient */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-[2]"
       >
         <motion.div
           initial={{ opacity: 0 }}
