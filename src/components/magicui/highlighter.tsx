@@ -2,9 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
+// @ts-ignore
 import { annotate } from "rough-notation";
 import type React from "react";
-import { type RoughAnnotation } from "rough-notation/lib/model";
 
 type AnnotationAction =
   | "highlight"
@@ -39,7 +39,7 @@ export function Highlighter({
   isView = false,
 }: HighlighterProps) {
   const elementRef = useRef<HTMLSpanElement>(null);
-  const annotationRef = useRef<RoughAnnotation | null>(null);
+  const annotationRef = useRef<any>(null);
 
   const isInView = useInView(elementRef, {
     once: true,

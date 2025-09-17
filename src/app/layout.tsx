@@ -52,7 +52,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <StrictMode>
           <Loader>
             {children}
