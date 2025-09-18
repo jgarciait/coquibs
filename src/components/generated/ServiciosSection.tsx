@@ -336,6 +336,171 @@ export const ServiciosSection = () => {
             </div>
           </div>
         </motion.div>
+
+        {/* Autotransfusion Benefits Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-20"
+        >
+          <div className="text-left mb-8">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#d2232a' }}>
+              Beneficios:
+            </h2>
+            <h3 className="text-2xl font-semibold mb-6" style={{ color: '#233e90' }}>
+              ¿Por qué se recomienda la autotransfusión?
+            </h3>
+          </div>
+
+          <div className="max-w-4xl">
+            <div className="space-y-6">
+              <motion.p
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-lg text-gray-700 leading-relaxed"
+              >
+                Cada vez más médicos recomiendan el uso de la autotransfusión durante las cirugías ya que de esta manera se evitan diversas enfermedades que pueden transmitirse por transfusión de sangre de donantes, tales como VIH y Hepatitis B y C, enfermedades de las vacas locas, entre otras.
+              </motion.p>
+              
+              <motion.p
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-lg text-gray-700 leading-relaxed"
+              >
+                Además siempre existe el riesgo de que nuestro sistema inmunológico reaccione adversamente ante una transfusión de sangre. También con la autotransfusión se reduce la necesidad de reprogramar cirugías por escasez de reservas de sangre.
+              </motion.p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Recommended Surgery Cases Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="mt-24"
+        >
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4" style={{ color: '#233e90' }}>
+              Se recomienda la autotransfusión en las siguientes cirugías
+            </h2>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              Indicaciones donde la autotransfusión puede reducir riesgos y mejorar recuperación
+            </p>
+          </motion.div>
+
+          {/* Surgery Categories Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+            {/* Cirugías Generales */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
+            >
+              <div className="flex items-start space-x-3 mb-4">
+                <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: '#2381d2' }} />
+                <h3 className="text-xl font-bold" style={{ color: '#233e90' }}>
+                  Cirugías Generales
+                </h3>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                Resecciones hepáticas, Puentes para esplenectomía, Cirugía Vascular, Aneurisma, Trasplantes de Hígado
+              </p>
+            </motion.div>
+
+            {/* Obstetricia y Ginecología */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
+            >
+              <div className="flex items-start space-x-3 mb-4">
+                <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: '#2381d2' }} />
+                <h3 className="text-xl font-bold" style={{ color: '#233e90' }}>
+                  Obstetricia y Ginecología
+                </h3>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                Complicaciones Hemorrágicas del embarazo, Embarazo Ectópico, Histerectomía
+              </p>
+            </motion.div>
+
+            {/* Urología */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
+            >
+              <div className="flex items-start space-x-3 mb-4">
+                <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: '#2381d2' }} />
+                <h3 className="text-xl font-bold" style={{ color: '#233e90' }}>
+                  Urología
+                </h3>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                Prostatectomía Radical
+              </p>
+            </motion.div>
+
+            {/* Ortopedia */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
+            >
+              <div className="flex items-start space-x-3 mb-4">
+                <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: '#2381d2' }} />
+                <h3 className="text-xl font-bold" style={{ color: '#233e90' }}>
+                  Ortopedia
+                </h3>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                Reducción abierta y fijación de fracturas de pelvis, Reemplazo de cadera, Reemplazo de rodilla, Escoliosis Corrección, Posterior Anterior Spinal Fusion
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Bottom Note and CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="text-center"
+          >
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Consulta con tu equipo médico para determinar la indicación adecuada
+            </p>
+            <button
+              className="inline-flex items-center px-8 py-3 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5"
+              style={{ backgroundColor: '#2381d2' }}
+            >
+              Más información
+            </button>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
