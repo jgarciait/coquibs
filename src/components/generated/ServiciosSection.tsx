@@ -73,27 +73,27 @@ export const ServiciosSection = () => {
                   alt={provider.alt}
                   className="h-16 object-contain mb-4"
                 />
-                <div className="text-left text-base text-[#233e90] font-bold self-start" style={{ transform: 'translateZ(2px)' }}>
+                <div className="text-center text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
-                    <div className="flex space-x-6">
+                    <div className="flex space-x-6 justify-center">
                       <div className="flex items-center justify-start">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
-                        <span>Comercial</span>
+                        <span> Comercial</span>
                       </div>
                       <div className="flex items-center justify-start">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
-                        <span>Medicare Excel</span>
+                        <span> Medicare Excel</span>
                       </div>
                     </div>
                   )}
                   {provider.name === 'Humana' && (
-                    <div className="flex items-center justify-start">
+                    <div className="flex items-center justify-center">
                       <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                       <span>Comercial</span>
                     </div>
                   )}
                   {provider.name === 'Pan American Life Insurance Group' && (
-                    <div className="flex items-center justify-start">
+                    <div className="flex items-center justify-center">
                       <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                       <span>Panamerican Life Insurance (PALIC)</span>
                     </div>
@@ -110,27 +110,27 @@ export const ServiciosSection = () => {
                 key={`second-${provider.name}-${index}`}
                 className="flex-shrink-0 px-12 py-8 flex flex-col items-center justify-end h-48"
               >
-                <div className="text-left text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
+                <div className="text-center text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
-                    <div className="flex space-x-6">
-                      <div className="flex items-center justify-start">
+                    <div className="flex space-x-6 justify-center">
+                      <div className="flex items-center justify-center">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                         <span>Comercial</span>
                       </div>
-                      <div className="flex items-center justify-start">
+                      <div className="flex items-center justify-center">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                         <span>Medicare Excel</span>
                       </div>
                     </div>
                   )}
                   {provider.name === 'Humana' && (
-                    <div className="flex items-center justify-start">
+                    <div className="flex items-center justify-center">
                       <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                       <span>Comercial</span>
                     </div>
                   )}
                   {provider.name === 'Pan American Life Insurance Group' && (
-                    <div className="flex items-center justify-start">
+                    <div className="flex items-center justify-center">
                       <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                       <span>Panamerican Life Insurance (PALIC)</span>
                     </div>
@@ -152,27 +152,27 @@ export const ServiciosSection = () => {
                 key={`third-${provider.name}-${index}`}
                 className="flex-shrink-0 px-12 py-8 flex flex-col items-center justify-end h-48"
               >
-                <div className="text-left text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
+                <div className="text-center text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
-                    <div className="flex space-x-6">
-                      <div className="flex items-center justify-start">
+                    <div className="flex space-x-6 justify-center">
+                      <div className="flex items-center justify-center">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                         <span>Comercial</span>
                       </div>
-                      <div className="flex items-center justify-start">
+                      <div className="flex items-center justify-center">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                         <span>Medicare Excel</span>
                       </div>
                     </div>
                   )}
                   {provider.name === 'Humana' && (
-                    <div className="flex items-center justify-start">
+                    <div className="flex items-center justify-center">
                       <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                       <span>Comercial</span>
                     </div>
                   )}
                   {provider.name === 'Pan American Life Insurance Group' && (
-                    <div className="flex items-center justify-start">
+                    <div className="flex items-center justify-center">
                       <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
                       <span>Panamerican Life Insurance (PALIC)</span>
                     </div>

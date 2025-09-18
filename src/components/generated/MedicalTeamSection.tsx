@@ -7,12 +7,12 @@ import { Heart, Award, Users, Stethoscope, GraduationCap, Phone } from 'lucide-r
 const teamMembers = [
   {
     id: 'team-1',
-    name: 'Dr. Elena Vásquez',
+    name: 'Dra. Elena Vásquez',
     role: 'Directora Médica',
     specialty: 'Anestesiología y Medicina Crítica',
     experience: '15+ años',
     education: 'MD - Universidad de Puerto Rico, Fellowship en Medicina Crítica',
-    image: '/WomanSurgeon.png',
+    image: '/Dr. Elena Vásquez.jpeg',
     achievements: [
       'Certificación en Autotransfusión Avanzada',
       'Más de 3,000 procedimientos supervisados',
@@ -26,7 +26,7 @@ const teamMembers = [
     specialty: 'Cirugía Cardíaca y Perfusión',
     experience: '12+ años',
     education: 'MD - Escuela de Medicina de Ponce, Certificación en Perfusión',
-    image: '/doctor-hero.jpg',
+    image: '/Dr. Miguel Santamaría.png',
     achievements: [
       'Experto en Cell Saver Technology',
       'Entrenamiento en Mayo Clinic',
@@ -40,7 +40,7 @@ const teamMembers = [
     specialty: 'Hematología Transfusional',
     experience: '18+ años',
     education: 'MD - Universidad Central del Caribe, Fellowship en Hematología',
-    image: '/surgeon-hero.jpg',
+    image: '/Dra. Carmen Rivera.jpeg',
     achievements: [
       'Especialista en Medicina Transfusional',
       'Directora de Banco de Sangre (8 años)',
@@ -131,7 +131,7 @@ export const MedicalTeamSection = () => {
                 <img 
                   src={member.image} 
                   alt={member.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
 

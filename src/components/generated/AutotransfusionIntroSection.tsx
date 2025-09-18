@@ -201,31 +201,5 @@ export const AutotransfusionIntroSection = () => {
         </div>
       </div>
 
-      {/* Animated Heart Monitor Divider - Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-px">
-        <motion.div initial={{
-        scaleX: 0
-      }} whileInView={{
-        scaleX: 1
-      }} viewport={{
-        once: true
-      }} transition={{
-        duration: 2,
-        ease: "easeInOut",
-        delay: 0.5
-      }} className="h-full bg-gradient-to-r from-transparent via-[#d2232a] to-transparent" />
-        <motion.div initial={{
-        x: '100%'
-      }} animate={{
-        x: '-100%'
-      }} transition={{
-        duration: 3,
-        repeat: Infinity,
-        ease: "linear",
-        delay: 1
-      }} className="absolute top-0 w-2 h-2 bg-[#d2232a] rounded-full shadow-lg" style={{
-        filter: 'drop-shadow(0 0 6px #d2232a)'
-      }} />
-      </div>
     </section>;
 };
