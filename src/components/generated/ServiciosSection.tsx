@@ -413,15 +413,31 @@ export const ServiciosSection = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
             >
-              <div className="flex items-start space-x-3 mb-4">
-                <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: '#2381d2' }} />
-                <h3 className="text-xl font-bold" style={{ color: '#233e90' }}>
-                  Cirugías Generales
-                </h3>
+              <h3 className="text-xl font-bold mb-4" style={{ color: '#233e90' }}>
+                Cirugías Generales
+              </h3>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Resecciones hepáticas</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Puentes para esplenectomía</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Cirugía Vascular</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Aneurisma</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Trasplantes de Hígado</span>
+                </div>
               </div>
-              <p className="text-gray-700 leading-relaxed">
-                Resecciones hepáticas, Puentes para esplenectomía, Cirugía Vascular, Aneurisma, Trasplantes de Hígado
-              </p>
             </motion.div>
 
             {/* Obstetricia y Ginecología */}
@@ -432,15 +448,23 @@ export const ServiciosSection = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
             >
-              <div className="flex items-start space-x-3 mb-4">
-                <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: '#2381d2' }} />
-                <h3 className="text-xl font-bold" style={{ color: '#233e90' }}>
-                  Obstetricia y Ginecología
-                </h3>
+              <h3 className="text-xl font-bold mb-4" style={{ color: '#233e90' }}>
+                Obstetricia y Ginecología
+              </h3>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Complicaciones Hemorrágicas del embarazo</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Embarazo Ectópico</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Histerectomía</span>
+                </div>
               </div>
-              <p className="text-gray-700 leading-relaxed">
-                Complicaciones Hemorrágicas del embarazo, Embarazo Ectópico, Histerectomía
-              </p>
             </motion.div>
 
             {/* Urología */}
@@ -451,15 +475,15 @@ export const ServiciosSection = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
             >
-              <div className="flex items-start space-x-3 mb-4">
-                <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: '#2381d2' }} />
-                <h3 className="text-xl font-bold" style={{ color: '#233e90' }}>
-                  Urología
-                </h3>
+              <h3 className="text-xl font-bold mb-4" style={{ color: '#233e90' }}>
+                Urología
+              </h3>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Prostatectomía Radical</span>
+                </div>
               </div>
-              <p className="text-gray-700 leading-relaxed">
-                Prostatectomía Radical
-              </p>
             </motion.div>
 
             {/* Ortopedia */}
@@ -470,15 +494,31 @@ export const ServiciosSection = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
             >
-              <div className="flex items-start space-x-3 mb-4">
-                <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: '#2381d2' }} />
-                <h3 className="text-xl font-bold" style={{ color: '#233e90' }}>
-                  Ortopedia
-                </h3>
+              <h3 className="text-xl font-bold mb-4" style={{ color: '#233e90' }}>
+                Ortopedia
+              </h3>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Reducción abierta y fijación de fracturas de pelvis</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Reemplazo de cadera</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Reemplazo de rodilla</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Escoliosis Corrección</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
+                  <span className="text-gray-700">Posterior Anterior Spinal Fusion</span>
+                </div>
               </div>
-              <p className="text-gray-700 leading-relaxed">
-                Reducción abierta y fijación de fracturas de pelvis, Reemplazo de cadera, Reemplazo de rodilla, Escoliosis Corrección, Posterior Anterior Spinal Fusion
-              </p>
             </motion.div>
           </div>
 
