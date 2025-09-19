@@ -7,7 +7,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 // @component: ContactoNuevoSection
 export const ContactoNuevoSection = () => {
   // @return
-  return <section id="contacto-nuevo" className="py-16 bg-white dark:bg-slate-900">
+  return <section id="contacto-nuevo" className="py-20 lg:py-28 bg-white dark:bg-slate-900">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 className="text-3xl font-bold text-slate-900 dark:text-white text-center mb-12">
         <span>Contacto</span>

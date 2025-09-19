@@ -74,7 +74,7 @@ const expertise = [
 
 export const MedicalTeamSection = () => {
   return (
-    <section id="equipo-medico" className="py-24 bg-gradient-to-b from-slate-50 to-white">
+    <section id="equipo-medico" className="lg:py-15 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -96,8 +96,8 @@ export const MedicalTeamSection = () => {
           </p>
         </motion.div>
 
-        {/* Expertise Areas */}
-        <motion.div
+        {/* Expertise Areas - Hidden */}
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -113,10 +113,10 @@ export const MedicalTeamSection = () => {
               <p className="text-gray-600 text-sm">{item.description}</p>
             </div>
           ))}
-        </motion.div>
+        </motion.div> */}
 
         {/* Team Members */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.id}
@@ -124,7 +124,7 @@ export const MedicalTeamSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col"
             >
               {/* Profile Image */}
               <div className="h-64 bg-gray-200 overflow-hidden">
@@ -136,7 +136,7 @@ export const MedicalTeamSection = () => {
               </div>
 
               {/* Profile Info */}
-              <div className="p-8">
+              <div className="p-8 flex-1 flex flex-col">
                 <div className="mb-6">
                   <h3 className="text-xl font-bold text-[#00217a] mb-2">{member.name}</h3>
                   <p className="text-[#d2232a] font-semibold mb-1">{member.role}</p>

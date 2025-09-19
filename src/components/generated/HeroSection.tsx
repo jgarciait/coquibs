@@ -388,7 +388,7 @@ export const HeroSection = () => {
               <span>100%</span>
             </p>
             <p className="text-sm text-gray-600">
-              <span>Recuperación</span>
+              <span>Compatibilidad</span>
             </p>
           </div>
         </div>

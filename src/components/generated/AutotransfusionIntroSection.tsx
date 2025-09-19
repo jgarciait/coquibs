@@ -7,7 +7,7 @@ import { Heart, Shield, Droplets, Activity } from 'lucide-react';
 // @component: AutotransfusionIntroSection
 export const AutotransfusionIntroSection = () => {
   // @return
-  return <section id="que-es" className="py-20 px-4 bg-white relative overflow-hidden">
+  return <section id="que-es" className="lg:pt-28 px-4 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div initial={{
         opacity: 0,
@@ -119,7 +119,7 @@ export const AutotransfusionIntroSection = () => {
         }} transition={{
           duration: 0.8,
           delay: 0.2
-        }} className="bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-3xl p-8 lg:p-12">
+        }} className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 lg:p-12">
             <div className="space-y-6">
               <motion.div initial={{
               opacity: 0,
@@ -165,7 +165,7 @@ export const AutotransfusionIntroSection = () => {
             }} transition={{
               delay: 0.8
             }} className="text-lg text-gray-700 leading-relaxed mb-8">
-                <span>Este procedimiento ayud a disminuir el riezgo de contraer enfermedades que suelen ser resultado de transfusiones de sangre en operaciones.</span>
+                <span>Este procedimiento ayuda disminuir el riezgo de contraer enfermedades que suelen ser resultado de transfusiones de sangre en operaciones.</span>
               </motion.p>
 
               <motion.div initial={{
@@ -179,22 +179,7 @@ export const AutotransfusionIntroSection = () => {
             }} transition={{
               delay: 1
             }} className="grid grid-cols-2 gap-4">
-                <div className="bg-[#d2232a]/5 border border-[#d2232a]/20 rounded-xl p-4 text-center">
-                  <p className="text-2xl font-bold text-[#d2232a] mb-1">
-                    <span>100%</span>
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    <span>Compatible</span>
-                  </p>
-                </div>
-                <div className="bg-[#2381d2]/5 border border-[#2381d2]/20 rounded-xl p-4 text-center">
-                  <p className="text-2xl font-bold text-[#2381d2] mb-1">
-                    <span>0%</span>
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    <span>Rechazo</span>
-                  </p>
-                </div>
+                
               </motion.div>
             </div>
           </motion.div>

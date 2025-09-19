@@ -1,8 +1,54 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Activity, Heart, Zap, Bone, Users } from 'lucide-react';
+
+// Surgery specialties data
+const surgerySpecialties = [
+  {
+    id: 'general',
+    name: 'Cirugías Generales',
+    icon: Activity,
+    procedures: [
+      'Resecciones hepáticas',
+      'Puentes para esplenectomía',
+      'Cirugía Vascular',
+      'Aneurisma',
+      'Trasplantes de Hígado'
+    ]
+  },
+  {
+    id: 'obgyn',
+    name: 'Obstetricia y Ginecología',
+    icon: Heart,
+    procedures: [
+      'Complicaciones Hemorrágicas del embarazo',
+      'Embarazo Ectópico',
+      'Histerectomía'
+    ]
+  },
+  {
+    id: 'urology',
+    name: 'Urología',
+    icon: Zap,
+    procedures: [
+      'Prostatectomía Radical'
+    ]
+  },
+  {
+    id: 'orthopedic',
+    name: 'Ortopedia',
+    icon: Bone,
+    procedures: [
+      'Reducción abierta y fijación de fracturas de pelvis',
+      'Reemplazo de cadera',
+      'Reemplazo de rodilla',
+      'Escoliosis Corrección',
+      'Posterior Anterior Spinal Fusion'
+    ]
+  }
+];
 
 // Insurance providers data
 const insuranceProviders = [
@@ -45,6 +91,31 @@ const hospitals = [
 ];
 
 export const ServiciosSection = () => {
+  const [activeTab, setActiveTab] = useState('general');
+  const [showAll, setShowAll] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const [currentImageSrc, setCurrentImageSrc] = useState('/SurgicalTeam.jpeg');
+
+  const activeSpecialty = surgerySpecialties.find(spec => spec.id === activeTab);
+
+  // Alternative image sources to try
+  const imageSources = [
+    '/SurgicalTeam.jpeg',
+    '/doctor-hero.png',
+    '/doctorhero.png'
+  ];
+
+  const handleImageError = () => {
+    const currentIndex = imageSources.indexOf(currentImageSrc);
+    const nextIndex = currentIndex + 1;
+    
+    if (nextIndex < imageSources.length) {
+      setCurrentImageSrc(imageSources[nextIndex]);
+    } else {
+      setImageError(true);
+    }
+  };
+
   return (
     <section id="servicios" className="bg-white py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,14 +125,14 @@ export const ServiciosSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center"
         >
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl lg:text-5xl font-bold mb-6"
+            className="text-4xl lg:text-5xl font-bold mb-2"
           >
             <span style={{ color: '#233e90' }}>Estamos aceptando los siguientes</span>
             <br />
@@ -246,7 +317,7 @@ export const ServiciosSection = () => {
               Servicios:
             </h2>
             <p className="text-lg text-gray-700 max-w-5xl">
-              <span style={{ color: '#d2232a' }}>Instituciones hospitalarias donde tenemos privilegios para dar servicio y nombres de médicos especialistas que nos refieren casos.</span>
+              <span style={{ color: '#233e90' }}>Instituciones hospitalarias donde tenemos privilegios para dar servicio y nombres de médicos especialistas que nos refieren casos.</span>
             </p>
           </div>
 
@@ -256,7 +327,7 @@ export const ServiciosSection = () => {
             {/* Left Column: Hospitals List */}
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-8">Hospitales Afiliados</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-2">
                 {hospitals.map((hospital, index) => (
                   <motion.div
                     key={`hospital-${index}`}
@@ -264,13 +335,11 @@ export const ServiciosSection = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.1 * index }}
-                     className="bg-white border border-gray-200 rounded-lg py-1 px-4 pr-8 shadow-sm hover:shadow-md transition-shadow duration-300 w-full min-w-[340px]"
+                     className="bg-white rounded-lg py-2 px-2 pr-8 w-full min-w-[310px]"
                   >
                     <div className="flex items-start space-x-1">
                       <div className="flex-shrink-0 mt-0.5">
-                        <div className="w-6 h-6 bg-blue-50 border-2 border-blue-500 rounded-full flex items-center justify-center">
-                          <CheckCircle className="w-4 h-4 text-blue-500" />
-                        </div>
+                        <CheckCircle className="w-6 h-6 text-[#233e90]" />
                       </div>
                       <div className="flex-1 text-left">
                         <h3 className="text-base font-semibold text-gray-900 text-left">
@@ -286,15 +355,15 @@ export const ServiciosSection = () => {
               </div>
             </div>
 
-            {/* Right Column: Map and Info */}
-            <div className="max-w-md mx-auto">
+            {/* Right Column: Map */}
+            <div className="max-w-lg mx-auto">
               <h3 className="text-2xl font-bold text-gray-900 mb-8">Cobertura en Puerto Rico</h3>
               
               {/* Map Container */}
-              <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm mb-6">
+              <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
                 <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg p-8 relative overflow-hidden">
                   {/* Puerto Rico Map Shape */}
-                  <div className="relative w-full h-64 flex items-center justify-center">
+                  <div className="relative w-full h-60 flex items-center justify-center">
                     <svg viewBox="0 0 400 200" className="w-full h-full">
                       {/* Puerto Rico Island Shape (more rounded and organic) */}
                       <path
@@ -326,58 +395,19 @@ export const ServiciosSection = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
 
-              {/* Info Rectangle */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg py-2 px-6">
-                <p className="text-blue-800 leading-relaxed">
-                  <strong>Coquí Blood Services</strong> es una empresa especializada en autotransfusión intraoperatoria con más de 15 años de experiencia sirviendo a la comunidad médica de Puerto Rico.
-                </p>
-              </div>
+          {/* Info Rectangle */}
+          <div className="mt-8 max-w-4xl mx-auto">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg py-4 px-6">
+              <p className="text-blue-800 leading-relaxed text-center">
+                <strong>Coquí Blood Services</strong> es una empresa especializada en autotransfusión intraoperatoria con más de 15 años de experiencia sirviendo a la comunidad médica de Puerto Rico.
+              </p>
             </div>
           </div>
         </motion.div>
 
-        {/* Autotransfusion Benefits Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-20"
-        >
-          <div className="text-left mb-8">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#d2232a' }}>
-              Beneficios:
-            </h2>
-            <h3 className="text-2xl font-semibold mb-6" style={{ color: '#233e90' }}>
-              ¿Por qué se recomienda la autotransfusión?
-            </h3>
-          </div>
-
-          <div className="max-w-4xl">
-            <div className="space-y-6">
-              <motion.p
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg text-gray-700 leading-relaxed"
-              >
-                Cada vez más médicos recomiendan el uso de la autotransfusión durante las cirugías ya que de esta manera se evitan diversas enfermedades que pueden transmitirse por transfusión de sangre de donantes, tales como VIH y Hepatitis B y C, enfermedades de las vacas locas, entre otras.
-              </motion.p>
-              
-              <motion.p
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-lg text-gray-700 leading-relaxed"
-              >
-                Además siempre existe el riesgo de que nuestro sistema inmunológico reaccione adversamente ante una transfusión de sangre. También con la autotransfusión se reduce la necesidad de reprogramar cirugías por escasez de reservas de sangre.
-              </motion.p>
-            </div>
-          </div>
-        </motion.div>
 
         {/* Recommended Surgery Cases Section */}
         <motion.div
@@ -387,159 +417,241 @@ export const ServiciosSection = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-24"
         >
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4" style={{ color: '#233e90' }}>
-              Se recomienda la autotransfusión en las siguientes cirugías
-            </h2>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Indicaciones donde la autotransfusión puede reducir riesgos y mejorar recuperación
-            </p>
-          </motion.div>
+          {/* Full-width section with gradient background */}
+          <div className="-mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-b from-slate-50/50 via-blue-50/30 to-white">
+            <div className="max-w-7xl mx-auto">
+              {/* Section Header */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-center mb-12"
+              >
+                <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-[#00217a] drop-shadow-sm">
+                  Se recomienda la autotransfusión en las siguientes cirugías
+                </h2>
+                <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                </p>
+              </motion.div>
 
-          {/* Surgery Categories Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
-            {/* Cirugías Generales */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
-            >
-              <h3 className="text-xl font-bold mb-4" style={{ color: '#233e90' }}>
-                Cirugías Generales
-              </h3>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Resecciones hepáticas</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Puentes para esplenectomía</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Cirugía Vascular</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Aneurisma</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Trasplantes de Hígado</span>
-                </div>
-              </div>
-            </motion.div>
+              {/* Two Column Layout: Content Left, Image Right */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+                
+                {/* Right Column - Surgery Image (Mobile First) */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="w-full lg:order-2" // Show first on mobile, second on desktop
+                >
+                  <div className="relative bg-white/40 backdrop-blur-sm rounded-2xl lg:rounded-3xl border border-white/30 overflow-hidden shadow-xl">
+                    <div className="aspect-video lg:aspect-square relative">
+                      {!imageError ? (
+                        <>
+                          <img 
+                            src={currentImageSrc}
+                            alt="Equipo médico realizando cirugía con tecnología de autotransfusión"
+                            className="w-full h-full object-cover"
+                            onError={handleImageError}
+                            onLoad={() => console.log('Image loaded successfully:', currentImageSrc)}
+                          />
+                          {/* Overlay for better text contrast and integration */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#00217a]/20 via-transparent to-transparent pointer-events-none"></div>
+                          
+                        </>
+                      ) : (
+                        /* Fallback content if image doesn't load */
+                        <div className="w-full h-full bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center">
+                          <div className="text-center p-6 lg:p-8">
+                            <motion.div
+                              initial={{ scale: 0.8, opacity: 0 }}
+                              animate={{ scale: 1, opacity: 1 }}
+                              transition={{ duration: 0.5 }}
+                              className="w-20 h-20 mx-auto mb-6 bg-[#00217a] rounded-full flex items-center justify-center shadow-lg"
+                            >
+                              <Users className="w-10 h-10 text-white" />
+                            </motion.div>
+                            <h3 className="text-[#00217a] font-bold text-lg lg:text-xl mb-2">
+                              Equipo Médico Especializado
+                            </h3>
+                            <p className="text-slate-600 text-sm lg:text-base leading-relaxed">
+                              Profesionales certificados en<br/>
+                              procedimientos de autotransfusión<br/>
+                              con tecnología de vanguardia
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
 
-            {/* Obstetricia y Ginecología */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
-            >
-              <h3 className="text-xl font-bold mb-4" style={{ color: '#233e90' }}>
-                Obstetricia y Ginecología
-              </h3>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Complicaciones Hemorrágicas del embarazo</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Embarazo Ectópico</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Histerectomía</span>
-                </div>
-              </div>
-            </motion.div>
+                {/* Left Column - Content */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  className="lg:order-1" // Show second on mobile, first on desktop
+                >
+                  {/* Tab Navigation */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="flex flex-wrap gap-2 mb-8"
+                  >
+                    {surgerySpecialties.map((specialty, index) => (
+                      <motion.button
+                        key={`tab-${specialty.id}`}
+                        onClick={() => setActiveTab(specialty.id)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ 
+                          scale: 0.98,
+                          transition: { duration: 0.1 }
+                        }}
+                        className={`
+                          relative px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300
+                          ${activeTab === specialty.id 
+                            ? 'bg-[#00217a] text-white shadow-lg ring-2 ring-cyan-300/50' 
+                            : 'bg-white/60 backdrop-blur-sm text-[#00217a] hover:bg-white/80 shadow-sm border border-white/50'
+                          }
+                        `}
+                      >
+                        {/* Ripple effect on click */}
+                        <motion.div
+                          className="absolute inset-0 rounded-full"
+                          initial={false}
+                          animate={{
+                            background: activeTab === specialty.id ? 'rgba(0, 33, 122, 0.1)' : 'transparent'
+                          }}
+                        />
+                        <span className="relative z-10">{specialty.name}</span>
+                      </motion.button>
+                    ))}
+                  </motion.div>
 
-            {/* Urología */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
-            >
-              <h3 className="text-xl font-bold mb-4" style={{ color: '#233e90' }}>
-                Urología
-              </h3>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Prostatectomía Radical</span>
-                </div>
-              </div>
-            </motion.div>
+                  {/* Glassmorphic Content Panel */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    whileHover={{ y: -4 }}
+                  >
+                    <div className="bg-white/70 backdrop-blur-md rounded-3xl shadow-xl border border-white/20 p-6 lg:p-8 relative overflow-hidden">
+                      {/* Subtle inner border effect */}
+                      <div className="absolute inset-0 rounded-3xl border border-white/30 pointer-events-none" />
+                      
+                      {/* Specialty Header */}
+                      <motion.div
+                        key={`header-${activeTab}`}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="flex items-center space-x-4 mb-6"
+                      >
+                        {/* Icon Badge */}
+                        {activeSpecialty && (
+                          <>
+                            <motion.div
+                              whileHover={{ scale: 1.03 }}
+                              className="w-12 h-12 bg-gradient-to-br from-[#00217a] to-[#2381d2] rounded-full flex items-center justify-center shadow-lg"
+                            >
+                              <activeSpecialty.icon className="w-6 h-6 text-white" />
+                            </motion.div>
+                            
+                            {/* Specialty Title */}
+                            <div>
+                              <h3 className="text-xl font-bold text-[#00217a] leading-tight">
+                                {activeSpecialty.name}
+                              </h3>
+                            </div>
+                          </>
+                        )}
+                      </motion.div>
 
-            {/* Ortopedia */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 p-6"
-            >
-              <h3 className="text-xl font-bold mb-4" style={{ color: '#233e90' }}>
-                Ortopedia
-              </h3>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Reducción abierta y fijación de fracturas de pelvis</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Reemplazo de cadera</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Reemplazo de rodilla</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Escoliosis Corrección</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 flex-shrink-0" style={{ color: '#2381d2' }} />
-                  <span className="text-gray-700">Posterior Anterior Spinal Fusion</span>
-                </div>
+                      {/* Procedures List */}
+                      <motion.div
+                        key={`content-${activeTab}`}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
+                        className="space-y-3"
+                      >
+                        {activeSpecialty?.procedures.map((procedure, index) => (
+                          <motion.div
+                            key={`procedure-${activeTab}-${index}`}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.05 }}
+                            className="flex items-center space-x-3 py-2"
+                          >
+                            <CheckCircle className="w-5 h-5 text-[#2381d2] flex-shrink-0" />
+                            <span className="text-slate-700 text-base leading-relaxed">
+                              {procedure}
+                            </span>
+                          </motion.div>
+                        ))}
+                      </motion.div>
+
+                      {/* Ver todas button */}
+                      <div className="flex justify-end mt-6 pt-4 border-t border-white/20">
+                        <motion.button
+                          onClick={() => setShowAll(!showAll)}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="text-[#2381d2] hover:text-[#00217a] font-medium text-sm transition-colors duration-200 lg:hidden"
+                        >
+                          {showAll ? 'Ver menos' : 'Ver todas'}
+                        </motion.button>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Mobile Accordion - All Specialties */}
+                  {showAll && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="lg:hidden mt-6 space-y-4"
+                    >
+                      {surgerySpecialties.map((specialty, index) => (
+                        <motion.div
+                          key={`mobile-${specialty.id}`}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.3, delay: index * 0.1 }}
+                          className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/30"
+                        >
+                          <div className="flex items-center space-x-3 mb-4">
+                            <div className="w-10 h-10 bg-[#00217a] rounded-full flex items-center justify-center">
+                              <specialty.icon className="w-5 h-5 text-white" />
+                            </div>
+                            <h4 className="text-lg font-semibold text-[#00217a]">{specialty.name}</h4>
+                          </div>
+                          <div className="space-y-3">
+                            {specialty.procedures.map((procedure, procIndex) => (
+                              <div key={`mobile-procedure-${specialty.id}-${procIndex}`} className="flex items-center space-x-3">
+                                <CheckCircle className="w-4 h-4 text-[#2381d2] flex-shrink-0" />
+                                <span className="text-slate-700 text-sm">{procedure}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                  )}
+                </motion.div>
+
               </div>
-            </motion.div>
+            </div>
           </div>
-
-          {/* Bottom Note and CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-center"
-          >
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Consulta con tu equipo médico para determinar la indicación adecuada
-            </p>
-            <button
-              className="inline-flex items-center px-8 py-3 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5"
-              style={{ backgroundColor: '#2381d2' }}
-            >
-              Más información
-            </button>
-          </motion.div>
         </motion.div>
       </div>
     </section>

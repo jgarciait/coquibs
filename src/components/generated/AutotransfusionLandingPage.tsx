@@ -7,7 +7,6 @@ import { HeroSection } from './HeroSection';
 import { AutotransfusionIntroSection } from './AutotransfusionIntroSection';
 import { HowItWorksSection } from './HowItWorksSection';
 import { ServiciosSection } from './ServiciosSection';
-import { BenefitsSection } from './BenefitsSection';
 import { ContactoNuevoSection } from './ContactoNuevoSection';
 import { TestimonialsSection } from './TestimonialsSection';
 import { FAQSection } from './FAQSection';
@@ -16,62 +15,48 @@ import { CertificationsSection } from './CertificationsSection';
 import { StatisticsSection } from './StatisticsSection';
 import { ResourcesSection } from './ResourcesSection';
 import { Heart, Shield, Users, Award, Phone, Mail, MapPin } from 'lucide-react';
-const benefitsData = [{
-  id: 'benefit-1',
-  title: 'Reducción de Riesgos',
-  description: 'Minimiza complicaciones transfusionales'
-}, {
-  id: 'benefit-2',
-  title: 'Mejor Recuperación',
-  description: 'Acelera el proceso de sanación'
-}, {
-  id: 'benefit-3',
-  title: 'Menos Infecciones',
-  description: 'Reduce riesgo de transmisión de patógenos'
-}, {
-  id: 'benefit-4',
-  title: 'Compatibilidad Total',
-  description: 'Usa tu propia sangre, sin incompatibilidades'
-}, {
-  id: 'benefit-5',
-  title: 'Disponibilidad Inmediata',
-  description: 'No depende de donantes externos'
-}, {
-  id: 'benefit-6',
-  title: 'Costo Efectivo',
-  description: 'Reduce costos hospitalarios'
-}] as any[];
+const benefitsData = [] as any[];
 const proceduresData = [{
   id: 'proc-1',
   title: 'Cirugía Cardíaca',
-  description: 'Procedimientos de corazón abierto y bypass'
+  description: 'Bypass, válvulas, procedimientos complejos del corazón'
 }, {
   id: 'proc-2',
   title: 'Cirugía Ortopédica',
-  description: 'Reemplazo de articulaciones y trauma óseo'
+  description: 'Reemplazo de articulaciones, corrección espinal'
 }, {
   id: 'proc-3',
   title: 'Neurocirugía',
-  description: 'Operaciones cerebrales y espinales'
+  description: 'Operaciones del cerebro y sistema nervioso'
 }, {
   id: 'proc-4',
+  title: 'Trasplantes',
+  description: 'Procedimientos de trasplante de órganos'
+}, {
+  id: 'proc-5',
   title: 'Cirugía Vascular',
-  description: 'Reparación de arterias y venas'
+  description: 'Procedimientos en vasos sanguíneos mayores'
+}, {
+  id: 'proc-6',
+  title: 'Trauma',
+  description: 'Cirugías de emergencia con alto riesgo de sangrado'
 }] as any[];
 const testimonialsData = [{
-  id: 'test-1',
-  name: 'Dr. María González',
-  role: 'Cirujana Cardiovascular',
-  quote: 'La autotransfusión ha revolucionado nuestros procedimientos quirúrgicos.'
+  name: 'Dr. Carlos Méndez',
+  role: 'Cirujano Cardiovascular',
+  quote: 'La autotransfusión ha revolucionado nuestros procedimientos cardíacos.'
 }, {
-  id: 'test-2',
-  name: 'Dr. Carlos Ruiz',
-  role: 'Jefe de Ortopedia',
-  quote: 'Resultados excepcionales en recuperación de pacientes.'
-}, {
-  id: 'test-3',
-  name: 'Dra. Ana López',
+  name: 'Dra. María González',
   role: 'Anestesióloga',
+  quote: 'Seguridad y eficiencia en cada operación.'
+}, {
+  name: 'Dr. Roberto Silva',
+  role: 'Cirujano Ortopédico',
+  quote: 'Resultados excepcionales en cirugías complejas de columna.'
+}, {
+  name: 'Dra. Ana Torres',
+  role: 'Directora Médica',
+
   quote: 'Mayor seguridad y confianza en cada cirugía.'
 }] as any[];
 
@@ -90,245 +75,124 @@ export const AutotransfusionLandingPage = () => {
       <Navbar />
       <HeroSection />
       <AutotransfusionIntroSection />
-      <BenefitsSection />
+
+      {/* Autotransfusion Benefits Section */}
+      <section className="py-20 lg:py-28 px-4 relative">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-0"
+          >
+            {/* background accent */}
+            <div className="pointer-events-none absolute inset-0 -z-10">
+              <div className="absolute left-0 top-0 h-48 w-48 rounded-full blur-3xl opacity-10" style={{background:"#2381d2"}} />
+              <div className="absolute right-0 bottom-0 h-56 w-56 rounded-full blur-3xl opacity-10" style={{background:"#d2232a"}} />
+            </div>
+
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#233e90]">
+                Beneficios de la autotransfusión
+              </h2>
+              <p className="mt-4 text-lg text-slate-600">
+                Usar tu propia sangre durante la cirugía ofrece un procedimiento más seguro y predecible.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+              {/* Card 1 */}
+              <div className="group rounded-2xl bg-white p-6 flex items-start gap-4 h-full">
+                <div className="inline-flex h-14 w-14 items-center justify-center flex-shrink-0">
+                  <svg viewBox="0 0 24 24" className="h-10 w-10" aria-hidden="true">
+                    <path d="M12 2C8 6 6 9 6 12a6 6 0 0 0 12 0c0-3-2-6-6-10z" fill="#2381d2"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    Menor riesgo de infecciones
+                  </h3>
+                  <p className="mt-2 text-slate-600">
+                    Evita enfermedades asociadas a transfusiones de donantes como VIH, Hepatitis B y C, entre otras.
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 2 */}
+              <div className="group rounded-2xl bg-white p-6 flex items-start gap-4 h-full">
+                <div className="inline-flex h-14 w-14 items-center justify-center flex-shrink-0">
+                  <svg viewBox="0 0 24 24" className="h-10 w-10" aria-hidden="true">
+                    <path d="M12 4a8 8 0 1 1-8 8" fill="none" stroke="#2381d2" strokeWidth="2"/>
+                    <path d="M7 12a5 5 0 0 0 10 0" fill="none" stroke="#d2232a" strokeWidth="2"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    Menos reacciones inmunológicas
+                  </h3>
+                  <p className="mt-2 text-slate-600">
+                    Al transfundir tu propia sangre, disminuye la probabilidad de respuestas adversas del sistema inmune.
+                  </p>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="group rounded-2xl bg-white p-6 flex items-start gap-4 h-full">
+                <div className="inline-flex h-14 w-14 items-center justify-center flex-shrink-0">
+                  <svg viewBox="0 0 24 24" className="h-10 w-10" aria-hidden="true">
+                    <path d="M4 7h16M4 12h10M4 17h16" stroke="#2381d2" strokeWidth="2" fill="none"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    Mayor disponibilidad para tu cirugía
+                  </h3>
+                  <p className="mt-2 text-slate-600">
+                    Reduce la necesidad de reprogramar procedimientos por escasez de reservas de sangre.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </motion.div>
+        </div>
+      </section>
+      
       <HowItWorksSection />
       <ServiciosSection />
       {/* <ContactoNuevoSection /> */}
       {/* <TestimonialsSection /> */}
-      <FAQSection />
       <MedicalTeamSection />
+      <FAQSection />
       {/* <CertificationsSection /> */}
       {/* <StatisticsSection /> */}
       {/* <ResourcesSection /> */}
       
-      {/* Benefits Section */}
-      <section id="beneficios" className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              <span>Beneficios de la </span>
-              <span className="text-[#d2232a]">Autotransfusión</span>
-            </h2>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefitsData.map((benefit, index) => <motion.div key={benefit.id} initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            delay: index * 0.1
-          }} whileHover={{
-            scale: 1.02
-          }} className="bg-white/60 backdrop-blur-sm border border-[#d2232a]/20 rounded-2xl p-6 hover:border-[#d2232a]/40 transition-all duration-300">
-                <div className="flex items-center mb-4">
-                  <Heart className="w-6 h-6 text-[#d2232a] mr-3" />
-                  <h3 className="text-lg font-semibold text-gray-900">{benefit.title}</h3>
-                </div>
-                <p className="text-gray-600">{benefit.description}</p>
-              </motion.div>)}
-          </div>
-        </div>
-      </section>
-
-      {/* Recommended Procedures Section */}
-      <section id="procedimientos" className="py-20 px-4 bg-gray-50/50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              <span>Procedimientos </span>
-              <span className="text-[#d2232a]">Recomendados</span>
-            </h2>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {proceduresData.map((procedure, index) => <motion.div key={procedure.id} initial={{
-            opacity: 0,
-            x: index % 2 === 0 ? -20 : 20
-          }} whileInView={{
-            opacity: 1,
-            x: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            delay: index * 0.1
-          }} className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
-                <div className="flex items-center mb-4">
-                  <Shield className="w-8 h-8 text-[#2381d2] mr-4" />
-                  <h3 className="text-xl font-semibold text-gray-900">{procedure.title}</h3>
-                </div>
-                <p className="text-gray-600">{procedure.description}</p>
-              </motion.div>)}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section id="testimonios" className="hidden py-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              <span>Lo que dicen los </span>
-              <span className="text-[#d2232a]">Profesionales</span>
-            </h2>
-          </motion.div>
-          
-          <div className="relative">
-            <motion.div key={activeTestimonial} initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} exit={{
-            opacity: 0,
-            y: -20
-          }} className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-8 text-center">
-              <blockquote className="text-xl text-gray-700 mb-6">
-                &ldquo;{testimonialsData[activeTestimonial].quote}&rdquo;
-              </blockquote>
-              <div>
-                <p className="font-semibold text-gray-900">{testimonialsData[activeTestimonial].name}</p>
-                <p className="text-[#d2232a]">{testimonialsData[activeTestimonial].role}</p>
-              </div>
-            </motion.div>
+      <footer className="bg-slate-900 text-white py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex space-x-6 mb-4 md:mb-0">
+              <a href="#inicio" className="hover:text-[#d2232a] transition-colors">
+                <span>Inicio</span>
+              </a>
+              <a href="#beneficios" className="hover:text-[#d2232a] transition-colors">
+                <span>Beneficios</span>
+              </a>
             
-            <div className="flex justify-center mt-6 space-x-2">
-              {testimonialsData.map((_, index) => <button key={index} onClick={() => setActiveTestimonial(index)} className={`w-3 h-3 rounded-full transition-colors ${index === activeTestimonial ? 'bg-[#d2232a]' : 'bg-gray-300'}`} />)}
+              <a href="#servicios" className="hover:text-[#d2232a] transition-colors">
+                <span>Servicios</span>
+              </a>
+            </div>
+            <div className="text-center md:text-right">
+              <p className="text-slate-400">
+                <span>© 2010. Derechos Reservados. Coquí Blod Salvage, Inc.</span>
+              </p>
             </div>
           </div>
         </div>
-      </section>
-
-
-      {/* Contact Section */}
-      <section id="contacto" className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              <span>Contáctanos</span>
-            </h2>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <motion.div initial={{
-            opacity: 0,
-            x: -20
-          }} whileInView={{
-            opacity: 1,
-            x: 0
-          }} viewport={{
-            once: true
-          }} className="space-y-8">
-              <div className="flex items-center space-x-4">
-                <Phone className="w-6 h-6 text-[#d2232a]" />
-                <div>
-                  <h3 className="font-semibold text-gray-900">Teléfono</h3>
-                  <p className="text-gray-600">+1 (787) 448-2931</p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-4">
-                <Mail className="w-6 h-6 text-[#d2232a]" />
-                <div>
-                  <h3 className="font-semibold text-gray-900">Email</h3>
-                  <p className="text-gray-600">info@autotransfusion.com</p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-4">
-                <MapPin className="w-6 h-6 text-[#d2232a]" />
-                <div>
-                  <h3 className="font-semibold text-gray-900">Dirección</h3>
-                  <p className="text-gray-600">123 Medical Center Dr, Ciudad</p>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.form initial={{
-            opacity: 0,
-            x: 20
-          }} whileInView={{
-            opacity: 1,
-            x: 0
-          }} viewport={{
-            once: true
-          }} className="bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-8">
-              <div className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    <span>Nombre</span>
-                  </label>
-                  <input type="text" id="name" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d2232a] focus:border-[#d2232a] transition-colors" />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    <span>Email</span>
-                  </label>
-                  <input type="email" id="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d2232a] focus:border-[#d2232a] transition-colors" />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    <span>Mensaje</span>
-                  </label>
-                  <textarea id="message" rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d2232a] focus:border-[#d2232a] transition-colors" suppressHydrationWarning></textarea>
-                </div>
-                <motion.button whileHover={{
-                scale: 1.02
-              }} whileTap={{
-                scale: 0.98
-              }} type="submit" className="w-full bg-[#d2232a] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#b01e24] transition-colors">
-                  <span>Enviar Mensaje</span>
-                </motion.button>
-              </div>
-            </motion.form>
-          </div>
-        </div>
-      </section>
-    </div>
-    
-    {/* Footer */}
-    <footer className="relative py-12 px-4" style={{ backgroundColor: '#032144' }}>
-      <img src="/red.png" alt="Red logo" className="absolute bottom-0 left-0 h-full object-contain" />
-      <div className="max-w-7xl mx-auto text-center">
-        <p className="text-white text-lg font-medium">
-          © 2010. Derechos Reservados. Coquí Blod Salvage, Inc.
-        </p>
-      </div>
-    </footer>
-    </>;
+      </footer>
+    </div></>;
 };
+
+export default AutotransfusionLandingPage;

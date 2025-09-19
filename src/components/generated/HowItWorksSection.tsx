@@ -37,7 +37,7 @@ export const HowItWorksSection = () => {
   }, []);
 
   // @return
-  return <section id="como-funciona" className="py-20 px-4 bg-gray-50/30 relative overflow-hidden">
+  return <section id="como-funciona" className=" lg px-4 bg-gray-50/30 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div initial={{
         opacity: 0,
@@ -189,60 +189,7 @@ export const HowItWorksSection = () => {
           </div>
         </div>
 
-        {/* Bottom Stats */}
-        <motion.div initial={{
-        opacity: 0,
-        y: 30
-      }} whileInView={{
-        opacity: 1,
-        y: 0
-      }} viewport={{
-        once: true
-      }} transition={{
-        delay: 0.8
-      }} className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
-          <div className="text-center bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-6">
-            <motion.p animate={{
-            scale: [1, 1.05, 1]
-          }} transition={{
-            duration: 2,
-            repeat: Infinity
-          }} className="text-3xl font-bold text-[#d2232a] mb-2">
-              <span>15 min</span>
-            </motion.p>
-            <p className="text-gray-600">
-              <span>Tiempo promedio del proceso</span>
-            </p>
-          </div>
-          <div className="text-center bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-6">
-            <motion.p animate={{
-            scale: [1, 1.05, 1]
-          }} transition={{
-            duration: 2,
-            repeat: Infinity,
-            delay: 0.5
-          }} className="text-3xl font-bold text-[#2381d2] mb-2">
-              <span>95%</span>
-            </motion.p>
-            <p className="text-gray-600">
-              <span>Eficiencia de recuperación</span>
-            </p>
-          </div>
-          <div className="text-center bg-white/60 backdrop-blur-sm border border-gray-200 rounded-2xl p-6">
-            <motion.p animate={{
-            scale: [1, 1.05, 1]
-          }} transition={{
-            duration: 2,
-            repeat: Infinity,
-            delay: 1
-          }} className="text-3xl font-bold text-[#233e90] mb-2">
-              <span>100%</span>
-            </motion.p>
-            <p className="text-gray-600">
-              <span>Compatibilidad garantizada</span>
-            </p>
-          </div>
-        </motion.div>
+        
       </div>
     </section>;
 };

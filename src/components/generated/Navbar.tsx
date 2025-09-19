@@ -64,11 +64,11 @@ export const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 w-full"
     >
        <div className="flex justify-center">
-         <nav className="bg-gradient-to-b from-white/95 to-white/60 backdrop-blur-md border border-[#ffffff]/100 rounded-full mt-6 px-8 py-2 ring-1 ring-inset ring-white/20 glow-effect" style={{boxShadow: '0 2px 6px rgba(0, 0, 0, 0.4'}}>
+         <nav className="bg-gradient-to-b from-white/95 to-white/60 backdrop-blur-md border border-[#ffffff]/100 rounded-full mt-6 px-8 py-1 ring-1 ring-inset ring-white/20 glow-effect" style={{boxShadow: '0 2px 6px rgba(0, 0, 0, 0.4'}}>
           <div className="flex items-center space-x-16">
             {/* Logo and Brand */}
             <div className="flex items-center space-x-3">
-              <img src="/logo.png" alt="Logo" className="w-[65px] h-[65px] object-contain" />
+              <img src="/logo.png" alt="Logo" className="w-[50px] h-[30px] object-contain" />
               <div className="flex flex-col justify-center">
                 <div className="text-3xl font-black text-[#d2232a] mt-4" style={{fontFamily: "'Eurostile', sans-serif", fontStyle: 'oblique', fontWeight: '700', letterSpacing: '0.08em'}}>Coquí Blood Salvage Inc.</div>
                 <div className=" font-bold text-xs text-[#00217a] text-right" style={{fontFamily: "'Eurostile', sans-serif", fontStyle: 'oblique', letterSpacing: '0.2em'}}>CELL-SAVER</div>

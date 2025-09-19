@@ -48,14 +48,14 @@ const faqs = [
 ];
 
 export const FAQSection = () => {
-  const [openFAQ, setOpenFAQ] = React.useState<string | null>('faq-1');
+  const [openFAQ, setOpenFAQ] = React.useState<string | null>(null);
 
   const toggleFAQ = (id: string) => {
     setOpenFAQ(openFAQ === id ? null : id);
   };
 
   return (
-    <section id="faq" className="py-24 bg-gradient-to-b from-white to-slate-50">
+    <section id="faq" className="py-20 lg:py-28 bg-gradient-to-b from-white to-slate-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -90,7 +90,7 @@ export const FAQSection = () => {
             >
               <button
                 onClick={() => toggleFAQ(faq.id)}
-                className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 focus:outline-none"
+                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 focus:outline-none"
               >
                 <h3 className="text-lg font-semibold text-[#00217a] pr-4">
                   {faq.question}
@@ -112,7 +112,7 @@ export const FAQSection = () => {
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                   >
-                    <div className="px-8 pb-6 pt-2 border-t border-gray-100">
+                    <div className="px-6 pb-4 pt-2 border-t border-gray-100">
                       <p className="text-gray-700 leading-relaxed">
                         {faq.answer}
                       </p>
@@ -124,26 +124,6 @@ export const FAQSection = () => {
           ))}
         </div>
 
-        {/* Contact CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-16"
-        >
-          <p className="text-lg text-gray-600 mb-8">
-            ¿No encuentras la respuesta que buscas?
-          </p>
-          <motion.a
-            href="#contacto"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center px-8 py-4 bg-[#d2232a] text-white font-semibold rounded-full hover:bg-[#b91c1c] transition-colors duration-300 shadow-lg hover:shadow-xl"
-          >
-            Contáctanos para Más Información
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );
