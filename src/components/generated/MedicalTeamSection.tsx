@@ -11,13 +11,7 @@ const teamMembers = [
     role: 'Directora Médica',
     specialty: 'Anestesiología y Medicina Crítica',
     experience: '15+ años',
-    education: 'MD - Universidad de Puerto Rico, Fellowship en Medicina Crítica',
-    image: '/Dra. Elena Vásquez.png',
-    achievements: [
-      'Certificación en Autotransfusión Avanzada',
-      'Más de 3,000 procedimientos supervisados',
-      'Investigación publicada en revistas médicas'
-    ]
+    image: '/Dra. Elena Vásquez.png'
   },
   {
     id: 'team-2',
@@ -25,13 +19,7 @@ const teamMembers = [
     role: 'Especialista en Perfusión',
     specialty: 'Cirugía Cardíaca y Perfusión',
     experience: '12+ años',
-    education: 'MD - Escuela de Medicina de Ponce, Certificación en Perfusión',
-    image: '/Dr. Miguel Santamaría.png?v=2',
-    achievements: [
-      'Experto en Cell Saver Technology',
-      'Entrenamiento en Mayo Clinic',
-      'Coordinador de Programas de Capacitación'
-    ]
+    image: '/Dr. Miguel Santamaría.png?v=2'
   },
   {
     id: 'team-3',
@@ -39,13 +27,7 @@ const teamMembers = [
     role: 'Consultora en Hematología',
     specialty: 'Hematología Transfusional',
     experience: '18+ años',
-    education: 'MD - Universidad Central del Caribe, Fellowship en Hematología',
-    image: '/Dra. Carmen Rivera.png',
-    achievements: [
-      'Especialista en Medicina Transfusional',
-      'Directora de Banco de Sangre (8 años)',
-      'Certificación Internacional en Aféresis'
-    ]
+    image: '/Dra. Carmen Rivera.png'
   }
 ];
 
@@ -155,20 +137,6 @@ export const MedicalTeamSection = () => {
                       <Award className="w-5 h-5 text-[#d2232a] mr-2" />
                       <span className="font-semibold text-[#00217a]">Experiencia: {member.experience}</span>
                     </div>
-                    <p className="text-gray-600 text-sm">{member.education}</p>
-                  </div>
-
-                  {/* Achievements */}
-                  <div className="mb-8">
-                    <h4 className="font-semibold text-[#00217a] mb-3">Logros Destacados:</h4>
-                    <ul className="space-y-2">
-                      {member.achievements.map((achievement, i) => (
-                        <li key={i} className="flex items-start">
-                          <div className="w-2 h-2 bg-[#d2232a] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-gray-600 text-sm">{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
               </motion.div>

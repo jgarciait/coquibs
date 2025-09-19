@@ -8,18 +8,11 @@ type Props = {
   hospitals?: Hospital[];
   title?: string;
 
-  /* Pines rojos (con sombra) */
-  pinUrl2x?: string;
-  pinShadowUrl?: string;
-  pinSize?: [number, number];
-  pinAnchor?: [number, number];
-  popupAnchor?: [number, number];
-
   /* Pulsos */
   pulseColor?: string; ringColor?: string; durationMs?: number; flyToZoom?: number;
   hoverPulseColor?: string; hoverRingColor?: string; hoverDurationMs?: number;
 
-  /* Tiles (remueve líneas marítimas) */
+  /* Tiles */
   tileUrl?: string;
 
   /* Layout */
@@ -27,13 +20,6 @@ type Props = {
 };
 
 const DEFAULTS: Required<Omit<Props, 'hospitals' | 'title' | 'className'>> = {
-  // Red pin estilo Leaflet
-  pinUrl2x: 'https://unpkg.com/leaflet-color-markers@1.1.1/img/marker-icon-2x-red.png',
-  pinShadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-  pinSize: [25, 41],
-  pinAnchor: [12, 41],
-  popupAnchor: [1, -34],
-
   // Pulsos
   pulseColor: 'rgba(210, 35, 42, 0.70)',
   ringColor: 'rgba(210, 35, 42, 0.45)',
@@ -43,7 +29,7 @@ const DEFAULTS: Required<Omit<Props, 'hospitals' | 'title' | 'className'>> = {
   hoverRingColor: 'rgba(210, 35, 42, 0.35)',
   hoverDurationMs: 900,
 
-  // CartoDB Positron (sin líneas marítimas de OSM Standard)
+  // CartoDB Voyager (mar azul claro)
   tileUrl: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
 };
 
@@ -62,18 +48,11 @@ const DEFAULT_HOSPITALS: Hospital[] = [
   { name: "Children's Hospital", municipality: 'Bayamón, PR', lat: 18.39697, lon: -66.16316 },
 ];
 
-/* Helpers de enlaces */
-const buildGoogleMapsUrl = (lat: number, lon: number, _label?: string) =>
-  `https://www.google.com/maps?q=${lat},${lon}`;
+/* Helpers de enlaces (versiones simples y robustas) */
+const buildGoogleMapsUrl = (lat: number, lon: number) => `https://www.google.com/maps?q=${lat},${lon}`;
+const buildAppleMapsUrl  = (lat: number, lon: number) => `https://maps.apple.com/?q=${lat},${lon}`;
 
-const buildAppleMapsUrl = (lat: number, lon: number, _label?: string) =>
-  `https://maps.apple.com/?q=${lat},${lon}`;
-
-/* Detección para decidir entre Apple Maps y Google Maps
-   - iOS/iPadOS: Apple Maps
-   - macOS Safari (no Chrome/Edge/Firefox): Apple Maps
-   - Resto: Google Maps
-*/
+/* Detección para decidir entre Apple Maps y Google Maps */
 function preferAppleMaps(): boolean {
   if (typeof navigator === 'undefined') return false;
   const ua = navigator.userAgent || '';
@@ -83,14 +62,37 @@ function preferAppleMaps(): boolean {
   return isIOS || (isMac && isSafari);
 }
 
+/* === NUEVO: PIN SVG ROJO SIN CENTRO === */
+function makeRedPinIconHTML() {
+  // SVG de pin rojo (sin círculo interior). Sombra vectorial suave.
+  return `
+  <svg width="25" height="41" viewBox="0 0 25 41" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="pinShadow" x="-50%" y="-10%" width="200%" height="200%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+        <feOffset in="blur" dx="0" dy="2" result="offset"/>
+        <feComponentTransfer><feFuncA type="linear" slope="0.35"/></feComponentTransfer>
+        <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <g filter="url(#pinShadow)">
+      <path d="M12.5 0C5.9 0 0.6 5.3 0.6 11.9c0 7.2 7.3 16.2 10.7 20.3.6.7 1.8.7 2.4 0 3.4-4.1 10.7-13.1 10.7-20.3C24.4 5.3 19.1 0 12.5 0z" fill="#d2232a"/>
+    </g>
+  </svg>`;
+}
+function makeRedPinIcon(L: any) {
+  return L.divIcon({
+    className: 'red-pin-icon',
+    html: makeRedPinIconHTML(),
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+  });
+}
+
 export default function PRHospitalsMap({
   hospitals = DEFAULT_HOSPITALS,
   title = 'Hospitales Afiliados',
-  pinUrl2x = DEFAULTS.pinUrl2x,
-  pinShadowUrl = DEFAULTS.pinShadowUrl,
-  pinSize = DEFAULTS.pinSize,
-  pinAnchor = DEFAULTS.pinAnchor,
-  popupAnchor = DEFAULTS.popupAnchor,
   pulseColor = DEFAULTS.pulseColor,
   ringColor = DEFAULTS.ringColor,
   durationMs = DEFAULTS.durationMs,
@@ -124,52 +126,55 @@ export default function PRHospitalsMap({
 
   useEffect(() => {
     let L: any;
-    (async () => {
-      const leaflet = await import('leaflet');
-      L = leaflet;
+    let mounted = true;
+    
+    const initMap = async () => {
+      try {
+        const leaflet = await import('leaflet');
+        L = leaflet.default || leaflet;
+        
+        if (!mounted || !mapRef.current) return;
 
-      if (!mapRef.current) return;
-
-      // Clean up existing map instance if it exists
-      if (mapInstance.current) {
-        mapInstance.current.remove();
-        mapInstance.current = null;
-      }
-
-      // Check if the container already has a map and clear it
-      const container = mapRef.current;
-      if ((container as any)._leaflet_id) {
-        (container as any)._leaflet_id = null;
-      }
-
-      const map = L.map(mapRef.current);
+        const map = L.map(mapRef.current, {
+        zoomControl: true,
+        scrollWheelZoom: true,
+        smoothWheelZoom: true,
+        smoothSensitivity: 1,
+        zoomSnap: 0.1,
+        zoomDelta: 0.5,
+        wheelPxPerZoomLevel: 120,
+        zoomAnimation: true,
+        zoomAnimationThreshold: 4,
+        fadeAnimation: true,
+        markerZoomAnimation: true,
+        inertia: true,
+        inertiaDeceleration: 2000,
+        inertiaMaxSpeed: 1000,
+        easeLinearity: 0.2,
+        worldCopyJump: false,
+        maxBoundsViscosity: 0.0,
+        attributionControl: false
+      });
       mapInstance.current = map;
 
       const { minLat, maxLat, minLon, maxLon } = boundsData;
       const bounds = L.latLngBounds(L.latLng(minLat, minLon), L.latLng(maxLat, maxLon));
       map.fitBounds(bounds.pad(0.2));
 
-      // Tiles sin líneas marítimas
+      // Tiles (mar azul claro)
       L.tileLayer(tileUrl, {
         maxZoom: 19,
         attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
       }).addTo(map);
 
-      // Icono PIN rojo (2x + shadow)
-      const redIcon = L.icon({
-        iconUrl: pinUrl2x,
-        shadowUrl: pinShadowUrl,
-        iconSize: pinSize,
-        iconAnchor: pinAnchor,
-        popupAnchor,
-        shadowSize: [41, 41],
-      });
+      // === USAR PIN SVG ROJO SIN CENTRO ===
+      const redIcon = makeRedPinIcon(L);
 
-      // Crear marcadores y sus popups con botón principal segun detección
+      // Crear marcadores y sus popups
       markersRef.current = hospitals.map((h) => {
         const fullLabel = `${h.name}, ${h.municipality}`;
-        const gmaps = buildGoogleMapsUrl(h.lat, h.lon, fullLabel);
-        const amaps = buildAppleMapsUrl(h.lat, h.lon, fullLabel);
+        const gmaps = buildGoogleMapsUrl(h.lat, h.lon);
+        const amaps = buildAppleMapsUrl(h.lat, h.lon);
 
         const primaryUrl = useApple ? amaps : gmaps;
         const primaryLabel = useApple ? 'Abrir en Apple Maps' : 'Abrir en Google Maps';
@@ -182,27 +187,33 @@ export default function PRHospitalsMap({
             <div style="color:#6b7280; font-size:12px; margin-bottom:10px">${h.municipality}</div>
 
             <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">
-              <a href="${primaryUrl}" target="_blank" rel="noopener noreferrer"
-                 style="display:inline-flex;align-items:center;gap:8px;background:#d2232a;color:#fff;padding:8px 10px;border-radius:8px;text-decoration:none;font-weight:600;box-shadow:0 4px 10px rgba(210,35,42,.25);pointer-events:auto">
+              <button onclick="window.open('${primaryUrl}', '_blank')"
+                 style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#d2232a;color:#fff;padding:10px 12px;border-radius:20px;border:none;cursor:pointer;font-weight:600;font-size:14px;height:40px;box-shadow:0 4px 10px rgba(210,35,42,.25);pointer-events:auto">
                 ${primaryLabel}
-              </a>
-              <a href="${altUrl}" target="_blank" rel="noopener noreferrer"
-                 style="font-size:12px; color:#0b2a6f; text-decoration:underline; margin-left:4px;pointer-events:auto">
-                ${altLabel}
-              </a>
+              </button>
+${useApple ? 
+                `<a href="${altUrl}" target="_blank" rel="noopener noreferrer"
+                   style="font-size:14px; color:#0b2a6f; text-decoration:underline; margin-left:4px;pointer-events:auto">
+                  ${altLabel}
+                 </a>` :
+                `<button onclick="window.open('${altUrl}', '_blank')"
+                   style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#2381d2;color:#fff;padding:10px 12px;border-radius:20px;border:none;cursor:pointer;font-weight:600;font-size:14px;height:40px;pointer-events:auto">
+                  ${altLabel}
+                 </button>`
+              }
             </div>
 
             <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px">
               <button
                  data-addr="${fullLabel.replace(/"/g, '&quot;')}"
                  class="leaflet-copy-addr"
-                 style="display:inline-flex;align-items:center;gap:8px;background:#0f3b9e;color:#fff;padding:8px 10px;border-radius:8px;border:none;cursor:pointer;font-weight:600">
+                 style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#0f3b9e;color:#fff;padding:10px 12px;border-radius:20px;border:none;cursor:pointer;font-weight:600;font-size:14px;height:40px">
                  Copiar dirección
               </button>
               <button
                  data-lat="${h.lat}" data-lon="${h.lon}"
                  class="leaflet-copy-coords"
-                 style="display:inline-flex;align-items:center;gap:8px;background:#374151;color:#fff;padding:8px 10px;border-radius:8px;border:none;cursor:pointer;font-weight:600">
+                 style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#374151;color:#fff;padding:10px 12px;border-radius:20px;border:none;cursor:pointer;font-weight:600;font-size:14px;height:40px">
                  Copiar coordenadas
               </button>
             </div>
@@ -213,20 +224,25 @@ export default function PRHospitalsMap({
 
         const m = L.marker([h.lat, h.lon], { icon: redIcon })
           .addTo(map)
-          .bindPopup(popupHtml);
+          .bindPopup(popupHtml, {
+            autoPan: true,
+            autoPanPadding: [20, 20],
+            keepInView: true,
+            closeOnClick: false,
+            maxWidth: 280
+          });
 
-        // Al abrir el popup, enganchar handlers de copia
+        // Handlers de copia al abrir popup
         m.on('popupopen', () => {
           const el = m.getPopup()?.getElement();
           if (!el) return;
 
           const toast = el.querySelector('.leaflet-copy-toast') as HTMLDivElement | null;
-
-          function showToast() {
+          const showToast = () => {
             if (!toast) return;
             toast.style.display = 'block';
             setTimeout(() => (toast.style.display = 'none'), 1000);
-          }
+          };
 
           const onCopy = async (text: string) => {
             try {
@@ -260,23 +276,40 @@ export default function PRHospitalsMap({
 
         return m;
       });
-    })();
+      } catch (error) {
+        console.error('Error initializing map:', error);
+      }
+    };
+    
+    initMap().catch(console.error);
 
     return () => {
-      try { mapInstance.current?.remove(); } catch {}
+      mounted = false;
+      try { 
+        if (mapInstance.current) {
+          mapInstance.current.remove(); 
+          mapInstance.current = null;
+        }
+      } catch (error) {
+        console.error('Error cleaning up map:', error);
+      }
     };
-  }, [boundsData, hospitals, pinUrl2x, pinShadowUrl, pinSize, pinAnchor, popupAnchor, tileUrl, useApple]);
+  }, [boundsData, hospitals, tileUrl, useApple]);
 
   // Utilitario: pulso en latlng
   async function spawnPulse(latlng: { lat: number; lng: number }, color: string, ring: string, ms: number) {
-    if (!mapInstance.current) return;
-    
-    const leaflet = await import('leaflet');
-    const L = leaflet;
-    const html = `<div class="pulse" style="--pulse-duration:${ms}ms; --pulse-color:${color}; --ring-color:${ring};"></div>`;
-    const icon = L.divIcon({ html, className: '', iconSize: [20, 20], iconAnchor: [10, 10] });
-    const p = L.marker(latlng as any, { icon, interactive: false }).addTo(mapInstance.current);
-    setTimeout(() => { mapInstance.current?.removeLayer(p); }, ms);
+    try {
+      const leaflet = await import('leaflet');
+      const L = leaflet.default || leaflet;
+      if (!mapInstance.current) return;
+      
+      const html = `<div class="pulse" style="--pulse-duration:${ms}ms; --pulse-color:${color}; --ring-color:${ring};"></div>`;
+      const icon = L.divIcon({ html, className: '', iconSize: [20, 20], iconAnchor: [10, 10] });
+      const p = L.marker(latlng as any, { icon, interactive: false }).addTo(mapInstance.current);
+      setTimeout(() => { mapInstance.current?.removeLayer(p); }, ms);
+    } catch (error) {
+      console.error('Error spawning pulse:', error);
+    }
   }
 
   // Hover: pulso suave
@@ -298,12 +331,12 @@ export default function PRHospitalsMap({
   };
 
   return (
-    <div className={`grid gap-0 h-[calc(100vh-0px)] ${className ?? ''}`} style={{ gridTemplateColumns: '460px 1fr' }}>
+    <div className={`grid gap-0 h-[calc(55vh-4rem)] ${className ?? ''}`} style={{ gridTemplateColumns: '750px 1fr' }}>
       {/* Lista estilo screenshot */}
-      <aside className="h-full overflow-auto border-r border-gray-200 bg-white text-[#0a1630] p-8">
-        <h2 className="text-3xl font-extrabold tracking-tight mb-6">{title}</h2>
+      <aside className="h-full border-r border-gray-200 bg-white text-[#0a1630] pl-4 -mr-12 py-4">
+        <h2 className="text-3xl font-extrabold tracking-tight mb-8">{title}</h2>
 
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-6">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-1. gap-y-4">
           {hospitals.map((h, i) => (
             <li
               key={i}
@@ -311,7 +344,7 @@ export default function PRHospitalsMap({
               onClick={() => selectMarker(i)}
               className="group cursor-pointer"
             >
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-1">
                 {/* Check circular azul */}
                 <span
                   className={`mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 ${
@@ -323,11 +356,13 @@ export default function PRHospitalsMap({
                   </svg>
                 </span>
 
-                <div>
+                <div className="flex flex-col hover:bg-blue-100 rounded-lg px-2 py-1 transition-colors duration-200 inline-block">
                   <div className={`font-semibold text-lg leading-tight ${activeIdx === i ? 'text-[#0b2a6f]' : 'text-[#0a1630]'}`}>
                     {h.name}
                   </div>
-                  <div className="text-sm text-[#7c8aa5]">{h.municipality}</div>
+                  <div className="text-sm text-[#7c8aa5]">
+                    {h.municipality}
+                  </div>
                 </div>
               </div>
             </li>
@@ -365,7 +400,7 @@ export default function PRHospitalsMap({
         }
       `}</style>
 
-      {/* Responsive: lista arriba en móviles */}
+      {/* Responsive */}
       <style jsx>{`
         @media (max-width: 1024px) {
           div.grid {

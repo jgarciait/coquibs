@@ -10,11 +10,11 @@ import { ServiciosSection } from './ServiciosSection';
 import { ContactoNuevoSection } from './ContactoNuevoSection';
 import { TestimonialsSection } from './TestimonialsSection';
 import { FAQSection } from './FAQSection';
+import { ContactoModernoSection } from './ContactoModernoSection';
 import { MedicalTeamSection } from './MedicalTeamSection';
 import { CertificationsSection } from './CertificationsSection';
 import { StatisticsSection } from './StatisticsSection';
 import { ResourcesSection } from './ResourcesSection';
-import PRHospitalsMap from '../PRHospitalsMap';
 import { Heart, Shield, Users, Award, Phone, Mail, MapPin } from 'lucide-react';
 const benefitsData = [] as any[];
 const proceduresData = [{
@@ -166,47 +166,8 @@ export const AutotransfusionLandingPage = () => {
       {/* <TestimonialsSection /> */}
       <MedicalTeamSection />
       
-      {/* Hospitals Map Section */}
-      <section id="hospitales" className="py-20 lg:py-28 px-4 relative bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#233e90] mb-4">
-              Hospitales Participantes en Puerto Rico
-            </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              Conoce los hospitales de Puerto Rico donde ofrecemos nuestros servicios de autotransfusión. 
-              Haz clic en cualquier hospital para ver más detalles.
-            </p>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="rounded-2xl overflow-hidden shadow-2xl"
-          >
-            <PRHospitalsMap
-              title="Hospitales Participantes"
-              pulseColor="rgba(210,35,42,0.70)"
-              ringColor="rgba(210,35,42,0.45)"
-              durationMs={2400}
-              flyToZoom={14}
-              hoverPulseColor="rgba(210,35,42,0.55)"
-              hoverRingColor="rgba(210,35,42,0.35)"
-              hoverDurationMs={900}
-            />
-          </motion.div>
-        </div>
-      </section>
-      
       <FAQSection />
+      <ContactoModernoSection />
       {/* <CertificationsSection /> */}
       {/* <StatisticsSection /> */}
       {/* <ResourcesSection /> */}

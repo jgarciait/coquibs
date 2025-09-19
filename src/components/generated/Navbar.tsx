@@ -61,7 +61,7 @@ export const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 w-full"
+      className="fixed top-0 left-0 right-0 z-[9999] w-full"
     >
        <div className="flex justify-center">
          <nav className="bg-gradient-to-b from-white/95 to-white/60 backdrop-blur-md border border-[#ffffff]/100 rounded-full mt-6 px-8 py-1 ring-1 ring-inset ring-white/20 glow-effect" style={{boxShadow: '0 2px 6px rgba(0, 0, 0, 0.4'}}>

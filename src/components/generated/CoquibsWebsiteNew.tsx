@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './Header';
 import { HeroSection } from './HeroSection';
-import { BenefitsSection } from './BenefitsSection';
+// import { BenefitsSection } from './BenefitsSection';
 import { ServiciosSection } from './ServiciosSection';
 import { ContactoNuevoSection } from './ContactoNuevoSection';
 
@@ -61,7 +61,7 @@ export const CoquibsWebsiteNew = () => {
 
       <main>
         <HeroSection />
-        <BenefitsSection />
+        {/* <BenefitsSection /> */}
         <ServiciosSection />
         <ContactoNuevoSection />
       </main>
