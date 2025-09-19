@@ -12,7 +12,7 @@ const teamMembers = [
     specialty: 'Anestesiología y Medicina Crítica',
     experience: '15+ años',
     education: 'MD - Universidad de Puerto Rico, Fellowship en Medicina Crítica',
-    image: '/Dr. Elena Vásquez.jpeg',
+    image: '/Dra. Elena Vásquez.png',
     achievements: [
       'Certificación en Autotransfusión Avanzada',
       'Más de 3,000 procedimientos supervisados',
@@ -26,7 +26,7 @@ const teamMembers = [
     specialty: 'Cirugía Cardíaca y Perfusión',
     experience: '12+ años',
     education: 'MD - Escuela de Medicina de Ponce, Certificación en Perfusión',
-    image: '/Dr. Miguel Santamaría.png',
+    image: '/Dr. Miguel Santamaría.png?v=2',
     achievements: [
       'Experto en Cell Saver Technology',
       'Entrenamiento en Mayo Clinic',
@@ -40,7 +40,7 @@ const teamMembers = [
     specialty: 'Hematología Transfusional',
     experience: '18+ años',
     education: 'MD - Universidad Central del Caribe, Fellowship en Hematología',
-    image: '/Dra. Carmen Rivera.jpeg',
+    image: '/Dra. Carmen Rivera.png',
     achievements: [
       'Especialista en Medicina Transfusional',
       'Directora de Banco de Sangre (8 años)',
@@ -118,54 +118,61 @@ export const MedicalTeamSection = () => {
         {/* Team Members */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {teamMembers.map((member, index) => (
-            <motion.div
-              key={member.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col"
-            >
-              {/* Profile Image */}
-              <div className="h-64 bg-gray-200 overflow-hidden">
+            <div key={member.id} className="flex flex-col">
+              {/* Profile Image - Top Box */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-transparent overflow-hidden h-96 mb-0"
+              >
                 <img 
                   src={member.image} 
                   alt={member.name}
                   className="w-full h-full object-cover object-center"
                 />
-              </div>
+              </motion.div>
 
-              {/* Profile Info */}
-              <div className="p-8 flex-1 flex flex-col">
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold text-[#00217a] mb-2">{member.name}</h3>
-                  <p className="text-[#d2232a] font-semibold mb-1">{member.role}</p>
-                  <p className="text-gray-600 text-sm">{member.specialty}</p>
-                </div>
-
-                {/* Experience */}
-                <div className="mb-6">
-                  <div className="flex items-center mb-2">
-                    <Award className="w-5 h-5 text-[#d2232a] mr-2" />
-                    <span className="font-semibold text-[#00217a]">Experiencia: {member.experience}</span>
+              {/* Profile Info - Bottom Box */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 + 0.1 }}
+                className="bg-white rounded-t-none rounded-b-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 flex flex-col"
+              >
+                <div className="p-8 flex-1 flex flex-col">
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold text-[#00217a] mb-2">{member.name}</h3>
+                    <p className="text-[#d2232a] font-semibold mb-1">{member.role}</p>
+                    <p className="text-gray-600 text-sm">{member.specialty}</p>
                   </div>
-                  <p className="text-gray-600 text-sm">{member.education}</p>
-                </div>
 
-                {/* Achievements */}
-                <div className="mb-8">
-                  <h4 className="font-semibold text-[#00217a] mb-3">Logros Destacados:</h4>
-                  <ul className="space-y-2">
-                    {member.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start">
-                        <div className="w-2 h-2 bg-[#d2232a] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-600 text-sm">{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Experience */}
+                  <div className="mb-6">
+                    <div className="flex items-center mb-2">
+                      <Award className="w-5 h-5 text-[#d2232a] mr-2" />
+                      <span className="font-semibold text-[#00217a]">Experiencia: {member.experience}</span>
+                    </div>
+                    <p className="text-gray-600 text-sm">{member.education}</p>
+                  </div>
+
+                  {/* Achievements */}
+                  <div className="mb-8">
+                    <h4 className="font-semibold text-[#00217a] mb-3">Logros Destacados:</h4>
+                    <ul className="space-y-2">
+                      {member.achievements.map((achievement, i) => (
+                        <li key={i} className="flex items-start">
+                          <div className="w-2 h-2 bg-[#d2232a] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                          <span className="text-gray-600 text-sm">{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           ))}
         </div>
 
