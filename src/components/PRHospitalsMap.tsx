@@ -130,6 +130,18 @@ export default function PRHospitalsMap({
 
       if (!mapRef.current) return;
 
+      // Clean up existing map instance if it exists
+      if (mapInstance.current) {
+        mapInstance.current.remove();
+        mapInstance.current = null;
+      }
+
+      // Check if the container already has a map and clear it
+      const container = mapRef.current;
+      if ((container as any)._leaflet_id) {
+        (container as any)._leaflet_id = null;
+      }
+
       const map = L.map(mapRef.current);
       mapInstance.current = map;
 
@@ -257,6 +269,8 @@ export default function PRHospitalsMap({
 
   // Utilitario: pulso en latlng
   async function spawnPulse(latlng: { lat: number; lng: number }, color: string, ring: string, ms: number) {
+    if (!mapInstance.current) return;
+    
     const leaflet = await import('leaflet');
     const L = leaflet;
     const html = `<div class="pulse" style="--pulse-duration:${ms}ms; --pulse-color:${color}; --ring-color:${ring};"></div>`;
