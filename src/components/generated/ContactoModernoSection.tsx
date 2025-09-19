@@ -21,8 +21,18 @@ export const ContactoModernoSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement form submission logic
+    // Validation
+    if (!formData.name || !formData.email || !formData.message) {
+      alert('Por favor completa todos los campos');
+      return;
+    }
+    
+    // Show success message
+    alert('Mensaje enviado exitosamente. Nos pondremos en contacto contigo pronto.');
     console.log('Form submitted:', formData);
+    
+    // Reset form
+    handleReset();
   };
 
   const handleReset = () => {
@@ -182,7 +192,7 @@ export const ContactoModernoSection = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="flex-1 flex flex-direction-column">
+            <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
               <div className="flex flex-col gap-8 mb-10 flex-1">
                 {/* Name Input */}
                 <div className="relative">
@@ -197,7 +207,7 @@ export const ContactoModernoSection = () => {
                     onChange={handleInputChange}
                     placeholder="Tu nombre completo"
                     required
-                    className="w-full py-4 border-0 border-b border-gray-200 bg-transparent text-base outline-none transition-all duration-300 focus:border-blue-600 placeholder:text-gray-400"
+                    className="w-full py-3 px-4 border border-gray-300 rounded-lg bg-white text-base outline-none transition-all duration-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 placeholder:text-gray-400"
                   />
                 </div>
 
@@ -214,7 +224,7 @@ export const ContactoModernoSection = () => {
                     onChange={handleInputChange}
                     placeholder="tu@email.com"
                     required
-                    className="w-full py-4 border-0 border-b border-gray-200 bg-transparent text-base outline-none transition-all duration-300 focus:border-blue-600 placeholder:text-gray-400"
+                    className="w-full py-3 px-4 border border-gray-300 rounded-lg bg-white text-base outline-none transition-all duration-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 placeholder:text-gray-400"
                   />
                 </div>
 
@@ -231,7 +241,7 @@ export const ContactoModernoSection = () => {
                     placeholder="¿En qué podemos ayudarte?"
                     required
                     rows={5}
-                    className="w-full py-4 border-0 border-b border-gray-200 bg-transparent text-base outline-none transition-all duration-300 focus:border-blue-600 placeholder:text-gray-400 resize-none min-h-[140px]"
+                    className="w-full py-3 px-4 border border-gray-300 rounded-lg bg-white text-base outline-none transition-all duration-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 placeholder:text-gray-400 resize-none min-h-[140px]"
                   />
                 </div>
               </div>

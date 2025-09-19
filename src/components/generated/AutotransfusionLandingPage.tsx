@@ -11,7 +11,6 @@ import { ContactoNuevoSection } from './ContactoNuevoSection';
 import { TestimonialsSection } from './TestimonialsSection';
 import { FAQSection } from './FAQSection';
 import { ContactoModernoSection } from './ContactoModernoSection';
-import { MedicalTeamSection } from './MedicalTeamSection';
 import { CertificationsSection } from './CertificationsSection';
 import { StatisticsSection } from './StatisticsSection';
 import { ResourcesSection } from './ResourcesSection';
@@ -164,7 +163,6 @@ export const AutotransfusionLandingPage = () => {
       <ServiciosSection />
       {/* <ContactoNuevoSection /> */}
       {/* <TestimonialsSection /> */}
-      <MedicalTeamSection />
       
       <FAQSection />
       <ContactoModernoSection />
