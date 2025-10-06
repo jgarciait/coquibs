@@ -120,7 +120,7 @@ export function MoveProvider({ children }: { children: React.ReactNode }) {
 
       setPendingMove(null);
     }
-  }, [pendingMove]);
+  }, [pendingMove, containerInfo]);
 
   useEffect(() => {
     if (pendingUndoMove && typeof window !== 'undefined') {

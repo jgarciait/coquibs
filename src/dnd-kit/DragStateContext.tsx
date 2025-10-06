@@ -21,16 +21,8 @@ export function DragStateProvider({ children }: { children: React.ReactNode }) {
 
   const { containerInfo, nodeRegistry } = useMoves();
 
-  useEffect(() => {
-    if (!activeItem) {
-      setDropZoneStatuses(new Map());
-      return;
-    }
 
-    calculateValidDropZones(activeItem.id);
-  }, [activeItem]);
-
-  const calculateValidDropZones = (draggedItemId: string) => {
+  const calculateValidDropZones = useCallback((draggedItemId: string) => {
     const newStatuses = new Map<string, DropZoneStatus>();
 
     Object.keys(containerInfo).forEach(containerId => {
@@ -39,7 +31,17 @@ export function DragStateProvider({ children }: { children: React.ReactNode }) {
     });
 
     setDropZoneStatuses(newStatuses);
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [containerInfo]);
+
+  useEffect(() => {
+    if (!activeItem) {
+      setDropZoneStatuses(new Map());
+      return;
+    }
+
+    calculateValidDropZones(activeItem.id);
+  }, [activeItem, calculateValidDropZones]);
 
   const evaluateDropZone = (draggedItemId: string, targetContainerId: string): DropZoneStatus => {
     const draggedComponent = IdGenerator.parseId(draggedItemId);
