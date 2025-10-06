@@ -331,12 +331,12 @@ ${useApple ?
   };
 
   return (
-    <div className={`grid gap-0 h-[calc(55vh-4rem)] ${className ?? ''}`} style={{ gridTemplateColumns: '750px 1fr' }}>
+    <div className={`grid gap-0 h-[calc(55vh-4rem)] ${className ?? ''}`} style={{ gridTemplateColumns: '630px 1fr' }}>
       {/* Lista estilo screenshot */}
       <aside className="h-full border-r border-gray-200 bg-white text-[#0a1630] pl-4 -mr-12 py-4">
         <h2 className="text-3xl font-extrabold tracking-tight mb-8">{title}</h2>
 
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-1. gap-y-4">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-0.5 gap-y-4">
           {hospitals.map((h, i) => (
             <li
               key={i}

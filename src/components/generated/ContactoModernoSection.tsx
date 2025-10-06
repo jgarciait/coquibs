@@ -29,7 +29,7 @@ export const ContactoModernoSection = () => {
     
     // Show success message
     alert('Mensaje enviado exitosamente. Nos pondremos en contacto contigo pronto.');
-    console.log('Form submitted:', formData);
+    
     
     // Reset form
     handleReset();

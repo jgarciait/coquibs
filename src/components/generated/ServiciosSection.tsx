@@ -119,7 +119,7 @@ export const ServiciosSection = () => {
 
   return (
     <section id="servicios" className="bg-white py-20 lg:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
         {/* Recommended Surgery Cases Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -157,8 +157,8 @@ export const ServiciosSection = () => {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   className="w-full lg:order-2" // Show first on mobile, second on desktop
                 >
-                  <div className="relative bg-white/40 backdrop-blur-sm rounded-2xl lg:rounded-3xl border border-white/30 overflow-hidden shadow-xl">
-                    <div className="aspect-video lg:aspect-square relative">
+                  <div className="relative bg-white/40 backdrop-blur-sm rounded-2xl lg:rounded-3xl border border-white/30 overflow-hidden shadow-xl" style={{ transform: 'scale(1.06)' }}>
+                    <div className="aspect-square relative">
                       {!imageError ? (
                         <>
                           <img 
@@ -166,7 +166,7 @@ export const ServiciosSection = () => {
                             alt="Equipo médico realizando cirugía con tecnología de autotransfusión"
                             className="w-full h-full object-cover"
                             onError={handleImageError}
-                            onLoad={() => console.log('Image loaded successfully:', currentImageSrc)}
+                         
                           />
                           {/* Overlay for better text contrast and integration */}
                           <div className="absolute inset-0 bg-gradient-to-t from-[#00217a]/20 via-transparent to-transparent pointer-events-none"></div>
@@ -385,8 +385,9 @@ export const ServiciosSection = () => {
                 Servicios:
               </h2>
               <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-                Instituciones hospitalarias donde tenemos privilegios para dar servicio y nombres de médicos especialistas que nos refieren casos. 
-                <br />Haz clic en cualquier hospital para ver más detalles.
+                Instituciones hospitalarias donde tenemos privilegios para dar servicio y nombres de <br />médicos especialistas que nos refieren casos. 
+                <br /><br />
+                <strong>Haz clic en cualquier hospital para ver más detalles.</strong>
               </p>
             </motion.div>
             
