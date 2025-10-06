@@ -5,9 +5,6 @@ const nextConfig = {
       '@': './src',
     },
   },
-  experimental: {
-    esmExternals: 'loose',
-  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {

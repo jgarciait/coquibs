@@ -13,7 +13,9 @@ if (injectedContainer === 'centered' || injectedContainer === 'none') {
   container = injectedContainer;
 }
 
-export default {
+const themeConfig = {
   theme,
   container,
 };
+
+export default themeConfig;

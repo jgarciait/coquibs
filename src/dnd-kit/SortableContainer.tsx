@@ -190,16 +190,20 @@ export const SortableContainer = memo(
       });
 
       useLayoutEffect(() => {
+        const dataMagicpathPath = props['data-magicpath-path'];
+        const dataMagicpathId = props['data-magicpath-id'];
+        const dndKitId = props['dndKitId'];
+        
         const containerInfo: ContainerInfo = {
-          dataMagicpathPath: props['data-magicpath-path'],
-          dataMagicpathId: props['data-magicpath-id'],
-          dndKitId: props['dndKitId'],
+          dataMagicpathPath,
+          dataMagicpathId,
+          dndKitId,
           type: containerType,
           parentId,
         };
 
         registerContainer(containerId, containerInfo);
-      }, [containerId, parentId]);
+      }, [containerId, parentId, containerType, registerContainer, props]);
 
       useLayoutEffect(() => {
         if (!containerRef.current) return;
@@ -261,7 +265,7 @@ export const SortableContainer = memo(
         });
 
         return processed;
-      }, [containerType, children]);
+      }, [props, containerType, children]);
 
       useEffect(() => {
         processedChildren.forEach((child, index) => {
@@ -292,7 +296,7 @@ export const SortableContainer = memo(
 
           registerItem(child.id, containerId, child.node, itemInfo, index);
         });
-      }, [processedChildren, containerId, containerType]);
+      }, [processedChildren, containerId, containerType, getItem, nodeRegistry.itemNodes, registerItem]);
 
       const refs: Array<Ref<unknown>> = [forwardedRef, containerRef, setNodeRef];
 
@@ -330,7 +334,7 @@ export const SortableContainer = memo(
             />
           );
         });
-      }, [childIds, containerId, isEditMode, insertionIndex, getItem]);
+      }, [childIds, containerId, isEditMode, insertionIndex, getItem, sortingStrategy]);
 
       const renderContainer = useCallback(
         (content: React.ReactNode) => {
@@ -360,7 +364,7 @@ export const SortableContainer = memo(
             </ParentIdContext.Provider>
           );
         },
-        [childIds, containerId, sortingStrategy, parentId, props.style, activeItem]
+        [childIds, containerId, sortingStrategy, isEditMode, listeners, prevTag, props, ref]
       );
 
       if (!isEditMode) {

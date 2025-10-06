@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Activity, Heart, Zap, Bone, Users } from 'lucide-react';
 import PRHospitalsMap from '../PRHospitalsMap';
+import Image from 'next/image';
 
 // Surgery specialties data
 const surgerySpecialties = [
@@ -146,10 +147,10 @@ export const ServiciosSection = () => {
                 </p>
               </motion.div>
 
-              {/* Two Column Layout: Content Left, Image Right */}
+              {/* Two Column Layout: Content Left, img Right */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
                 
-                {/* Right Column - Surgery Image (Mobile First) */}
+                {/* Right Column - Surgery img (Mobile First) */}
                 <motion.div
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -161,10 +162,12 @@ export const ServiciosSection = () => {
                     <div className="aspect-square relative">
                       {!imageError ? (
                         <>
-                          <img 
+                          <Image 
                             src={currentImageSrc}
                             alt="Equipo médico realizando cirugía con tecnología de autotransfusión"
                             className="w-full h-full object-cover"
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             onError={handleImageError}
                          
                           />
@@ -457,10 +460,12 @@ export const ServiciosSection = () => {
                 key={`first-${provider.name}-${index}`}
                 className="flex-shrink-0 px-12 py-8 flex flex-col items-center justify-end h-48"
               >
-                <img
+                <Image
                   src={provider.logo}
                   alt={provider.alt}
                   className="h-16 object-contain mb-4"
+                  width={120}
+                  height={64}
                 />
                 <div className="text-center text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
@@ -528,10 +533,12 @@ export const ServiciosSection = () => {
                     <div className="h-6"></div>
                   )}
                 </div>
-                <img
+                <Image
                   src={provider.logo}
                   alt={provider.alt}
                   className="h-16 object-contain mb-4"
+                  width={120}
+                  height={64}
                 />
               </div>
             ))}
@@ -570,10 +577,12 @@ export const ServiciosSection = () => {
                     <div className="h-6"></div>
                   )}
                 </div>
-                <img
+                <Image
                   src={provider.logo}
                   alt={provider.alt}
                   className="h-16 object-contain mb-4"
+                  width={120}
+                  height={64}
                 />
               </div>
             ))}

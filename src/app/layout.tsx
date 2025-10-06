@@ -2,9 +2,16 @@
 
 import { StrictMode, useEffect } from 'react';
 import Script from 'next/script';
+import { Poppins } from 'next/font/google';
 import '../index.css';
 import ScrollToTopButton from '../components/generated/ScrollToTopButton';
 import Loader from '../components/ui/Loader';
+
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function RootLayout({
   children,
@@ -40,9 +47,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
         <Script
           src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
           strategy="beforeInteractive"
@@ -52,7 +56,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body suppressHydrationWarning>
+      <body className={poppins.className} suppressHydrationWarning>
         <StrictMode>
           <Loader>
             {children}

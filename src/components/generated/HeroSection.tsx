@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Play, ArrowRight, Heart, Shield, Users, Award, Activity, Droplet, Sun, Moon } from 'lucide-react';
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
+import Image from 'next/image';
 
 const CounterAnimation = ({ value, suffix = '' }: { value: number; suffix?: string }) => {
   const [count, setCount] = React.useState(0);
@@ -60,28 +61,9 @@ const autotransfusionIcons = [{
 // @component: HeroSection
 export const HeroSection = () => {
   const [isVideoLoaded, setIsVideoLoaded] = React.useState(false);
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle('dark');
-  };
 
   // @return
   return <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Theme Toggle Button - Top Right Corner */}
-      <motion.button
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        onClick={toggleDarkMode}
-        className="fixed top-6 right-6 z-[60] p-3 rounded-full bg-gradient-to-b from-white/95 to-white/60 backdrop-blur-md border border-[#ffffff]/100 ring-1 ring-inset ring-white/20 text-[#00217a] hover:text-[#00217a]/80 transition-all duration-300 shadow-lg"
-        style={{boxShadow: '0 2px 6px rgba(0, 0, 0, 0.4)'}}
-        aria-label={isDarkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-      >
-        {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-      </motion.button>
-      
       {/* Background Video */}
       <motion.video
         initial={{ opacity: 0 }}
@@ -159,10 +141,13 @@ export const HeroSection = () => {
         transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
         className="absolute bottom-0 right-0 z-20 hidden lg:block"
       >
-        <img 
+        <Image
           src="/WomanSurgeon.png" 
           alt="Doctora profesional" 
           className="h-screen w-auto object-cover object-bottom"
+          width={400}
+          height={600}
+          priority
         />
       </motion.div>
 

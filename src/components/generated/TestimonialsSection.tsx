@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote, Heart, CheckCircle } from 'lucide-react';
+import Image from 'next/image';
 
 const testimonials = [
   {
@@ -117,10 +118,12 @@ export const TestimonialsSection = () => {
               {/* Author Info */}
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden mr-4">
-                  <img 
+                  <Image
                     src={testimonial.image} 
                     alt={testimonial.name}
                     className="w-full h-full object-cover"
+                    width={48}
+                    height={48}
                   />
                 </div>
                 <div>
