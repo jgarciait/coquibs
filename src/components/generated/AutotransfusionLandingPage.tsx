@@ -14,6 +14,7 @@ import { ContactoModernoSection } from './ContactoModernoSection';
 import { CertificationsSection } from './CertificationsSection';
 import { StatisticsSection } from './StatisticsSection';
 import { ResourcesSection } from './ResourcesSection';
+import { MedicalTeamSection } from './MedicalTeamSection';
 import { Heart, Shield, Users, Award, Phone, Mail, MapPin } from 'lucide-react';
 const benefitsData = [] as any[];
 const proceduresData = [{
@@ -161,6 +162,7 @@ export const AutotransfusionLandingPage = () => {
       
       <HowItWorksSection />
       <ServiciosSection />
+      <MedicalTeamSection />
       {/* <ContactoNuevoSection /> */}
       {/* <TestimonialsSection /> */}
       
