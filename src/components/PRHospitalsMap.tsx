@@ -336,7 +336,7 @@ ${useApple ?
       <aside className="h-full bg-white text-[#0a1630] pl-4 py-4 overflow-y-auto overflow-x-hidden" style={{ width: '750px', minWidth: '750px' }}>
         <h2 className="text-3xl font-extrabold tracking-tight mb-8">{title}</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2" style={{ columnGap: '7rem' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ columnGap: '1 rem' }}>
           <ul className="flex flex-col gap-y-4">
             {hospitals.filter((_, i) => i % 2 === 0).map((h, idx) => {
               const i = idx * 2;
