@@ -331,19 +331,57 @@ ${useApple ?
   };
 
   return (
-    <div className={`grid gap-0 h-[calc(55vh-4rem)] ${className ?? ''}`} style={{ gridTemplateColumns: '630px 1fr' }}>
+    <div className={`flex gap-0 h-[calc(100vh-4rem)] ${className ?? ''}`}>
       {/* Lista estilo screenshot */}
-      <aside className="h-full border-r border-gray-200 bg-white text-[#0a1630] pl-4 -mr-12 py-4">
+      <aside className="h-full bg-white text-[#0a1630] pl-4 py-4 overflow-y-auto overflow-x-hidden" style={{ width: '750px', minWidth: '750px' }}>
         <h2 className="text-3xl font-extrabold tracking-tight mb-8">{title}</h2>
 
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-0.5 gap-y-4">
-          {hospitals.map((h, i) => (
-            <li
-              key={i}
-              onMouseEnter={() => previewMarker(i)}
-              onClick={() => selectMarker(i)}
-              className="group cursor-pointer"
-            >
+        <div className="grid grid-cols-1 md:grid-cols-2" style={{ columnGap: '7rem' }}>
+          <ul className="flex flex-col gap-y-4">
+            {hospitals.filter((_, i) => i % 2 === 0).map((h, idx) => {
+              const i = idx * 2;
+              return (
+                <li
+                  key={i}
+                  onMouseEnter={() => previewMarker(i)}
+                  onClick={() => selectMarker(i)}
+                  className="group cursor-pointer max-w-[280px]"
+                >
+                  <div className="flex items-start gap-1">
+                    {/* Check circular azul */}
+                    <span
+                      className={`mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 ${
+                        activeIdx === i ? 'border-[#0b2a6f] bg-[#0b2a6f]' : 'border-[#0b2a6f] bg-transparent'
+                      }`}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        <path d="M20 6L9 17l-5-5" stroke={activeIdx === i ? '#ffffff' : '#0b2a6f'} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+
+                    <div className="flex flex-col hover:bg-blue-100 rounded-lg px-2 py-1 transition-colors duration-200 inline-block">
+                      <div className={`font-semibold text-lg leading-tight whitespace-nowrap ${activeIdx === i ? 'text-[#0b2a6f]' : 'text-[#0a1630]'}`}>
+                        {h.name}
+                      </div>
+                      <div className="text-sm text-[#7c8aa5]">
+                        {h.municipality}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+          <ul className="flex flex-col gap-y-4 pr-12">
+            {hospitals.filter((_, i) => i % 2 === 1).map((h, idx) => {
+              const i = idx * 2 + 1;
+              return (
+                <li
+                  key={i}
+                  onMouseEnter={() => previewMarker(i)}
+                  onClick={() => selectMarker(i)}
+                  className="group cursor-pointer max-w-[280px]"
+                >
               <div className="flex items-start gap-1">
                 {/* Check circular azul */}
                 <span
@@ -357,21 +395,23 @@ ${useApple ?
                 </span>
 
                 <div className="flex flex-col hover:bg-blue-100 rounded-lg px-2 py-1 transition-colors duration-200 inline-block">
-                  <div className={`font-semibold text-lg leading-tight ${activeIdx === i ? 'text-[#0b2a6f]' : 'text-[#0a1630]'}`}>
+                  <div className={`font-semibold text-lg leading-tight whitespace-nowrap ${activeIdx === i ? 'text-[#0b2a6f]' : 'text-[#0a1630]'}`}>
                     {h.name}
                   </div>
                   <div className="text-sm text-[#7c8aa5]">
                     {h.municipality}
                   </div>
                 </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </aside>
 
       {/* Mapa */}
-      <div ref={mapRef} id="map" className="h-full w-full" />
+      <div ref={mapRef} id="map" style={{ width: '1400px', height: '500px' }} />
 
       {/* CSS global: pulso rojo */}
       <style jsx global>{`

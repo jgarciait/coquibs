@@ -69,7 +69,7 @@ export const Navbar = () => {
           <div className="flex items-center space-x-16">
             {/* Logo and Brand */}
             <div className="flex items-center space-x-3">
-              <Image src="/logo.png" alt="Logo" className="w-[50px] h-[30px] object-contain" width={50} height={30} />
+              <Image src="/logo.png" alt="Logo" className="w-[80px] h-[50px] object-contain" width={80} height={50} />
               <div className="flex flex-col justify-center">
                 <div className="text-3xl font-black text-[#d2232a] mt-4" style={{fontFamily: "'Eurostile', sans-serif", fontStyle: 'oblique', fontWeight: '700', letterSpacing: '0.08em'}}>Coquí Blood Salvage Inc.</div>
                 <div className=" font-bold text-xs text-[#00217a] text-right" style={{fontFamily: "'Eurostile', sans-serif", fontStyle: 'oblique', letterSpacing: '0.2em'}}>CELL-SAVER</div>

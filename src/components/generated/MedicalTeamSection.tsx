@@ -74,7 +74,7 @@ const expertise = [
 
 export const MedicalTeamSection = () => {
   return (
-    <section id="equipo-medico" className="py-20 lg:py-28 bg-gradient-to-b from-slate-50 to-white">
+    <section id="equipo-medico" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -149,20 +149,6 @@ export const MedicalTeamSection = () => {
                     <Award className="w-5 h-5 text-[#d2232a] mr-2 flex-shrink-0" />
                     <span className="font-semibold text-[#00217a] text-sm">Experiencia: {member.experience}</span>
                   </div>
-                  <p className="text-gray-600 text-sm">{member.education}</p>
-                </div>
-
-                {/* Achievements */}
-                <div className="flex-1">
-                  <h4 className="font-semibold text-[#00217a] mb-2">Logros Destacados:</h4>
-                  <ul className="space-y-2">
-                    {member.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start">
-                        <div className="w-2 h-2 bg-[#d2232a] rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <span className="text-gray-600 text-sm">{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </div>
             </motion.div>

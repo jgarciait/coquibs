@@ -230,7 +230,7 @@ export const ServiciosSection = () => {
                         className={`
                           relative px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300
                           ${activeTab === specialty.id 
-                            ? 'bg-[#00217a] text-white shadow-lg ring-2 ring-cyan-300/50' 
+                            ? 'bg-[#00217a] text-white shadow-lg'  
                             : 'bg-white/60 backdrop-blur-sm text-[#00217a] hover:bg-white/80 shadow-sm border border-white/50'
                           }
                         `}
@@ -463,9 +463,9 @@ export const ServiciosSection = () => {
                 <Image
                   src={provider.logo}
                   alt={provider.alt}
-                  className="h-16 object-contain mb-4"
-                  width={120}
-                  height={64}
+                  className={`object-contain mb-4 ${provider.name === 'MAPFRE' ? 'w-80 h-44' : provider.name === 'MCS' ? 'w-48 h-20' : 'w-64 h-32'}`}
+                  width={provider.name === 'MAPFRE' ? 320 : provider.name === 'MCS' ? 192 : 256}
+                  height={provider.name === 'MAPFRE' ? 176 : provider.name === 'MCS' ? 80 : 128}
                 />
                 <div className="text-center text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
@@ -504,16 +504,23 @@ export const ServiciosSection = () => {
                 key={`second-${provider.name}-${index}`}
                 className="flex-shrink-0 px-12 py-8 flex flex-col items-center justify-end h-48"
               >
+                <Image
+                  src={provider.logo}
+                  alt={provider.alt}
+                  className={`object-contain mb-4 ${provider.name === 'MAPFRE' ? 'w-80 h-44' : provider.name === 'MCS' ? 'w-48 h-20' : 'w-64 h-32'}`}
+                  width={provider.name === 'MAPFRE' ? 320 : provider.name === 'MCS' ? 192 : 256}
+                  height={provider.name === 'MAPFRE' ? 176 : provider.name === 'MCS' ? 80 : 128}
+                />
                 <div className="text-center text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
                     <div className="flex space-x-6 justify-center">
-                      <div className="flex items-center justify-center">
+                      <div className="flex items-center justify-start">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
-                        <span>Comercial</span>
+                        <span> Comercial</span>
                       </div>
-                      <div className="flex items-center justify-center">
+                      <div className="flex items-center justify-start">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
-                        <span>Medicare Excel</span>
+                        <span> Medicare Excel</span>
                       </div>
                     </div>
                   )}
@@ -533,13 +540,6 @@ export const ServiciosSection = () => {
                     <div className="h-6"></div>
                   )}
                 </div>
-                <Image
-                  src={provider.logo}
-                  alt={provider.alt}
-                  className="h-16 object-contain mb-4"
-                  width={120}
-                  height={64}
-                />
               </div>
             ))}
             {/* Third set for seamless loop */}
@@ -548,16 +548,23 @@ export const ServiciosSection = () => {
                 key={`third-${provider.name}-${index}`}
                 className="flex-shrink-0 px-12 py-8 flex flex-col items-center justify-end h-48"
               >
+                <Image
+                  src={provider.logo}
+                  alt={provider.alt}
+                  className={`object-contain mb-4 ${provider.name === 'MAPFRE' ? 'w-80 h-44' : provider.name === 'MCS' ? 'w-48 h-20' : 'w-64 h-32'}`}
+                  width={provider.name === 'MAPFRE' ? 320 : provider.name === 'MCS' ? 192 : 256}
+                  height={provider.name === 'MAPFRE' ? 176 : provider.name === 'MCS' ? 80 : 128}
+                />
                 <div className="text-center text-base text-[#233e90] font-bold" style={{ transform: 'translateZ(2px)' }}>
                   {provider.name === 'MAPFRE' && (
                     <div className="flex space-x-6 justify-center">
-                      <div className="flex items-center justify-center">
+                      <div className="flex items-center justify-start">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
-                        <span>Comercial</span>
+                        <span> Comercial</span>
                       </div>
-                      <div className="flex items-center justify-center">
+                      <div className="flex items-center justify-start">
                         <span className="w-1 h-1 bg-[#233e90] rounded-full mr-2"></span>
-                        <span>Medicare Excel</span>
+                        <span> Medicare Excel</span>
                       </div>
                     </div>
                   )}
@@ -577,13 +584,6 @@ export const ServiciosSection = () => {
                     <div className="h-6"></div>
                   )}
                 </div>
-                <Image
-                  src={provider.logo}
-                  alt={provider.alt}
-                  className="h-16 object-contain mb-4"
-                  width={120}
-                  height={64}
-                />
               </div>
             ))}
           </div>

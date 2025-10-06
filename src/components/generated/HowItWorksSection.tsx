@@ -37,7 +37,7 @@ export const HowItWorksSection = () => {
   }, []);
 
   // @return
-  return <section id="como-funciona" className=" lg px-4 bg-gray-50/30 relative overflow-hidden">
+  return <section id="como-funciona" className="lg:pt-28 px-4 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div initial={{
         opacity: 0,

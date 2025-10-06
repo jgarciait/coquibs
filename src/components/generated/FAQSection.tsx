@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, HelpCircle } from 'lucide-react';
+import { HelpCircle } from 'lucide-react';
 
 const faqs = [
   {
@@ -55,8 +55,22 @@ export const FAQSection = () => {
   };
 
   return (
-    <section id="faq" className="py-20 lg:py-28 bg-gradient-to-b from-white to-slate-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      <style jsx global>{`
+        :root {
+          --bg: #f7f9fc;
+          --surface: #ffffff;
+          --text: #0f172a;
+          --muted: #475569;
+          --primary: #2381d2;
+          --primary-50: #e9f2fb;
+          --primary-100: #d9e9fa;
+          --primary-700: #1a5fa8;
+          --line: #e6edf5;
+        }
+      `}</style>
+      <section id="faq" className="py-20 lg:py-28 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -78,7 +92,7 @@ export const FAQSection = () => {
         </motion.div>
 
         {/* FAQ Items */}
-        <div className="space-y-4">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
           {faqs.map((faq, index) => (
             <motion.div
               key={faq.id}
@@ -86,45 +100,64 @@ export const FAQSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
             >
-              <button
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '44px 1fr',
+                  gap: '14px',
+                  alignItems: 'center',
+                  padding: '12px',
+                  border: '1px solid var(--line)',
+                  borderRadius: '14px',
+                  transition: 'transform .2s ease, box-shadow .2s ease, border-color .2s ease',
+                  background: 'radial-gradient(120% 100% at -10% 10%, var(--primary-50), transparent 60%)',
+                  cursor: 'pointer'
+                }}
                 onClick={() => toggleFAQ(faq.id)}
-                className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 focus:outline-none"
               >
-                <h3 className="text-lg font-semibold text-[#00217a] pr-4">
-                  {faq.question}
-                </h3>
-                <div className="flex-shrink-0">
-                  {openFAQ === faq.id ? (
-                    <Minus className="w-6 h-6 text-[#d2232a]" />
-                  ) : (
-                    <Plus className="w-6 h-6 text-[#d2232a]" />
-                  )}
+                <div style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '50%',
+                  display: 'grid',
+                  placeItems: 'center',
+                  background: 'linear-gradient(135deg, #00217a 0%, #2381d2 100%)',
+                  boxShadow: '0 4px 12px rgba(0, 33, 122, 0.3)',
+                  flexShrink: 0
+                }} aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" stroke="#ffffff" strokeWidth="1.6" />
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    <circle cx="12" cy="17" r=".5" fill="#ffffff" />
+                  </svg>
                 </div>
-              </button>
-              
-              <AnimatePresence>
-                {openFAQ === faq.id && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  >
-                    <div className="px-6 pb-4 pt-2 border-t border-gray-100">
-                      <p className="text-gray-700 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                <div>
+                  <div style={{ fontWeight: 700, color: '#00217a', marginBottom: '6px' }}>
+                    {faq.question}
+                  </div>
+                  <AnimatePresence>
+                    {openFAQ === faq.id && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      >
+                        <div style={{ fontSize: '14px', color: 'var(--muted)', marginTop: '2px', lineHeight: '1.6' }}>
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
 
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 };

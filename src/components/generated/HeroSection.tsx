@@ -144,9 +144,10 @@ export const HeroSection = () => {
         <Image
           src="/WomanSurgeon.png" 
           alt="Doctora profesional" 
-          className="h-screen w-auto object-cover object-bottom"
-          width={400}
-          height={600}
+          className="h-screen w-auto object-contain object-bottom"
+          width={1200}
+          height={1800}
+          quality={100}
           priority
         />
       </motion.div>
@@ -199,17 +200,9 @@ export const HeroSection = () => {
               duration: 0.8,
               delay: 0.6
             }} className="text-5xl lg:text-6xl font-bold text-black leading-tight">
-                <span>Autotransfusión</span>
+                <span className="text-[#d2232a]">Autotransfusión</span>
                 <div className="relative inline-block">
-                  <span className="text-[#d2232a]">Segura</span>
-                  <motion.div initial={{
-                  width: 0
-                }} animate={{
-                  width: '100%'
-                }} transition={{
-                  duration: 1,
-                  delay: 1.2
-                }} className="absolute -bottom-2 left-0 h-1 bg-[#d2232a] rounded-full"></motion.div>
+                  <span className="text-black">Segura</span>
                 </div>
                 
                 <span className="text-black"> y Eficaz</span>
@@ -244,16 +237,16 @@ export const HeroSection = () => {
                 whileHover={{
                   scale: 1.05,
                   y: -2,
-                  boxShadow: "0 20px 40px rgba(210, 35, 42, 0.4)"
+                  boxShadow: "0 20px 40px rgba(35, 129, 210, 0.4)"
                 }} 
                 whileTap={{
                   scale: 0.95
                 }} 
                 className="group px-4 py-2.5 text-white rounded-full font-semibold text-lg transition-all duration-500 flex items-center justify-center space-x-2 relative overflow-hidden" 
                 style={{
-                  background: 'linear-gradient(45deg, #d2232a, #b91c1c)',
+                  background: 'linear-gradient(45deg, #2381d2, #1e40af)',
                   boxShadow: '0 10px 25px rgba(0, 0, 0, 0)',
-                  filter: 'drop-shadow(0 10px 15px rgba(210, 35, 42, 0.5))'
+                  filter: 'drop-shadow(0 10px 15px rgba(35, 129, 210, 0.5))'
                 }}
               >
                 <span className="relative z-10">Conocer Más</span>
@@ -266,7 +259,7 @@ export const HeroSection = () => {
                 <div 
                   className="absolute inset-0 rounded-full blur-[15px] -z-10"
                   style={{
-                    background: 'linear-gradient(45deg, #d2232a, #b91c1c)',
+                    background: 'linear-gradient(45deg, #2381d2, #1e40af)',
                     opacity: 0.5,
                     top: '10px'
                   }}
@@ -282,7 +275,7 @@ export const HeroSection = () => {
                 whileTap={{
                   scale: 0.95
                 }} 
-                className="group px-4 py-2.5 text-white rounded-full font-semibold text-lg transition-all duration-500 flex items-center justify-center space-x-2 relative overflow-hidden" 
+                className="group px-4 py-2.5 text-white rounded-full font-semibold text-lg transition-all duration-500 flex items-center justify-center space-x-2 relative overflow-hidden hidden" 
                 style={{
                   background: 'linear-gradient(45deg, #2381d2, #1e40af)',
                   boxShadow: '0 10px 25px rgba(0, 0, 0, 0)',
