@@ -52,4 +52,4 @@ export default tseslint.config({
   },
 });
 ```
-v.1
+v.2
