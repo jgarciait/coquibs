@@ -16,9 +16,12 @@ export const Navbar = () => {
   const [activeLink, setActiveLink] = React.useState('#que-es');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [isDarkMode, setIsDarkMode] = React.useState(false);
+  const isScrollingRef = React.useRef(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
+      if (isScrollingRef.current) return;
+      
       const sections = ['que-es', 'beneficios', 'servicios', 'contacto'];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
       
@@ -46,15 +49,23 @@ export const Navbar = () => {
   const handleLinkClick = (href: string) => {
     setActiveLink(href);
     setIsMobileMenuOpen(false);
+    isScrollingRef.current = true;
+    
     if (typeof document !== 'undefined') {
       const element = document.querySelector(href);
       if (element) {
         const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - 120;
+        const elementHeight = element.getBoundingClientRect().height;
+        const windowHeight = window.innerHeight;
+        const offsetPosition = elementPosition + window.pageYOffset - (windowHeight / 2) + (elementHeight / 2);
         window.scrollTo({
           top: offsetPosition,
           behavior: 'smooth'
         });
+        
+        setTimeout(() => {
+          isScrollingRef.current = false;
+        }, 1000);
       }
     }
   };
@@ -84,23 +95,18 @@ export const Navbar = () => {
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-8 ml-20">
               {navLinks.map(link => (
-                <motion.a
+                <a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
                     handleLinkClick(link.href);
                   }}
-                  whileHover={{
-                    scale: 1.05
-                  }}
-                  transition={{ duration: 0.2 }}
                   className="text-[#00217a] hover:text-[#00217a]/80 transition-all duration-200 px-3 py-2 font-medium tracking-wide relative group"
                 >
                   <span className="relative z-10">{link.label}</span>
-                  {activeLink === link.href && <motion.div className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#d2232a]" layoutId="activeNavbar" transition={{ type: "spring", stiffness: 380, damping: 30 }} />}
-                  <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#d2232a] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
-                </motion.a>
+                  {activeLink === link.href && <div className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#d2232a]" />}
+                </a>
               ))}
             </div>
 
@@ -155,22 +161,17 @@ export const Navbar = () => {
               >
                 <div className="pt-4 pb-2 space-y-2">
                   {navLinks.map(link => (
-                    <motion.a
+                    <a
                       key={link.href}
                       href={link.href}
                       onClick={(e) => {
                         e.preventDefault();
                         handleLinkClick(link.href);
                       }}
-                      whileHover={{
-                        x: 4,
-                        scale: 1.05
-                      }}
                       className="block px-4 py-3 text-[#00217a] hover:text-[#00217a]/80 rounded-lg transition-all duration-300 focus:outline-none tracking-wide font-medium relative group"
                     >
                       <span className="relative z-10">{link.label}</span>
-                      <div className="absolute bottom-1 left-4 right-4 h-0.5 bg-[#d2232a] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
-                    </motion.a>
+                    </a>
                   ))}
                 </div>
               </motion.div>
