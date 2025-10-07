@@ -55,14 +55,24 @@ export const ContactoModernoSection = () => {
         }
       `}</style>
 
-      <div style={{
-        background: '#ffffff',
-        fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial',
-        color: 'var(--text)',
-        WebkitFontSmoothing: 'antialiased',
-        MozOsxFontSmoothing: 'grayscale',
-        lineHeight: 1.45
-      }}>
+      <div className="min-h-screen w-full relative">
+        {/* Radial Gradient Background from Top */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: "radial-gradient(125% 125% at 50% 10%, #fff 40%, #64748b 100%)",
+          }}
+        />
+        {/* Content */}
+        <div style={{
+          position: 'relative',
+          zIndex: 1,
+          fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial',
+          color: 'var(--text)',
+          WebkitFontSmoothing: 'antialiased',
+          MozOsxFontSmoothing: 'grayscale',
+          lineHeight: 1.45
+        }}>
         {/* Tabs */}
         <nav style={{ display: 'flex', justifyContent: 'center', margin: '8px auto 18px', maxWidth: 'min(1120px, 95vw)' }} aria-label="Quick actions">
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center', padding: '8px', borderRadius: '999px', background: '#ffffff', border: '1px solid var(--line)', boxShadow: 'var(--shadow)' }}>
@@ -623,6 +633,7 @@ export const ContactoModernoSection = () => {
               </form>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>

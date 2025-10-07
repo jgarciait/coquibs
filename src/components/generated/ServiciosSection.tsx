@@ -130,7 +130,7 @@ export const ServiciosSection = () => {
           className="mb-24"
         >
           {/* Full-width section with gradient background */}
-          <div className="-mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-b from-slate-50/50 via-blue-50/30 to-white">
+          <div className="-mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16">
             <div className="max-w-7xl mx-auto">
               {/* Section Header */}
               <motion.div
