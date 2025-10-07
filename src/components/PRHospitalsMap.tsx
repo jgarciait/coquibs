@@ -348,7 +348,6 @@ ${useApple ?
       {/* Lista estilo screenshot */}
       <aside className="h-full bg-white text-[#0a1630] pl-4 pt-4 pb-2 flex-grow flex-shrink-0" style={{ minWidth: 'fit-content', flex: '1.5' }}>
         <h2 className="text-3xl font-extrabold tracking-tight mb-8">{title}</h2>
-
         <div className="flex flex-col md:flex-row" style={{ }}>
           <ul className="flex flex-col gap-y-4 flex-1 ">
             {hospitals.filter((_, i) => i % 2 === 0).map((h, idx) => {
