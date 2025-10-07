@@ -330,14 +330,27 @@ ${useApple ?
     await spawnPulse(latlng, pulseColor!, ringColor!, durationMs!);
   };
 
+  // Reset map to original view
+  const resetMap = () => {
+    setActiveIdx(null);
+    if (!mapInstance.current) return;
+    const { minLat, maxLat, minLon, maxLon } = boundsData;
+    const leaflet = require('leaflet');
+    const L = leaflet.default || leaflet;
+    const bounds = L.latLngBounds(L.latLng(minLat, minLon), L.latLng(maxLat, maxLon));
+    mapInstance.current.fitBounds(bounds.pad(0.2), { duration: 0.8 });
+    // Close any open popups
+    markersRef.current.forEach(marker => marker.closePopup());
+  };
+
   return (
-    <div className={`flex gap-0 h-[calc(60vh-2rem)] ${className ?? ''}`}>
+    <div className={`flex gap-0 ${className ?? ''}`}>
       {/* Lista estilo screenshot */}
-      <aside className="h-full bg-white text-[#0a1630] pl-4 pt-4 pb-2 overflow-y-auto overflow-x-hidden" style={{ width: '750px', minWidth: '750px' }}>
+      <aside className="h-full bg-white text-[#0a1630] pl-4 pt-4 pb-2 flex-shrink flex-grow-0" style={{ minWidth: 'fit-content' }}>
         <h2 className="text-3xl font-extrabold tracking-tight mb-8">{title}</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2" style={{ columnGap: '1 rem' }}>
-          <ul className="flex flex-col gap-y-4">
+        <div className="flex flex-col md:flex-row gap-8" style={{ }}>
+          <ul className="flex flex-col gap-y-4 flex-1">
             {hospitals.filter((_, i) => i % 2 === 0).map((h, idx) => {
               const i = idx * 2;
               return (
@@ -360,7 +373,7 @@ ${useApple ?
                     </span>
 
                     <div className="flex flex-col hover:bg-blue-100 rounded-lg px-2 py-1 transition-colors duration-200 inline-block">
-                      <div className={`font-semibold text-lg leading-tight whitespace-nowrap ${activeIdx === i ? 'text-[#0b2a6f]' : 'text-[#0a1630]'}`}>
+                      <div className={`font-semibold text-md leading-tight ${activeIdx === i ? 'text-[#0b2a6f]' : 'text-[#0a1630]'}`}>
                         {h.name}
                       </div>
                       <div className="text-sm text-[#7c8aa5]">
@@ -372,7 +385,7 @@ ${useApple ?
               );
             })}
           </ul>
-          <ul className="flex flex-col gap-y-4 pr-12">
+          <ul className="flex flex-col gap-y-4 flex-1">
             {hospitals.filter((_, i) => i % 2 === 1).map((h, idx) => {
               const i = idx * 2 + 1;
               return (
@@ -395,7 +408,7 @@ ${useApple ?
                 </span>
 
                 <div className="flex flex-col hover:bg-blue-100 rounded-lg px-2 py-1 transition-colors duration-200 inline-block">
-                  <div className={`font-semibold text-lg leading-tight whitespace-nowrap ${activeIdx === i ? 'text-[#0b2a6f]' : 'text-[#0a1630]'}`}>
+                  <div className={`font-semibold text-md leading-tight whitespace-nowrap ${activeIdx === i ? 'text-[#0b2a6f]' : 'text-[#0a1630]'}`}>
                     {h.name}
                   </div>
                   <div className="text-sm text-[#7c8aa5]">
@@ -411,7 +424,16 @@ ${useApple ?
       </aside>
 
       {/* Mapa */}
-      <div ref={mapRef} id="map" style={{ width: '1400px', height: '500px' }} />
+      <div ref={mapRef} id="map" className="flex-1 min-w-0" style={{ height: 'auto' }} />
+
+      {/* Full page backdrop overlay when hospital is selected */}
+      {activeIdx !== null && (
+        <div 
+          className="fixed inset-0 bg-transparent cursor-pointer"
+          onClick={resetMap}
+          style={{ zIndex: 99999, pointerEvents: 'auto' }}
+        />
+      )}
 
       {/* CSS global: pulso rojo */}
       <style jsx global>{`

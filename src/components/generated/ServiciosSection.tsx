@@ -413,7 +413,7 @@ export const ServiciosSection = () => {
               whileInView={{ opacity: 1, scale: 0.95 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-2xl overflow-hidden"
+              className=""
             >
               <PRHospitalsMap
                 title="Hospitales Afiliados"
