@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Shield, Droplets, Activity } from 'lucide-react';
+import { Activity } from 'lucide-react';
+import Image from 'next/image';
 
 // @component: AutotransfusionIntroSection
 export const AutotransfusionIntroSection = () => {
@@ -37,7 +38,7 @@ export const AutotransfusionIntroSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
           {/* Left Image Placeholder */}
           <motion.div initial={{
           opacity: 0,
@@ -50,60 +51,14 @@ export const AutotransfusionIntroSection = () => {
         }} transition={{
           duration: 0.8
         }} className="relative">
-            <div className="relative bg-white border-2 border-[#d2232a]/20 rounded-3xl p-8 shadow-xl">
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl min-h-[400px] flex items-center justify-center">
-                <div className="text-center space-y-6">
-                  <motion.div animate={{
-                  scale: [1, 1.1, 1],
-                  rotate: [0, 5, -5, 0]
-                }} transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }} className="w-24 h-24 mx-auto bg-[#d2232a]/10 backdrop-blur-sm border border-[#d2232a]/30 rounded-full flex items-center justify-center">
-                    <Droplets className="w-12 h-12 text-[#d2232a]" />
-                  </motion.div>
-                  <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-gray-800">
-                      <span>Proceso de Autotransfusión</span>
-                    </h3>
-                    <p className="text-gray-600">
-                      <span>Recolección y procesamiento</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Medical Icons */}
-              <motion.div initial={{
-              opacity: 0,
-              scale: 0
-            }} whileInView={{
-              opacity: 1,
-              scale: 1
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.5,
-              duration: 0.5
-            }} className="absolute -top-4 -right-4 bg-white border border-[#2381d2]/20 rounded-full p-3 shadow-lg">
-                <Heart className="w-6 h-6 text-[#2381d2]" />
-              </motion.div>
-
-              <motion.div initial={{
-              opacity: 0,
-              scale: 0
-            }} whileInView={{
-              opacity: 1,
-              scale: 1
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.7,
-              duration: 0.5
-            }} className="absolute -bottom-4 -left-4 bg-white border border-[#233e90]/20 rounded-full p-3 shadow-lg">
-                <Shield className="w-6 h-6 text-[#233e90]" />
-              </motion.div>
+            <div className="relative rounded-3xl min-h-[400px] overflow-hidden bg-white">
+              <Image 
+                src="/Image.png"
+                alt="Tecnología Médica Avanzada"
+                className="w-full h-full object-contain"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
             </div>
           </motion.div>
 
