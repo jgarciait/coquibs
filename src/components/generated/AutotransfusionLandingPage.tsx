@@ -94,7 +94,7 @@ export const AutotransfusionLandingPage = () => {
             </div>
 
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#233e90]">
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#233e90] py-6">
                 Beneficios de la autotransfusión
               </h2>
               <p className="mt-4 text-lg text-slate-600">
@@ -102,54 +102,75 @@ export const AutotransfusionLandingPage = () => {
               </p>
             </div>
 
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+            <div className="mt-10 grid gap-1 sm:grid-cols-2 lg:grid-cols-3 items-stretch justify-items-center">
               {/* Card 1 */}
-              <div className="group rounded-2xl bg-white p-6 flex items-start gap-4 h-full">
-                <div className="inline-flex h-14 w-14 items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="h-10 w-10" aria-hidden="true">
+              <div className="group flex items-start gap-3 h-full" style={{
+                padding: '18px 14px',
+                border: '1px solid #e6edf5',
+                borderRadius: '14px',
+                background: 'radial-gradient(120% 100% at -10% 10%, #e9f2fb 0%, rgba(233,242,251,0) 60%)',
+                transition: 'transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease',
+                maxWidth: '310px'
+              }}>
+                <div className="inline-flex h-10 w-10 items-center justify-center flex-shrink-0">
+                  <svg viewBox="0 0 24 24" className="h-8 w-8" aria-hidden="true">
                     <path d="M12 2C8 6 6 9 6 12a6 6 0 0 0 12 0c0-3-2-6-6-10z" fill="#2381d2"/>
                   </svg>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-slate-900">
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold text-slate-900">
                     Menor riesgo de infecciones
                   </h3>
-                  <p className="mt-2 text-slate-600">
+                  <p className="mt-1 text-sm text-slate-600">
                     Evita enfermedades asociadas a transfusiones de donantes como VIH, Hepatitis B y C, entre otras.
                   </p>
                 </div>
               </div>
 
               {/* Card 2 */}
-              <div className="group rounded-2xl bg-white p-6 flex items-start gap-4 h-full">
-                <div className="inline-flex h-14 w-14 items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="h-10 w-10" aria-hidden="true">
+              <div className="group flex items-start gap-3 h-full" style={{
+                padding: '18px 14px',
+                border: '1px solid #e6edf5',
+                borderRadius: '14px',
+                background: 'radial-gradient(120% 100% at -10% 10%, #e9f2fb 0%, rgba(233,242,251,0) 60%)',
+                transition: 'transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease',
+                maxWidth: '310px'
+              }}>
+                <div className="inline-flex h-10 w-10 items-center justify-center flex-shrink-0">
+                  <svg viewBox="0 0 24 24" className="h-8 w-8" aria-hidden="true">
                     <path d="M12 4a8 8 0 1 1-8 8" fill="none" stroke="#2381d2" strokeWidth="2"/>
                     <path d="M7 12a5 5 0 0 0 10 0" fill="none" stroke="#d2232a" strokeWidth="2"/>
                   </svg>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-slate-900">
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold text-slate-900">
                     Menos reacciones inmunológicas
                   </h3>
-                  <p className="mt-2 text-slate-600">
+                  <p className="mt-1 text-sm text-slate-600">
                     Al transfundir tu propia sangre, disminuye la probabilidad de respuestas adversas del sistema inmune.
                   </p>
                 </div>
               </div>
 
               {/* Card 3 */}
-              <div className="group rounded-2xl bg-white p-6 flex items-start gap-4 h-full">
-                <div className="inline-flex h-14 w-14 items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 24 24" className="h-10 w-10" aria-hidden="true">
+              <div className="group flex items-start gap-3 h-full" style={{
+                padding: '18px 14px',
+                border: '1px solid #e6edf5',
+                borderRadius: '14px',
+                background: 'radial-gradient(120% 100% at -10% 10%, #e9f2fb 0%, rgba(233,242,251,0) 60%)',
+                transition: 'transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease',
+                maxWidth: '310px'
+              }}>
+                <div className="inline-flex h-10 w-10 items-center justify-center flex-shrink-0">
+                  <svg viewBox="0 0 24 24" className="h-8 w-8" aria-hidden="true">
                     <path d="M4 7h16M4 12h10M4 17h16" stroke="#2381d2" strokeWidth="2" fill="none"/>
                   </svg>
                 </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-slate-900">
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold text-slate-900">
                     Mayor disponibilidad para tu cirugía
                   </h3>
-                  <p className="mt-2 text-slate-600">
+                  <p className="mt-1 text-sm text-slate-600">
                     Reduce la necesidad de reprogramar procedimientos por escasez de reservas de sangre.
                   </p>
                 </div>

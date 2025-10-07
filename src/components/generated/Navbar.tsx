@@ -49,7 +49,10 @@ export const Navbar = () => {
     if (typeof document !== 'undefined') {
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - 120;
+        window.scrollTo({
+          top: offsetPosition,
           behavior: 'smooth'
         });
       }

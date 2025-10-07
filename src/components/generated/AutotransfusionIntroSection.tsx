@@ -8,7 +8,7 @@ import Image from 'next/image';
 // @component: AutotransfusionIntroSection
 export const AutotransfusionIntroSection = () => {
   // @return
-  return <section id="que-es" className="lg:pt-28 px-4 bg-white relative overflow-hidden">
+  return <section id="que-es" className="lg:pt-40 px-4 pb-20 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
           {/* Left Image Placeholder */}
@@ -47,21 +47,7 @@ export const AutotransfusionIntroSection = () => {
         }} transition={{
           duration: 0.8,
           delay: 0.2
-        }} className="bg-white border-4 border-[#d2232a] rounded-r-3xl p-8 lg:p-12 shadow-2xl h-[600px] flex flex-col justify-center relative">
-            <motion.div initial={{
-              opacity: 0,
-              scale: 0
-            }} whileInView={{
-              opacity: 1,
-              scale: 1
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.2
-            }} className="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#d2232a] rounded-full flex items-center justify-center shadow-lg">
-              <Activity className="w-8 h-8 text-white" />
-            </motion.div>
-
+        }} className="bg-white rounded-r-3xl p-8 lg:p-12 h-[600px] flex flex-col justify-center relative" style={{ boxShadow: '0 2px 6px rgba(0, 0, 0, 0.4)' }}>
             <div className="space-y-6">
               <motion.div initial={{
               opacity: 0,
@@ -74,9 +60,43 @@ export const AutotransfusionIntroSection = () => {
             }} transition={{
               delay: 0.3
             }}>
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">
+                <div className="flex flex-col items-center mb-8">
+                  <motion.div 
+                    initial={{
+                      opacity: 0,
+                      scale: 0,
+                      rotate: -180,
+                      y: 0
+                    }} 
+                    whileInView={{
+                      opacity: 1,
+                      scale: 1,
+                      rotate: 0
+                    }} 
+                    viewport={{
+                      once: true
+                    }} 
+                    animate={{
+                      y: [0, -10, 0]
+                    }}
+                    transition={{
+                      opacity: { delay: 0.2, duration: 0.6 },
+                      scale: { delay: 0.2, duration: 0.6, type: "spring", stiffness: 200 },
+                      rotate: { delay: 0.2, duration: 0.6 },
+                      y: {
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }
+                    }}
+                    className="w-16 h-16 bg-[#d2232a] rounded-full flex items-center justify-center shadow-lg mb-4"
+                  >
+                    <Activity className="w-8 h-8 text-white" />
+                  </motion.div>
+                </div>
+                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8 text-center flex justify-center items-center flex-wrap">
                   <span>¿Qué es la </span>
-                  <span className="text-[#d2232a] relative">
+                  <span className="text-[#d2232a] relative inline-block">
                     <span>Autotransfusión</span>
                     <motion.div initial={{
                     width: 0
@@ -87,7 +107,7 @@ export const AutotransfusionIntroSection = () => {
                   }} transition={{
                     duration: 1,
                     delay: 0.5
-                  }} className="absolute -bottom-2 left-0 h-1 bg-[#d2232a] rounded-full" />
+                  }} className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-1 bg-[#d2232a] rounded-full" />
                   </span>
                   <span>?</span>
                 </h2>
@@ -103,8 +123,8 @@ export const AutotransfusionIntroSection = () => {
               once: true
             }} transition={{
               delay: 0.6
-            }} className="text-lg text-gray-700 leading-relaxed mb-6">
-                <span>Autotransfusión es un procedimiento donde se utiliza una máquina llamada “cell saver” (salvadora de células) donde se recoge la sangre que el paciente pierde durante la cirugía, se procesa o se “limpia” y se vuelve a introducir al paciente si es necesario.</span>
+            }} className="text-lg text-gray-700 leading-relaxed mb-6 text-center">
+                <span>Autotransfusión es un procedimiento donde se utiliza una máquina llamada "cell saver" (salvadora de células) donde se recoge la sangre que el paciente pierde durante la cirugía, se procesa o se "limpia" y se vuelve a introducir al paciente si es necesario.</span>
               </motion.p>
 
               <motion.p initial={{
@@ -117,7 +137,7 @@ export const AutotransfusionIntroSection = () => {
               once: true
             }} transition={{
               delay: 0.8
-            }} className="text-lg text-gray-700 leading-relaxed mb-8">
+            }} className="text-lg text-gray-700 leading-relaxed mb-8 text-center">
                 <span>Este procedimiento ayuda disminuir el riezgo de contraer enfermedades que suelen ser resultado de transfusiones de sangre en operaciones.</span>
               </motion.p>
 

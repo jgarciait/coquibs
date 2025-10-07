@@ -119,7 +119,7 @@ export const ServiciosSection = () => {
   };
 
   return (
-    <section id="servicios" className="bg-white py-20 lg:py-28">
+    <section id="cirugias-recomendadas" className="bg-white py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
         {/* Recommended Surgery Cases Section */}
         <motion.div
@@ -383,6 +383,7 @@ export const ServiciosSection = () => {
 
         {/* Hospitals Map Section */}
         <motion.div
+          id="servicios"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -442,14 +443,14 @@ export const ServiciosSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mt-24"
+          className="text-center mt-32"
         >
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl lg:text-5xl font-bold mb-2"
+            className="text-4xl lg:text-5xl font-bold mb-8"
           >
             <span style={{ color: '#233e90' }}>Estamos aceptando los siguientes</span>
             <br />
@@ -463,7 +464,7 @@ export const ServiciosSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative mb-8 overflow-hidden"
+          className="relative mb-16 overflow-hidden"
         >
           {/* Scrolling Container */}
           <div className="flex animate-scroll-logos whitespace-nowrap">

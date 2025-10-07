@@ -331,9 +331,9 @@ ${useApple ?
   };
 
   return (
-    <div className={`flex gap-0 h-[calc(100vh-4rem)] ${className ?? ''}`}>
+    <div className={`flex gap-0 h-[calc(60vh-2rem)] ${className ?? ''}`}>
       {/* Lista estilo screenshot */}
-      <aside className="h-full bg-white text-[#0a1630] pl-4 py-4 overflow-y-auto overflow-x-hidden" style={{ width: '750px', minWidth: '750px' }}>
+      <aside className="h-full bg-white text-[#0a1630] pl-4 pt-4 pb-2 overflow-y-auto overflow-x-hidden" style={{ width: '750px', minWidth: '750px' }}>
         <h2 className="text-3xl font-extrabold tracking-tight mb-8">{title}</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2" style={{ columnGap: '1 rem' }}>
