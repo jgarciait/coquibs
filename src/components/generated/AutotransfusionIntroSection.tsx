@@ -23,7 +23,7 @@ export const AutotransfusionIntroSection = () => {
         }} transition={{
           duration: 0.8
         }} className="relative">
-            <div className="relative h-[600px] w-full overflow-hidden rounded-l-3xl bg-white shadow-2xl">
+            <div className="relative h-[600px] w-full overflow-hidden rounded-l-3xl bg-white" style={{ boxShadow: '0 2px 6px rgba(0, 0, 0, 0.4)' }}>
               <Image 
                 src="/Image.png"
                 alt="Tecnología Médica Avanzada"
@@ -94,8 +94,8 @@ export const AutotransfusionIntroSection = () => {
                     <Activity className="w-8 h-8 text-white" />
                   </motion.div>
                 </div>
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8 text-center flex justify-center items-center flex-wrap">
-                  <span>¿Qué es la </span>
+                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8 text-center flex justify-center items-center flex-wrap gap-2">
+                  <span>¿Qué es la</span>
                   <span className="text-[#d2232a] relative inline-block">
                     <span>Autotransfusión</span>
                     <motion.div initial={{

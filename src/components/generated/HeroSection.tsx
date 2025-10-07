@@ -61,11 +61,19 @@ const autotransfusionIcons = [{
 // @component: HeroSection
 export const HeroSection = () => {
   const [isVideoLoaded, setIsVideoLoaded] = React.useState(false);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => console.log('Video play error:', err));
+    }
+  }, []);
 
   // @return
   return <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Video */}
       <motion.video
+        ref={videoRef}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2 }}

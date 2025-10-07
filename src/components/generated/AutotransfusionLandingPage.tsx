@@ -94,7 +94,7 @@ export const AutotransfusionLandingPage = () => {
             </div>
 
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#233e90] py-6">
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#233e90] py-6 mb-8">
                 Beneficios de la autotransfusión
               </h2>
               <p className="mt-4 text-lg text-slate-600">
@@ -102,7 +102,7 @@ export const AutotransfusionLandingPage = () => {
               </p>
             </div>
 
-            <div className="mt-10 grid gap-1 sm:grid-cols-2 lg:grid-cols-3 items-stretch justify-items-center">
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 items-stretch justify-items-center">
               {/* Card 1 */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -115,7 +115,8 @@ export const AutotransfusionLandingPage = () => {
                 borderRadius: '14px',
                 background: 'radial-gradient(120% 100% at -10% 10%, #e9f2fb 0%, rgba(233,242,251,0) 60%)',
                 transition: 'transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease',
-                maxWidth: '310px'
+                maxWidth: '310px',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
               }}>
                 <div className="inline-flex h-10 w-10 items-center justify-center flex-shrink-0">
                   <svg viewBox="0 0 24 24" className="h-8 w-8" aria-hidden="true">
@@ -144,7 +145,8 @@ export const AutotransfusionLandingPage = () => {
                 borderRadius: '14px',
                 background: 'radial-gradient(120% 100% at -10% 10%, #e9f2fb 0%, rgba(233,242,251,0) 60%)',
                 transition: 'transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease',
-                maxWidth: '310px'
+                maxWidth: '310px',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
               }}>
                 <div className="inline-flex h-10 w-10 items-center justify-center flex-shrink-0">
                   <svg viewBox="0 0 24 24" className="h-8 w-8" aria-hidden="true">
@@ -174,7 +176,8 @@ export const AutotransfusionLandingPage = () => {
                 borderRadius: '14px',
                 background: 'radial-gradient(120% 100% at -10% 10%, #e9f2fb 0%, rgba(233,242,251,0) 60%)',
                 transition: 'transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease',
-                maxWidth: '310px'
+                maxWidth: '310px',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
               }}>
                 <div className="inline-flex h-10 w-10 items-center justify-center flex-shrink-0">
                   <svg viewBox="0 0 24 24" className="h-8 w-8" aria-hidden="true">
