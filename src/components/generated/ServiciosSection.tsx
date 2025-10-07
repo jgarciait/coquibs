@@ -130,7 +130,20 @@ export const ServiciosSection = () => {
           className="mb-24"
         >
           {/* Full-width section with gradient background */}
-          <div className="-mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16">
+          <div 
+            className="relative -mx-[50vw] left-1/2 right-1/2 w-screen px-4 sm:px-6 lg:px-8 py-16"
+            style={{
+              background: `radial-gradient(
+                ellipse 90% 50% at 50% 40%,
+                #c7d7ee 0%,
+                #bcd0eb 25%,
+                rgba(199,215,238,0.9) 40%,
+                #eef5fd 55%,
+                #ffffff 70%,
+                #ffffff 100%
+              )`
+            }}
+          >
             <div className="max-w-7xl mx-auto">
               {/* Section Header */}
               <motion.div
@@ -158,8 +171,8 @@ export const ServiciosSection = () => {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   className="w-full lg:order-2" // Show first on mobile, second on desktop
                 >
-                  <div className="relative bg-white/40 backdrop-blur-sm rounded-2xl lg:rounded-3xl border border-white/30 overflow-hidden shadow-xl" style={{ transform: 'scale(1.06)' }}>
-                    <div className="aspect-square relative">
+                  <div className="relative bg-white/40 backdrop-blur-sm rounded-2xl lg:rounded-3xl border border-white/30 overflow-hidden shadow-xl">
+                    <div className="aspect-[5/4] relative">
                       {!imageError ? (
                         <>
                           <Image 
@@ -231,7 +244,7 @@ export const ServiciosSection = () => {
                           relative px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300
                           ${activeTab === specialty.id 
                             ? 'bg-[#00217a] text-white shadow-lg'  
-                            : 'bg-white/60 backdrop-blur-sm text-[#00217a] hover:bg-white/80 shadow-sm border border-white/50'
+                            : 'bg-white text-[#00217a] hover:bg-white/90 shadow-sm border border-white/50'
                           }
                         `}
                       >
@@ -256,7 +269,7 @@ export const ServiciosSection = () => {
                     transition={{ duration: 0.6, delay: 0.6 }}
                     whileHover={{ y: -4 }}
                   >
-                    <div className="bg-white/70 backdrop-blur-md rounded-3xl shadow-xl border border-white/20 p-6 lg:p-8 relative overflow-hidden">
+                    <div className="bg-white rounded-3xl shadow-xl border border-white/20 p-6 lg:p-8 relative overflow-hidden">
                       {/* Subtle inner border effect */}
                       <div className="absolute inset-0 rounded-3xl border border-white/30 pointer-events-none" />
                       
@@ -341,7 +354,7 @@ export const ServiciosSection = () => {
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3, delay: index * 0.1 }}
-                          className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/30"
+                          className="bg-white rounded-2xl p-6 border border-white/30"
                         >
                           <div className="flex items-center space-x-3 mb-4">
                             <div className="w-10 h-10 bg-[#00217a] rounded-full flex items-center justify-center">

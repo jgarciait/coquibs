@@ -6,20 +6,20 @@ import { Menu, X, Home, Heart, Settings, Sun, Moon } from 'lucide-react';
 import Image from 'next/image';
 
 const navLinks = [
-  { href: '#home', label: 'Inicio', hoverColor: 'bg-[#2381d2]/40', icon: Home },
-  { href: '#beneficios-adicionales', label: 'Beneficios', hoverColor: 'bg-[#d2232a]/40', icon: Heart },
+  { href: '#que-es', label: 'Inicio', hoverColor: 'bg-[#2381d2]/40', icon: Home },
+  { href: '#beneficios', label: 'Beneficios', hoverColor: 'bg-[#d2232a]/40', icon: Heart },
   { href: '#servicios', label: 'Servicios', hoverColor: 'bg-[#2381d2]/40', icon: Settings }
 ];
 
 // @component: Navbar
 export const Navbar = () => {
-  const [activeLink, setActiveLink] = React.useState('#home');
+  const [activeLink, setActiveLink] = React.useState('#que-es');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [isDarkMode, setIsDarkMode] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'beneficios-adicionales', 'servicios'];
+      const sections = ['que-es', 'beneficios', 'servicios', 'contacto'];
       const scrollPosition = window.scrollY + 100;
       
       for (const section of sections) {

@@ -166,27 +166,29 @@ export const HeroSection = () => {
           delay: 0.2
         }} className="space-y-8">
             {/* Animated Pill Banner */}
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.6,
-            delay: 0.4
-          }} className="inline-flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-white/100 to-white/50 backdrop-blur-sm border border-[#ffffff] rounded-full">
-              <motion.div animate={{
-              scale: [1, 1.2, 1]
+            <div className="flex justify-center">
+              <motion.div initial={{
+              opacity: 0,
+              y: 20
+            }} animate={{
+              opacity: 1,
+              y: 0
             }} transition={{
-              duration: 2,
-              repeat: Infinity
-            }}>
-              <Droplet className="w-4 h-4 text-[#d2232a] fill-current" />
-            </motion.div>
-              <span className="text-sm font-medium">Tecnología Médica Avanzada</span>
-              <Heart className="w-4 h-4 text-[#d2232a] fill-current" />
-            </motion.div>
+              duration: 0.6,
+              delay: 0.4
+            }} className="inline-flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-white/100 to-white/50 backdrop-blur-sm border border-[#ffffff] rounded-full">
+                <motion.div animate={{
+                scale: [1, 1.2, 1]
+              }} transition={{
+                duration: 2,
+                repeat: Infinity
+              }}>
+                <Droplet className="w-4 h-4 text-[#d2232a] fill-current" />
+              </motion.div>
+                <span className="text-sm font-medium">Tecnología Médica Avanzada</span>
+                <Heart className="w-4 h-4 text-[#d2232a] fill-current" />
+              </motion.div>
+            </div>
 
             {/* Animated Headline */}
             <div className="space-y-4 max-w-lg">
@@ -234,6 +236,9 @@ export const HeroSection = () => {
             delay: 1
           }} className="flex flex-col sm:flex-row gap-4">
               <motion.button 
+                onClick={() => {
+                  document.getElementById('que-es')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 whileHover={{
                   scale: 1.05,
                   y: -2,
