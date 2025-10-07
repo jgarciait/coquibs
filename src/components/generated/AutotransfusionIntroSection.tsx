@@ -51,13 +51,14 @@ export const AutotransfusionIntroSection = () => {
         }} transition={{
           duration: 0.8
         }} className="relative">
-            <div className="relative rounded-3xl min-h-[400px] overflow-hidden bg-white">
+            <div className="relative h-[600px] w-full overflow-hidden rounded-3xl bg-white">
               <Image 
                 src="/Image.png"
                 alt="Tecnología Médica Avanzada"
-                className="w-full h-full object-contain"
+                className="object-cover"
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                priority
               />
             </div>
           </motion.div>
