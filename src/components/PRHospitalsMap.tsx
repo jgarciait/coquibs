@@ -345,8 +345,8 @@ ${useApple ?
 
   return (
     <div className={`flex gap-0 ${className ?? ''}`}>
-      {/* Lista estilo screenshot */}
-      <aside className="h-full bg-white text-[#0a1630] pl-4 pt-4 pb-2 flex-grow flex-shrink-0" style={{ minWidth: 'fit-content', flex: '1.5' }}>
+        {/* Lista estilo screenshot */}
+        <aside className="h-full bg-white text-[#0a1630] pl-4 pt-4 pb-2 flex-grow flex-shrink-0" style={{ minWidth: 'fit-content', flex: '1.5' }}>
         <h2 className="text-3xl font-extrabold tracking-tight mb-8">{title}</h2>
         <div className="flex flex-col md:flex-row" style={{ }}>
           <ul className="flex flex-col gap-y-4 flex-1 ">
@@ -425,51 +425,51 @@ ${useApple ?
       {/* Mapa */}
       <div ref={mapRef} id="map" className="min-w-0" style={{ height: 'auto', flex: '1' }} />
 
-      {/* Full page backdrop overlay when hospital is selected */}
-      {activeIdx !== null && (
-        <div 
-          className="fixed inset-0 bg-transparent cursor-pointer"
-          onClick={resetMap}
-          style={{ zIndex: 99999, pointerEvents: 'auto' }}
-        />
-      )}
+        {/* Full page backdrop overlay when hospital is selected */}
+        {activeIdx !== null && (
+          <div 
+            className="fixed inset-0 bg-transparent cursor-pointer"
+            onClick={resetMap}
+            style={{ zIndex: 99999, pointerEvents: 'auto' }}
+          />
+        )}
 
-      {/* CSS global: pulso rojo */}
-      <style jsx global>{`
-        .leaflet-container { outline: none; }
-        .pulse {
-          width: 20px; height: 20px; border-radius: 50%;
-          position: relative; border: 2px solid white;
-          background: var(--pulse-color, rgba(210, 35, 42, 0.70));
-          box-shadow: 0 0 0 0 var(--pulse-color, rgba(210, 35, 42, 0.70));
-          animation: pulse var(--pulse-duration, 1200ms) ease-out infinite;
-        }
-        .pulse:after {
-          content: ''; position: absolute; inset: -8px; border-radius: 50%;
-          border: 2px solid var(--ring-color, rgba(210, 35, 42, 0.45));
-          animation: ring var(--pulse-duration, 1200ms) ease-out infinite;
-        }
-        @keyframes pulse {
-          0% { transform: scale(1); opacity: 0.95; }
-          70% { transform: scale(1.9); opacity: 0.2; }
-          100% { transform: scale(2.3); opacity: 0; }
-        }
-        @keyframes ring {
-          0% { transform: scale(0.8); opacity: 0.8; }
-          80% { transform: scale(2.4); opacity: 0; }
-          100% { transform: scale(2.6); opacity: 0; }
-        }
-      `}</style>
-
-      {/* Responsive */}
-      <style jsx>{`
-        @media (max-width: 1024px) {
-          div.grid {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto 60vh;
+        {/* CSS global: pulso rojo */}
+        <style jsx global>{`
+          .leaflet-container { outline: none; }
+          .pulse {
+            width: 20px; height: 20px; border-radius: 50%;
+            position: relative; border: 2px solid white;
+            background: var(--pulse-color, rgba(210, 35, 42, 0.70));
+            box-shadow: 0 0 0 0 var(--pulse-color, rgba(210, 35, 42, 0.70));
+            animation: pulse var(--pulse-duration, 1200ms) ease-out infinite;
           }
-        }
-      `}</style>
+          .pulse:after {
+            content: ''; position: absolute; inset: -8px; border-radius: 50%;
+            border: 2px solid var(--ring-color, rgba(210, 35, 42, 0.45));
+            animation: ring var(--pulse-duration, 1200ms) ease-out infinite;
+          }
+          @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.95; }
+            70% { transform: scale(1.9); opacity: 0.2; }
+            100% { transform: scale(2.3); opacity: 0; }
+          }
+          @keyframes ring {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            80% { transform: scale(2.4); opacity: 0; }
+            100% { transform: scale(2.6); opacity: 0; }
+          }
+        `}</style>
+
+        {/* Responsive */}
+        <style jsx>{`
+          @media (max-width: 1024px) {
+            div.grid {
+              grid-template-columns: 1fr;
+              grid-template-rows: auto 60vh;
+            }
+          }
+        `}</style>
     </div>
   );
 }

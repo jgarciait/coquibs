@@ -61,6 +61,17 @@ export default function RootLayout({
           <Loader>
             {children}
             <ScrollToTopButton />
+            
+            {/* Floating Aquarius Software button - Fixed to viewport on left side */}
+            <a
+              href="https://www.aquarius-software.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="fixed bottom-12 left-12 bg-[#0a1630] text-white px-4 py-2 rounded-full shadow-lg hover:bg-[#0b2a6f] transition-colors duration-200 text-sm font-medium z-50"
+              style={{ fontSize: '12px' }}
+            >
+              Powered by Aquarius Software™
+            </a>
           </Loader>
         </StrictMode>
       </body>
