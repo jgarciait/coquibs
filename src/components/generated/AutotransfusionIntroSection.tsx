@@ -124,7 +124,7 @@ export const AutotransfusionIntroSection = () => {
             }} transition={{
               delay: 0.6
             }} className="text-lg text-gray-700 leading-relaxed mb-6 text-center">
-                <span>Autotransfusión es un procedimiento donde se utiliza una máquina llamada "cell saver" (salvadora de células) donde se recoge la sangre que el paciente pierde durante la cirugía, se procesa o se "limpia" y se vuelve a introducir al paciente si es necesario.</span>
+                <span>Autotransfusión es un procedimiento donde se utiliza una máquina llamada &ldquo;cell saver&rdquo; (salvadora de células) donde se recoge la sangre que el paciente pierde durante la cirugía, se procesa o se &ldquo;limpia&rdquo; y se vuelve a introducir al paciente si es necesario.</span>
               </motion.p>
 
               <motion.p initial={{

@@ -104,7 +104,12 @@ export const AutotransfusionLandingPage = () => {
 
             <div className="mt-10 grid gap-1 sm:grid-cols-2 lg:grid-cols-3 items-stretch justify-items-center">
               {/* Card 1 */}
-              <div className="group flex items-start gap-3 h-full" style={{
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="group flex items-start gap-3 h-full" style={{
                 padding: '18px 14px',
                 border: '1px solid #e6edf5',
                 borderRadius: '14px',
@@ -125,10 +130,15 @@ export const AutotransfusionLandingPage = () => {
                     Evita enfermedades asociadas a transfusiones de donantes como VIH, Hepatitis B y C, entre otras.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Card 2 */}
-              <div className="group flex items-start gap-3 h-full" style={{
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="group flex items-start gap-3 h-full" style={{
                 padding: '18px 14px',
                 border: '1px solid #e6edf5',
                 borderRadius: '14px',
@@ -150,10 +160,15 @@ export const AutotransfusionLandingPage = () => {
                     Al transfundir tu propia sangre, disminuye la probabilidad de respuestas adversas del sistema inmune.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Card 3 */}
-              <div className="group flex items-start gap-3 h-full" style={{
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="group flex items-start gap-3 h-full" style={{
                 padding: '18px 14px',
                 border: '1px solid #e6edf5',
                 borderRadius: '14px',
@@ -174,7 +189,7 @@ export const AutotransfusionLandingPage = () => {
                     Reduce la necesidad de reprogramar procedimientos por escasez de reservas de sangre.
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
           </motion.div>
@@ -193,7 +208,12 @@ export const AutotransfusionLandingPage = () => {
       {/* <StatisticsSection /> */}
       {/* <ResourcesSection /> */}
       
-      <footer className="bg-slate-900 text-white py-8">
+      <motion.footer
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="bg-slate-900 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-6 mb-4 md:mb-0">
@@ -219,7 +239,7 @@ export const AutotransfusionLandingPage = () => {
             </div>
           </div>
         </div>
-      </footer>
+      </motion.footer>
     </div></>;
 };
 

@@ -121,8 +121,12 @@ export const MedicalTeamSection = () => {
         {/* Testimonials */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {teamMembers.map((t, i) => (
-            <article
+            <motion.article
               key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               className="relative rounded-2xl transition-all duration-300 hover:-translate-y-0.5 flex flex-col h-full"
             >
               <div className="h-80 overflow-hidden rounded-t-2xl relative">
@@ -208,7 +212,7 @@ export const MedicalTeamSection = () => {
                   </span>
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
 

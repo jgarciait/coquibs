@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export const ContactoModernoSection = () => {
   const [activeTab, setActiveTab] = useState('#message');
@@ -74,7 +75,12 @@ export const ContactoModernoSection = () => {
           lineHeight: 1.45
         }}>
         {/* Tabs */}
-        <nav style={{ display: 'flex', justifyContent: 'center', margin: '8px auto 18px', maxWidth: 'min(1120px, 95vw)' }} aria-label="Quick actions">
+        <motion.nav
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          style={{ display: 'flex', justifyContent: 'center', margin: '8px auto 18px', maxWidth: 'min(1120px, 95vw)' }} aria-label="Quick actions">
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center', padding: '8px', borderRadius: '999px', background: '#ffffff', border: '1px solid var(--line)', boxShadow: 'var(--shadow)' }}>
             <button
               type="button"
@@ -135,12 +141,15 @@ export const ContactoModernoSection = () => {
               Contacto
             </button>
           </div>
-        </nav>
+        </motion.nav>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr min(1120px, 95vw) 1fr', padding: '28px 12px 52px' }}>
           <div style={{ gridColumn: '2', display: 'grid', gridTemplateColumns: '1fr', gap: '28px', alignItems: 'start', justifyItems: 'center' }}>
             {/* Panel: Información */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: activeTab === '#info' ? 1 : 0, y: activeTab === '#info' ? 0 : 20 }}
+              transition={{ duration: 0.4 }}
               style={{
                 background: '#ffffff',
                 border: '1px solid var(--line)',
@@ -345,10 +354,13 @@ export const ContactoModernoSection = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Panel: Contacto */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: activeTab === '#message' ? 1 : 0, y: activeTab === '#message' ? 0 : 20 }}
+              transition={{ duration: 0.4 }}
               style={{
                 background: '#ffffff',
                 border: '1px solid var(--line)',
@@ -631,7 +643,7 @@ export const ContactoModernoSection = () => {
                   </button>
                 </div>
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
         </div>
