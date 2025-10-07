@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Heart, Award, Users, Stethoscope, GraduationCap, Phone } from 'lucide-react';
 
@@ -124,11 +125,12 @@ export const MedicalTeamSection = () => {
               key={i}
               className="relative rounded-2xl transition-all duration-300 hover:-translate-y-0.5 flex flex-col h-full"
             >
-              <div className="h-80 overflow-hidden rounded-t-2xl">
-                <img 
+              <div className="h-80 overflow-hidden rounded-t-2xl relative">
+                <Image 
                   src={t.image} 
                   alt={t.name}
-                  className="w-full h-full object-cover object-top"
+                  fill
+                  className="object-cover object-top"
                 />
               </div>
 
@@ -159,14 +161,14 @@ export const MedicalTeamSection = () => {
                     className="mr-2 align-[-0.2em] text-2xl"
                     style={{ color: "#2381d2" }}
                   >
-                    "
+                    &ldquo;
                   </span>
                   {t.quote}
                   <span
                     className="ml-1 align-[-0.2em] text-2xl"
                     style={{ color: "#2381d2" }}
                   >
-                    "
+                    &rdquo;
                   </span>
                 </blockquote>
 
