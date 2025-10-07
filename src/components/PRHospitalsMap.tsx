@@ -346,11 +346,11 @@ ${useApple ?
   return (
     <div className={`flex gap-0 ${className ?? ''}`}>
       {/* Lista estilo screenshot */}
-      <aside className="h-full bg-white text-[#0a1630] pl-4 pt-4 pb-2 flex-shrink flex-grow-0" style={{ minWidth: 'fit-content' }}>
+      <aside className="h-full bg-white text-[#0a1630] pl-4 pt-4 pb-2 flex-grow flex-shrink-0" style={{ minWidth: 'fit-content', flex: '1.5' }}>
         <h2 className="text-3xl font-extrabold tracking-tight mb-8">{title}</h2>
 
-        <div className="flex flex-col md:flex-row gap-8" style={{ }}>
-          <ul className="flex flex-col gap-y-4 flex-1">
+        <div className="flex flex-col md:flex-row" style={{ }}>
+          <ul className="flex flex-col gap-y-4 flex-1 ">
             {hospitals.filter((_, i) => i % 2 === 0).map((h, idx) => {
               const i = idx * 2;
               return (
@@ -373,10 +373,10 @@ ${useApple ?
                     </span>
 
                     <div className="flex flex-col hover:bg-blue-100 rounded-lg px-2 py-1 transition-colors duration-200 inline-block">
-                      <div className={`font-semibold text-md leading-tight ${activeIdx === i ? 'text-[#0b2a6f]' : 'text-[#0a1630]'}`}>
+                      <div className={`font-semibold text-md leading-tight xl:whitespace-nowrap ${activeIdx === i ? 'text-[#0b2a6f]' : 'text-[#0a1630]'}`}>
                         {h.name}
                       </div>
-                      <div className="text-sm text-[#7c8aa5]">
+                      <div className="text-sm text-[#7c8aa5] xl:whitespace-nowrap">
                         {h.municipality}
                       </div>
                     </div>
@@ -408,10 +408,10 @@ ${useApple ?
                 </span>
 
                 <div className="flex flex-col hover:bg-blue-100 rounded-lg px-2 py-1 transition-colors duration-200 inline-block">
-                  <div className={`font-semibold text-md leading-tight whitespace-nowrap ${activeIdx === i ? 'text-[#0b2a6f]' : 'text-[#0a1630]'}`}>
+                  <div className={`font-semibold text-md leading-tight xl:whitespace-nowrap ${activeIdx === i ? 'text-[#0b2a6f]' : 'text-[#0a1630]'}`}>
                     {h.name}
                   </div>
-                  <div className="text-sm text-[#7c8aa5]">
+                  <div className="text-sm text-[#7c8aa5] xl:whitespace-nowrap">
                     {h.municipality}
                   </div>
                 </div>
@@ -424,7 +424,7 @@ ${useApple ?
       </aside>
 
       {/* Mapa */}
-      <div ref={mapRef} id="map" className="flex-1 min-w-0" style={{ height: 'auto' }} />
+      <div ref={mapRef} id="map" className="min-w-0" style={{ height: 'auto', flex: '1' }} />
 
       {/* Full page backdrop overlay when hospital is selected */}
       {activeIdx !== null && (
