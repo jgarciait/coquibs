@@ -425,7 +425,7 @@ export const ServiciosSection = () => {
                 hoverDurationMs={900}
               />
               {/* Info Rectangle */}
-              <div className="mt-20 max-w-4xl mx-auto">
+              <div className="mt-8 max-w-4xl mx-auto">
                 <div className="bg-blue-50 border border-blue-200 rounded-lg py-4 px-6">
                   <p className="text-blue-800 leading-relaxed text-center">
                     <strong>Coquí Blood Services</strong> es una empresa especializada en autotransfusión intraoperatoria con más de 15 años de experiencia sirviendo a la comunidad médica de Puerto Rico.

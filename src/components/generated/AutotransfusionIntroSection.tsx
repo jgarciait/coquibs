@@ -10,35 +10,7 @@ export const AutotransfusionIntroSection = () => {
   // @return
   return <section id="que-es" className="lg:pt-28 px-4 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} whileInView={{
-        opacity: 1,
-        y: 0
-      }} viewport={{
-        once: true
-      }} className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            <span>¿Qué es la </span>
-            <span className="text-[#d2232a] relative">
-              <span>Autotransfusión</span>
-              <motion.div initial={{
-              width: 0
-            }} whileInView={{
-              width: '100%'
-            }} viewport={{
-              once: true
-            }} transition={{
-              duration: 1,
-              delay: 0.5
-            }} className="absolute -bottom-2 left-0 h-1 bg-[#d2232a] rounded-full" />
-            </span>
-            <span>?</span>
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
           {/* Left Image Placeholder */}
           <motion.div initial={{
           opacity: 0,
@@ -51,7 +23,7 @@ export const AutotransfusionIntroSection = () => {
         }} transition={{
           duration: 0.8
         }} className="relative">
-            <div className="relative h-[600px] w-full overflow-hidden rounded-3xl bg-white">
+            <div className="relative h-[600px] w-full overflow-hidden rounded-l-3xl bg-white shadow-2xl">
               <Image 
                 src="/Image.png"
                 alt="Tecnología Médica Avanzada"
@@ -75,7 +47,21 @@ export const AutotransfusionIntroSection = () => {
         }} transition={{
           duration: 0.8,
           delay: 0.2
-        }} className="bg-white/60 backdrop-blur-sm rounded-3xl p-8 lg:p-12">
+        }} className="bg-white border-4 border-[#d2232a] rounded-r-3xl p-8 lg:p-12 shadow-2xl h-[600px] flex flex-col justify-center relative">
+            <motion.div initial={{
+              opacity: 0,
+              scale: 0
+            }} whileInView={{
+              opacity: 1,
+              scale: 1
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: 0.2
+            }} className="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#d2232a] rounded-full flex items-center justify-center shadow-lg">
+              <Activity className="w-8 h-8 text-white" />
+            </motion.div>
+
             <div className="space-y-6">
               <motion.div initial={{
               opacity: 0,
@@ -86,14 +72,25 @@ export const AutotransfusionIntroSection = () => {
             }} viewport={{
               once: true
             }} transition={{
-              delay: 0.4
-            }} className="flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-[#d2232a]/10 rounded-full flex items-center justify-center">
-                  <Activity className="w-6 h-6 text-[#d2232a]" />
-                </div>
-                <h3 className="text-2xl font-bold text-black-900">
-                  <span>Tecnología Médica Avanzada</span>
-                </h3>
+              delay: 0.3
+            }}>
+                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">
+                  <span>¿Qué es la </span>
+                  <span className="text-[#d2232a] relative">
+                    <span>Autotransfusión</span>
+                    <motion.div initial={{
+                    width: 0
+                  }} whileInView={{
+                    width: '100%'
+                  }} viewport={{
+                    once: true
+                  }} transition={{
+                    duration: 1,
+                    delay: 0.5
+                  }} className="absolute -bottom-2 left-0 h-1 bg-[#d2232a] rounded-full" />
+                  </span>
+                  <span>?</span>
+                </h2>
               </motion.div>
 
               <motion.p initial={{

@@ -41,7 +41,7 @@ const teamMembers = [
     name: 'Dra. Carmen Rivera',
     role: 'Consultora en Hematología Transfusional',
     specialty: 'Hematología Transfusional',
-    experience: '7+ años de experiencia',
+  experience: '7+ años de experiencia',
     education: 'MD - Universidad Central del Caribe, Fellowship en Hematología',
     image: '/Dra. Carmen Rivera.png',
     quote: 'Confío en Coquí Blood Salvage por su estandarización de procesos y trazabilidad. La coordinación pre y postoperatoria es ejemplar y se refleja en menor exposición a sangre alogénica para mis pacientes.',
