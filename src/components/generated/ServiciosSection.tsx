@@ -134,16 +134,19 @@ export const ServiciosSection = () => {
             className="relative -mx-[50vw] left-1/2 right-1/2 w-screen px-4 sm:px-6 lg:px-8 py-16"
             style={{
               background: `radial-gradient(
-                ellipse 90% 50% at 50% 40%,
+                ellipse 80% 62% at 50% 56%,
                 #c7d7ee 0%,
                 #bcd0eb 25%,
-                rgba(199,215,238,0.9) 40%,
-                #eef5fd 55%,
-                #ffffff 70%,
+                rgba(199,215,238,0.9) 45%,
+                #eef5fd 60%,
+                #ffffff 74%,
                 #ffffff 100%
               )`
             }}
           >
+            {/* Bottom fade to white */}
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-white pointer-events-none" />
+            
             <div className="max-w-7xl mx-auto">
               {/* Section Header */}
               <motion.div

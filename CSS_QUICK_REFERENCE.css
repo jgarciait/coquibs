@@ -1,0 +1,495 @@
+/* ========================================
+   CLONED SURGERY SECTION - CSS REFERENCE
+   ======================================== */
+
+/* ====================
+   COLOR PALETTE
+   ==================== */
+
+:root {
+  /* Primary Colors */
+  --primary-dark-blue: #00217a;
+  --primary-light-blue: #2381d2;
+  --accent-red: #d2232a;
+  
+  /* Gradient Background Colors */
+  --gradient-blue-1: #c7d7ee;
+  --gradient-blue-2: #bcd0eb;
+  --gradient-blue-3: rgba(199, 215, 238, 0.9);
+  --gradient-blue-4: #eef5fd;
+  
+  /* Slate Text Colors */
+  --text-slate-900: rgb(15, 23, 42);
+  --text-slate-700: rgb(51, 65, 85);
+  --text-slate-600: rgb(71, 85, 105);
+  
+  /* White with Opacity */
+  --white-40: rgba(255, 255, 255, 0.4);
+  --white-30: rgba(255, 255, 255, 0.3);
+  --white-20: rgba(255, 255, 255, 0.2);
+  --white-50: rgba(255, 255, 255, 0.5);
+}
+
+
+/* ====================
+   RADIAL GRADIENT BACKGROUND
+   ==================== */
+
+.surgery-section-bg {
+  background: radial-gradient(
+    ellipse 90% 50% at 50% 40%,
+    #c7d7ee 0%,
+    #bcd0eb 25%,
+    rgba(199, 215, 238, 0.9) 40%,
+    #eef5fd 55%,
+    #ffffff 70%,
+    #ffffff 100%
+  );
+}
+
+
+/* ====================
+   GLASSMORPHIC CARD
+   ==================== */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.glass-card-sm {
+  border-radius: 16px;
+}
+
+.glass-card-inner-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+
+/* ====================
+   WHITE CONTENT CARD
+   ==================== */
+
+.content-card {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .content-card {
+    padding: 2rem;
+  }
+}
+
+
+/* ====================
+   TAB BUTTONS
+   ==================== */
+
+.tab-button {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tab-button-active {
+  background-color: #00217a;
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+              0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.tab-button-inactive {
+  background-color: white;
+  color: #00217a;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.tab-button-inactive:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* ====================
+   ICON BADGE
+   ==================== */
+
+.icon-badge {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(to bottom right, #00217a, #2381d2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+              0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.icon-badge-sm {
+  width: 40px;
+  height: 40px;
+  background: #00217a;
+}
+
+
+/* ====================
+   PROCEDURE LIST ITEM
+   ==================== */
+
+.procedure-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.procedure-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #2381d2;
+  flex-shrink: 0;
+}
+
+.procedure-text {
+  color: rgb(51, 65, 85);
+  font-size: 1rem;
+  line-height: 1.625;
+}
+
+
+/* ====================
+   HEADING STYLES
+   ==================== */
+
+.section-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #00217a;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+@media (min-width: 1024px) {
+  .section-title {
+    font-size: 2.25rem;
+  }
+}
+
+.specialty-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #00217a;
+  line-height: 1.25;
+}
+
+.mobile-specialty-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #00217a;
+}
+
+
+/* ====================
+   IMAGE OVERLAY
+   ==================== */
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 33, 122, 0.2),
+    transparent,
+    transparent
+  );
+  pointer-events: none;
+}
+
+
+/* ====================
+   FULL-WIDTH BREAKOUT
+   ==================== */
+
+.full-width-breakout {
+  position: relative;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+}
+
+
+/* ====================
+   DIVIDER
+   ==================== */
+
+.divider-subtle {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+/* ====================
+   BUTTON LINK
+   ==================== */
+
+.button-link {
+  color: #2381d2;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+.button-link:hover {
+  color: #00217a;
+}
+
+
+/* ====================
+   FADE GRADIENTS (for scrolling)
+   ==================== */
+
+.fade-left {
+  position: absolute;
+  inset: 0;
+  left: 0;
+  width: 8%;
+  background: linear-gradient(to right, white, transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.fade-right {
+  position: absolute;
+  inset: 0;
+  right: 0;
+  width: 8%;
+  background: linear-gradient(to left, white, transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+
+/* ====================
+   SPACING & LAYOUT
+   ==================== */
+
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.container-max {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-max {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-max {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+
+/* ====================
+   RESPONSIVE GRID
+   ==================== */
+
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .two-col-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+
+/* ====================
+   ASPECT RATIOS
+   ==================== */
+
+.aspect-5-4 {
+  aspect-ratio: 5 / 4;
+}
+
+
+/* ====================
+   TRANSITIONS
+   ==================== */
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+
+/* ====================
+   HOVER EFFECTS
+   ==================== */
+
+.hover-lift {
+  transition: transform 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.hover-scale-sm:hover {
+  transform: scale(1.03);
+}
+
+
+/* ====================
+   SHADOWS
+   ==================== */
+
+.shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+              0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+
+/* ====================
+   UTILITIES
+   ==================== */
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+
+/* ====================
+   ANIMATION KEYFRAMES (if not using Framer Motion)
+   ==================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.6s ease-out;
+}
+
