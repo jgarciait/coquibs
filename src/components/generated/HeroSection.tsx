@@ -250,7 +250,7 @@ export const HeroSection = () => {
                 whileHover={{
                   scale: 1.05,
                   y: -2,
-                  boxShadow: "0 20px 40px rgba(35, 129, 210, 0.4)"
+                  boxShadow: "0 20px 40px #b91c1c/10"
                 }} 
                 whileTap={{
                   scale: 0.95
@@ -283,33 +283,26 @@ export const HeroSection = () => {
                 whileHover={{
                   scale: 1.05,
                   y: -2,
-                  boxShadow: "0 20px 40px rgba(35, 129, 210, 0.4)"
+                  boxShadow: "0 20px 40px #b91c1c/10"
                 }} 
                 whileTap={{
                   scale: 0.95
                 }} 
-                className="group px-4 py-2.5 text-white rounded-full font-semibold text-lg transition-all duration-500 flex items-center justify-center space-x-2 relative overflow-hidden hidden" 
+                className="group px-4 py-2.5 text-white rounded-full font-semibold text-lg transition-all duration-500 flex items-center justify-center space-x-2 relative overflow-hidden" 
                 style={{
-                  background: 'linear-gradient(45deg, #2381d2, #1e40af)',
+                  background: 'linear-gradient(45deg, #d2232a, #b91c1c)',
                   boxShadow: '0 10px 25px rgba(0, 0, 0, 0)',
-                  filter: 'drop-shadow(0 10px 15px rgba(35, 129, 210, 0.5))'
+                  filter: 'drop-shadow(0 10px 15px rgba(210, 35, 42, 0.5))'
                 }}
               >
                 <motion.div 
                   whileHover={{ scale: 1.2, rotate: 360 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Play className="w-5 h-5 text-white relative z-10" />
+                  
                 </motion.div>
-                <span className="relative z-10">Ver Demo</span>
-                <div 
-                  className="absolute inset-0 rounded-full blur-[15px] -z-10"
-                  style={{
-                    background: 'linear-gradient(45deg, #2381d2, #1e40af)',
-                    opacity: 0.5,
-                    top: '10px'
-                  }}
-                />
+                <a href="https://coquibs-online.aquarius-software.net/login" className="relative z-10">Solicita Cotización</a>
+                  <ArrowRight className="w-5 h-5 relative z-10" />
               </motion.button>
             </motion.div>
           </motion.div>
