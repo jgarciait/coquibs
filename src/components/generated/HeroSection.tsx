@@ -279,7 +279,8 @@ export const HeroSection = () => {
                 />
               </motion.button>
 
-              <motion.button 
+              <motion.a 
+                href="https://coquibs-online.aquarius-software.net/login"
                 whileHover={{
                   scale: 1.05,
                   y: -2,
@@ -301,9 +302,9 @@ export const HeroSection = () => {
                 >
                   
                 </motion.div>
-                <a href="https://coquibs-online.aquarius-software.net/login" className="relative z-10">Solicita Cotización</a>
-                  <ArrowRight className="w-5 h-5 relative z-10" />
-              </motion.button>
+                <span className="relative z-10">Solicita Cotización</span>
+                <ArrowRight className="w-5 h-5 relative z-10" />
+              </motion.a>
             </motion.div>
           </motion.div>
 
